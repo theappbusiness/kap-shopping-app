@@ -10,5 +10,11 @@ jobs:
     
     steps:
       - uses: actions/checkout@v2
+      - uses: actions/setup-node@v1
+        with:
+          node-version: 16
+#           --frozen-lockfile so it doesn't try to update anything
+      - run: npm install --frozen-lockfile
+      - run: npm run build
       
     
