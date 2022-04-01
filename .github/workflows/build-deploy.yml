@@ -9,7 +9,6 @@ jobs:
     runs-on: ubuntu-latest
     
     steps:
-#     checks out the repo under $GITHUB_WORKSPACE, so our job can access it
       - uses: actions/checkout@v3.0.0
       
       - uses: actions/setup-node@v3.1.0
