@@ -5,35 +5,50 @@ import Alert from "./Alert";
 
 type WithProductsDataType = {
   products: Product[];
+  error: Error | null,
+  isLoading: boolean
 };
 
-const WithProductsData =
-  <T extends WithProductsDataType>(Component: React.ComponentType<T>) =>
-  (props: Omit<T, keyof WithProductsDataType>) => {
-    const [products, setProducts] = React.useState<WithProductsDataType>(
-      {} as WithProductsDataType
-    );
+export const useProductsData = () => {
+  const [state, setState] = React.useState<WithProductsDataType>({
+    products: [],
+    isLoading: true,
+    error: null
+  });
 
-    const [isLoading, setIsLoading] = React.useState(false);
+  React.useEffect(() => {
+    const getProducts = async () => {
+      setState(s => ({
+        ...s,
+        loading: true
+      }));
 
-    React.useEffect(() => {
-      const getProducts = async () => {
-        setIsLoading(true);
+      const { data } = await axios.get("");
+      console.log(data);
 
-        const { data } = await axios.get("");
-        console.log(data);
+      setState(s => ({
+        ...s,
+        products: data,
+        loading: false
+      }));
+    };
 
-        setIsLoading(false);
-      };
-
-      try {
-        getProducts();
-      } catch (error) {
-        console.log(error);
+    try {
+      getProducts();
+    } catch (error) {
+      if (error instanceof Error) {
+        setState(s => ({
+          ...s,
+          error: error as Error
+        }));
+      } else {
+        setState(s => ({
+          ...s,
+          error: new Error("Something went wrong")
+        }));
       }
-    }, []);
+    }
+  }, []);
 
-    return <Component {...(props as T)} products={products} />;
-  };
-
-export default WithProductsData;
+  return state;
+};
