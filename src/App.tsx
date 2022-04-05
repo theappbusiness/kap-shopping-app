@@ -1,7 +1,10 @@
-import React from "react";
+import { useTranslation } from "react-i18next";
+import "./translations/i18n";
 
-function App() {
-  return <div className="App">Hello</div>;
-}
+const App = () => {
+  const { t } = useTranslation();
+
+  return <div className="App">{t("hello")}</div>;
+};
 
 export default App;
