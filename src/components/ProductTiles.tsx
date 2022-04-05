@@ -11,11 +11,11 @@ const ProductTiles = () => {
     return <p>{error.message}</p>;
   } else {
     return (
-      <ul>
+      <div>
         {products.map((product) => (
           <ProductTile product={product} />
         ))}
-      </ul>
+      </div>
     );
   }
 };

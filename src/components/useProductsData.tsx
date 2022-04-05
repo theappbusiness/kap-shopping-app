@@ -1,52 +1,55 @@
 import * as React from "react";
 import { Product } from "../types/product";
-import { getProductData } from "../services/product.service";
+import { getProductsData } from "../services/product.service";
 
-type useProductDataType = {
-  product: Product | null;
+type useProductsDataType = {
+  products: Product[];
   error: Error | null;
   isLoading: boolean;
 };
 
-export const useProductData = ({ id }: { id: string }) => {
-  const [state, setState] = React.useState<useProductDataType>({
-    product: null,
+export const useProductsData = () => {
+  const [state, setState] = React.useState<useProductsDataType>({
+    products: [],
     isLoading: true,
     error: null,
   });
 
   React.useEffect(() => {
-    const getProduct = async () => {
+    const getProducts = async () => {
       setState((s) => ({
         ...s,
         loading: true,
       }));
 
-      const product = await getProductData(id);
+      const products = await getProductsData();
 
       setState((s) => ({
         ...s,
-        product,
+        products,
         loading: false,
       }));
     };
 
     try {
-      getProduct();
+      getProducts();
     } catch (error) {
+      console.log("here");
       if (error instanceof Error) {
         setState((s) => ({
           ...s,
+          loading: false,
           error: error as Error,
         }));
       } else {
         setState((s) => ({
           ...s,
+          loading: false,
           error: new Error("Something went wrong"),
         }));
       }
     }
-  }, [id]);
+  }, []);
 
   return state;
 };
