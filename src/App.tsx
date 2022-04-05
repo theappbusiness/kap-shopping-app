@@ -1,12 +1,10 @@
-import { TFunction } from "i18next";
-import WithTranslation from "./WithTranslation";
+import { useTranslation } from "react-i18next";
+import "./translations/i18n";
 
-type AppProps = {
-  t: TFunction;
-};
+const App = () => {
+  const { t } = useTranslation();
 
-const App = ({ t }: AppProps) => {
   return <div className="App">{t("hello")}</div>;
 };
 
-export default WithTranslation(App);
+export default App;
