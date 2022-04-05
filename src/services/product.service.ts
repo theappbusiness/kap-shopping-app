@@ -1,8 +1,8 @@
 import axios from "axios";
 import { Product } from "../types/product";
-import { API_GET_PRODUCTS } from "../constants/api";
+import { API_GET_PRODUCT } from "../constants/api";
 
-export const getProductData = async (): Promise<Product[]> => {
-  const { data } = await axios.get(API_GET_PRODUCTS);
+export const getProductData = async (id: string): Promise<Product> => {
+  const { data } = await axios.get(API_GET_PRODUCT(id));
   return data;
 };

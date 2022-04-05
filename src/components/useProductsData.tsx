@@ -1,38 +1,47 @@
 import * as React from "react";
 import { Product } from "../types/product";
 import { getProductData } from "../services/product.service";
+import { useParams } from "react-router-dom";
 
-type useProductsDataType = {
-  products: Product[];
+type useProductDataType = {
+  product: Product | null;
   error: Error | null;
   isLoading: boolean;
 };
 
-export const useProductsData = () => {
-  const [state, setState] = React.useState<useProductsDataType>({
-    products: [],
+export const useProductData = () => {
+  const [state, setState] = React.useState<useProductDataType>({
+    product: null,
     isLoading: true,
     error: null,
   });
 
+  const { id } = useParams();
+
   React.useEffect(() => {
-    const getProducts = async () => {
+    const getProduct = async () => {
       setState((s) => ({
         ...s,
         loading: true,
       }));
 
-      const products = await getProductData();
+      let product: Product;
 
-      setState((s) => ({
-        ...s,
-        products,
-        loading: false,
-      }));
+      if (id) {
+        product = await getProductData(id);
+
+        setState((s) => ({
+          ...s,
+          product,
+          loading: false,
+        }));
+      } else {
+        throw new Error("Product id not found");
+      }
     };
 
     try {
-      getProducts();
+      getProduct();
     } catch (error) {
       if (error instanceof Error) {
         setState((s) => ({
