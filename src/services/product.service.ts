@@ -8,6 +8,13 @@ export const getProductData = async (id: string): Promise<Product> => {
 };
 
 export const getProductsData = async (): Promise<Product[]> => {
-  const { data } = await axios.get(API_GET_PRODUCTS);
-  return data;
+  // const { data } = await axios.get(API_GET_PRODUCTS);
+  // return data;
+
+  // TODO: delete this and uncomment above
+  console.log(`${API_GET_PRODUCTS}/624b099c305bb432fb30bbe8`);
+  const { data } = await axios.get(
+    `${API_GET_PRODUCTS}/624b099c305bb432fb30bbe8`
+  );
+  return [data];
 };

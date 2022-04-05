@@ -1,5 +1,6 @@
+import { Key } from "react";
 import ProductTile from "./ProductTile";
-import Spinner from "./Spinner";
+import Spinner from "./general/Spinner";
 import { useProductsData } from "./useProductsData";
 
 const ProductTiles = () => {
@@ -11,11 +12,11 @@ const ProductTiles = () => {
     return <p>{error.message}</p>;
   } else {
     return (
-      <div>
+      <ul>
         {products.map((product) => (
-          <ProductTile product={product} />
+          <ProductTile product={product} key={product.id as Key} />
         ))}
-      </div>
+      </ul>
     );
   }
 };
