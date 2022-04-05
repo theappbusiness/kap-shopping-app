@@ -3,9 +3,9 @@ import Spinner from "./Spinner";
 import { useProductsData } from "./useProductsData";
 
 const ProductTiles = () => {
-  const { products, error, isLoading } = useProductsData();
+  const { products, error, loading } = useProductsData();
 
-  if (isLoading) {
+  if (loading) {
     return <Spinner />;
   } else if (error) {
     return <p>{error.message}</p>;
