@@ -3,8 +3,8 @@ import styled from "styled-components";
 const Spinner = styled.div`
   width: 100px;
   height: 100px;
-  border: 20px solid rgb(241, 241, 242);
-  border-top: 20px solid rgb(160, 128, 252);
+  border: 20px solid #e4e4ee;
+  border-top: 20px solid #18181a;
   border-radius: 50%;
   animation: spin 2s linear infinite;
 

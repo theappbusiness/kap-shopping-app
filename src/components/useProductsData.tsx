@@ -1,7 +1,6 @@
 import * as React from "react";
 import { Product } from "../types/product";
 import { getProductData } from "../services/product.service";
-import { useParams } from "react-router-dom";
 
 type useProductDataType = {
   product: Product | null;
@@ -9,14 +8,12 @@ type useProductDataType = {
   isLoading: boolean;
 };
 
-export const useProductData = () => {
+export const useProductData = ({ id }: { id: string }) => {
   const [state, setState] = React.useState<useProductDataType>({
     product: null,
     isLoading: true,
     error: null,
   });
-
-  const { id } = useParams();
 
   React.useEffect(() => {
     const getProduct = async () => {
@@ -25,19 +22,13 @@ export const useProductData = () => {
         loading: true,
       }));
 
-      let product: Product;
+      const product = await getProductData(id);
 
-      if (id) {
-        product = await getProductData(id);
-
-        setState((s) => ({
-          ...s,
-          product,
-          loading: false,
-        }));
-      } else {
-        throw new Error("Product id not found");
-      }
+      setState((s) => ({
+        ...s,
+        product,
+        loading: false,
+      }));
     };
 
     try {
@@ -55,7 +46,7 @@ export const useProductData = () => {
         }));
       }
     }
-  }, []);
+  }, [id]);
 
   return state;
 };
