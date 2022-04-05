@@ -1,15 +1,23 @@
-import { Product } from "../types/product";
-import WithProductsData from "./WithProductsData";
 import ProductTile from "./ProductTile";
+import Spinner from "./Spinner";
+import { useProductsData } from "./useProductsData";
 
-const ProductTiles = ({ products }: { products: Product[] }) => {
-  return (
-    <ul>
-      {products.map((product) => (
-        <ProductTile product={product} />
-      ))}
-    </ul>
-  );
+const ProductTiles = () => {
+  const { products, error, isLoading } = useProductsData();
+
+  if (isLoading) {
+    return <Spinner />;
+  } else if (error) {
+    return <p>{error.message}</p>;
+  } else {
+    return (
+      <ul>
+        {products.map((product) => (
+          <ProductTile product={product} />
+        ))}
+      </ul>
+    );
+  }
 };
 
-export default WithProductsData(ProductTiles);
+export default ProductTiles;

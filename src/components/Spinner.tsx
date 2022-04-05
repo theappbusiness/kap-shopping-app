@@ -19,4 +19,6 @@ const Spinner = styled.div`
   }
 `;
 
+// add span inside spinner with class sr-only and text Loading
+
 export default Spinner;
