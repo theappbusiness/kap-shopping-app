@@ -6,7 +6,7 @@ const ProductTileContainer = styled.li`
 
   & .product-tile-img {
     width: 100%;
-    height: 20rem;
+    height: auto;
   }
 
   & .product-tile-title {
