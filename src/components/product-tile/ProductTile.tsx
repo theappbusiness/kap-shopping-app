@@ -12,6 +12,7 @@ const ProductTileContainer = styled.li`
   & .product-tile-title {
     font-size: 1.5rem;
     font-weight: 300;
+    margin-top: 0.5rem;
   }
 
   & .product-tile-price {
@@ -48,7 +49,11 @@ const ProductTile = ({ product }: { product: Product }) => {
   return (
     <ProductTileContainer data-testid="product-tile">
       {/* TODO: Add src when source image is available */}
-      <img className="product-tile-img" src="" alt="" />
+      <img
+        className="product-tile-img"
+        src="https://picsum.photos/seed/picsum/200"
+        alt={product.name as string}
+      />
       <h3 className="product-tile-title">{product.name}</h3>
       <h4 className="product-tile-price">£{product.price}</h4>
       <button onClick={handleClick}>
