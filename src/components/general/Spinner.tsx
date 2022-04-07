@@ -7,6 +7,7 @@ const Spinner = styled.div`
   border-top: 2rem solid #18181a;
   border-radius: 50%;
   animation: spin 2s linear infinite;
+  margin: 3rem auto;
 
   @keyframes spin {
     0% {
