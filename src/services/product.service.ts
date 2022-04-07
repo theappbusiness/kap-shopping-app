@@ -13,5 +13,6 @@ export const getProductData = async (id: string): Promise<Product> => {
 
 export const getProductsData = async (): Promise<Product[]> => {
   const { data } = await axios.get(API_GET_PRODUCTS);
+  console.log(JSON.stringify(data));
   return data.products.map((product: ProductApiResponse) => product["_source"]);
 };
