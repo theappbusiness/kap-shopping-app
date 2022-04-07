@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import GlobalStyle from "./GlobalStyle";
 import ProductTiles from "./components/product-tiles/ProductTiles";
 
 const AppContainer = styled.div`
@@ -8,9 +9,12 @@ const AppContainer = styled.div`
 
 function App() {
   return (
-    <AppContainer>
-      <ProductTiles />
-    </AppContainer>
+    <>
+      <GlobalStyle />
+      <AppContainer>
+        <ProductTiles />
+      </AppContainer>
+    </>
   );
 }
 
