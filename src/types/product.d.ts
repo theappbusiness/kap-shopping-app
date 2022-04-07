@@ -4,5 +4,8 @@ export type Product = {
   description: String;
   price: Number;
   stock: Number;
-  category: String;
+  category: {
+    name: string;
+    description: string;
+  };
 };
