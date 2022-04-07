@@ -50,7 +50,7 @@ const ProductTile = ({ product }: { product: Product }) => {
   return (
     <ProductTileContainer data-testid="product-tile">
       {/* TODO: Add src when source image is available */}
-      <img src="" alt={product.name as string} />
+      <img src="" alt="" />
       <h3>{product.name}</h3>
       <h4>£{product.price}</h4>
       <button onClick={handleClick}>
