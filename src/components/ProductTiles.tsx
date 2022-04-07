@@ -3,6 +3,7 @@ import styled from "styled-components";
 import ProductTile from "./ProductTile";
 import Spinner from "./general/Spinner";
 import { useProductsData } from "./useProductsData";
+import Alert from "./general/Alert";
 
 const ProductTylesContainer = styled.ul`
   display: grid;
@@ -29,7 +30,7 @@ const ProductTiles = () => {
   if (loading) {
     return <Spinner />;
   } else if (error) {
-    return <p>{error.message}</p>;
+    return <Alert>{error.message}</Alert>;
   } else {
     return (
       <ProductTylesContainer>

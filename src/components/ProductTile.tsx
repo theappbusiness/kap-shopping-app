@@ -20,6 +20,7 @@ const ProductTileContainer = styled.li`
     font-weight: 300;
   }
 
+  // TODO: Extract button to its own general component
   & button {
     margin-top: 1.5rem;
     width: 100%;
@@ -29,6 +30,7 @@ const ProductTileContainer = styled.li`
     font-size: 1.3rem;
     outline: none;
     border: none;
+    cursor: pointer;
 
     & i {
       font-size: 1.4rem;
@@ -47,6 +49,7 @@ const ProductTile = ({ product }: { product: Product }) => {
 
   return (
     <ProductTileContainer>
+      {/* TODO: Add src */}
       <img src="" alt="" />
       <h3>{product.name}</h3>
       <h4>£{product.price}</h4>
