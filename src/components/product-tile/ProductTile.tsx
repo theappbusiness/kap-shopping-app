@@ -1,6 +1,6 @@
 import styled from "styled-components";
 import { useTranslation } from "react-i18next";
-import { Product } from "../types/product";
+import { Product } from "../../types/product";
 
 const ProductTileContainer = styled.li`
   width: 100%;
@@ -48,9 +48,9 @@ const ProductTile = ({ product }: { product: Product }) => {
   };
 
   return (
-    <ProductTileContainer>
-      {/* TODO: Add src */}
-      <img src="" alt="" />
+    <ProductTileContainer data-testid="product-tile">
+      {/* TODO: Add src when source image is available */}
+      <img src="" alt={product.name as string} />
       <h3>{product.name}</h3>
       <h4>£{product.price}</h4>
       <button onClick={handleClick}>

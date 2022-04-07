@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import ProductTiles from "./components/ProductTiles";
+import ProductTiles from "./components/product-tiles/ProductTiles";
 
 const AppContainer = styled.div`
   max-width: 120rem;
