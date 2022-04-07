@@ -2,6 +2,7 @@ import { render, screen } from "@testing-library/react";
 import ProductTiles from "./ProductTiles";
 
 // TODO: Add tests
+// Does it render a list of tiles with the correct properties?
 // Does it render the an alert component with the correct text if there is an error?
 // Does it render a loading spinner while the list of products is being fetched?
 
