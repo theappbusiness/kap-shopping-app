@@ -1,10 +1,26 @@
-import { useTranslation } from "react-i18next";
-import "./translations/i18n";
+import styled from "styled-components";
+import GlobalStyle from "./GlobalStyle";
+import ProductTiles from "./components/product-tiles/ProductTiles";
 
-const App = () => {
-  const { t } = useTranslation();
+const AppContainer = styled.div`
+  max-width: 120rem;
+  margin: auto;
 
-  return <div className="App">{t("hello")}</div>;
-};
+  & .title {
+    font-size: 3rem;
+    text-align: center;
+  }
+`;
+
+function App() {
+  return (
+    <>
+      <GlobalStyle />
+      <AppContainer>
+        <ProductTiles />
+      </AppContainer>
+    </>
+  );
+}
 
 export default App;
