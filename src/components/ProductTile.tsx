@@ -1,4 +1,5 @@
 import { Product } from "../types/product";
+import Button from "./general/Button";
 
 const ProductTile = ({ product }: { product: Product }) => {
   const handleClick = () => {
@@ -10,7 +11,7 @@ const ProductTile = ({ product }: { product: Product }) => {
       <img width="100px" height="100px" src="" alt="" />
       <h3>{product.name}</h3>
       <h4>{product.price}</h4>
-      <button onClick={handleClick}>Add to cart</button>
+      <Button onClick={handleClick}>Add to cart</Button>
     </li>
   );
 };

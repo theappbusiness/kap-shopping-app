@@ -1,10 +1,16 @@
+import styled from "styled-components";
 import ProductTiles from "./components/ProductTiles";
+
+const AppContainer = styled.div`
+  max-width: 120rem;
+  margin: auto;
+`;
 
 function App() {
   return (
-    <div className="App">
+    <AppContainer>
       <ProductTiles />
-    </div>
+    </AppContainer>
   );
 }
 
