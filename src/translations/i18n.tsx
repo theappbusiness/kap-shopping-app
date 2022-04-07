@@ -21,4 +21,4 @@ i18n
     },
   });
 
-i18n.changeLanguage("pt");
+i18n.changeLanguage("en");
