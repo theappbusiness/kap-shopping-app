@@ -1,5 +1,7 @@
 # KAP Shopping App
 
+Deployed to https://kap-bucket.s3.us-west-1.amazonaws.com/
+
 ## Available Scripts
 
 In the project directory, you can run:
