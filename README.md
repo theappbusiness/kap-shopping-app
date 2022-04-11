@@ -1,6 +1,6 @@
 # KAP Shopping App
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Deployed to https://kap-bucket.s3.us-west-1.amazonaws.com/
 
 ## Available Scripts
 
