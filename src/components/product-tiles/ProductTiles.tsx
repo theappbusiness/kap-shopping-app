@@ -7,21 +7,9 @@ import Alert from "../general/Alert";
 
 const ProductTilesContainer = styled.ul`
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 1rem;
-  padding: 2rem;
-
-  @media (min-width: 600px) {
-    grid-template-columns: repeat(3, 1fr);
-  }
-
-  @media (min-width: 800px) {
-    grid-template-columns: repeat(4, 1fr);
-  }
-
-  @media (min-width: 1000px) {
-    grid-template-columns: repeat(5, 1fr);
-  }
+  grid-template-columns: repeat(var(--grid-factor), 1fr);
+  gap: ${({ theme }) => theme.sizes.spacing.xl};
+  padding: ${({ theme }) => theme.sizes.spacing.xxl};
 `;
 
 const ProductTiles = () => {
@@ -30,7 +18,7 @@ const ProductTiles = () => {
   if (loading) {
     return <Spinner />;
   } else if (error) {
-    return <Alert>{error.message}</Alert>;
+    return <Alert color="warning">{error.message}</Alert>;
   } else {
     return (
       <ProductTilesContainer data-testid="product-tiles-container">
