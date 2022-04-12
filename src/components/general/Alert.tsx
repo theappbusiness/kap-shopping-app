@@ -1,5 +1,5 @@
-import styled from "styled-components";
-import { ContextualColors } from "../../styles";
+import styled from 'styled-components';
+import { ContextualColors } from '../../styles';
 
 // TODO: Add alert styles with a close button
 const Alert = styled.p<{ color: keyof ContextualColors }>`

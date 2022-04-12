@@ -1,4 +1,4 @@
-import ProductTiles from "./components/product-tiles/ProductTiles";
+import ProductTiles from './components/product-tiles/ProductTiles';
 
 function App() {
   return <ProductTiles />;

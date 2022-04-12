@@ -1,9 +1,9 @@
-import { Key } from "react";
-import styled from "styled-components";
-import ProductTile from "../product-tile/ProductTile";
-import Spinner from "../general/Spinner";
-import { useProductsData } from "../useProductsData";
-import Alert from "../general/Alert";
+import { Key } from 'react';
+import styled from 'styled-components';
+import ProductTile from '../product-tile/ProductTile';
+import Spinner from '../general/Spinner';
+import { useProductsData } from '../useProductsData';
+import Alert from '../general/Alert';
 
 const ProductTilesContainer = styled.ul`
   display: grid;

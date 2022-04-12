@@ -1,5 +1,5 @@
-import { createGlobalStyle } from "styled-components";
-import { Colors, Theme } from "./styles";
+import { createGlobalStyle } from 'styled-components';
+import { Colors, Theme } from './styles';
 
 export const GlobalStyle = createGlobalStyle`
   * {
@@ -30,16 +30,16 @@ export const GlobalStyle = createGlobalStyle`
 `;
 
 const colors: Colors = {
-  dark: "#18181a",
-  light: "#e4e4ee",
-  white: "#f5f5ff",
-  black: "#00000d",
-  primary: "#18181a",
-  secondary: "#e4e4ee",
-  info: "#339b63",
-  success: "#5f5fc6",
-  warning: "#e6ab09",
-  danger: "#e60927",
+  dark: '#18181a',
+  light: '#e4e4ee',
+  white: '#f5f5ff',
+  black: '#00000d',
+  primary: '#18181a',
+  secondary: '#e4e4ee',
+  info: '#339b63',
+  success: '#5f5fc6',
+  warning: '#e6ab09',
+  danger: '#e60927',
 };
 
 export const theme: Theme = {
@@ -72,22 +72,22 @@ export const theme: Theme = {
   },
   sizes: {
     spacing: {
-      xxs: "1px",
-      xs: "2px",
-      sm: "4px",
-      md: "8px",
-      lg: "16px",
-      xl: "24px",
-      xxl: "32px",
+      xxs: '1px',
+      xs: '2px',
+      sm: '4px',
+      md: '8px',
+      lg: '16px',
+      xl: '24px',
+      xxl: '32px',
     },
     fonts: {
-      xxs: "0.375rem",
-      xs: ".5rem",
-      sm: ".75rem",
-      md: "0.875rem",
-      lg: "1rem",
-      xl: "1.25rem",
-      xxl: "1.5rem",
+      xxs: '0.375rem',
+      xs: '.5rem',
+      sm: '.75rem',
+      md: '0.875rem',
+      lg: '1rem',
+      xl: '1.25rem',
+      xxl: '1.5rem',
     },
   },
 } as const;
