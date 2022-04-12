@@ -1,6 +1,6 @@
-import { render, screen } from "@testing-library/react";
-import { Product } from "../../types/product";
+import { render, screen } from "../../test-utils";
 import ProductTile from "./ProductTile";
+import { Product } from "../../types/product";
 
 const productDataMock: Product = {
   id: "#1",
@@ -19,8 +19,8 @@ const productDataMock: Product = {
 test("renders a product tile with an image, title, price and add to cart button", () => {
   render(<ProductTile product={productDataMock} />);
   const productTile = screen.getByTestId("product-tile");
-  const productImg = screen.getByAltText(productDataMock.name as string);
-  const productName = screen.getByText(productDataMock.name as string);
+  const productImg = screen.getByAltText(productDataMock.name);
+  const productName = screen.getByText(productDataMock.name);
   const productPrice = screen.getByText(`£${productDataMock.price}`);
   const addToCartButton = screen.getByRole("button", { name: /Add to cart/ });
 

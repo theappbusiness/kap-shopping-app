@@ -1,4 +1,4 @@
-import { render, screen } from "@testing-library/react";
+import { render, screen } from "../../test-utils";
 import ProductTiles from "./ProductTiles";
 
 // TODO: Add tests
