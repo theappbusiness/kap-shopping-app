@@ -1,5 +1,5 @@
-import styled from "styled-components";
-import { Product } from "../../types/product";
+import styled from 'styled-components';
+import { Product } from '../../types/product';
 
 const ProductTileContainer = styled.li`
   margin: 0 auto 0 auto;
@@ -15,7 +15,8 @@ const ProductTileContainer = styled.li`
     )
   );
   display: grid;
-  grid-template-rows: max(
+  grid-template-rows:
+    max(
       115px,
       calc(
         calc(100vw / var(--grid-factor)) -
@@ -25,7 +26,8 @@ const ProductTileContainer = styled.li`
               ${({ theme }) => theme.sizes.spacing.xl}
           )
       )
-    ) 1fr 35px;
+    )
+    1fr 35px;
 
   & .product-tile-img {
     width: 100%;
@@ -52,7 +54,7 @@ const ProductTileContainer = styled.li`
     padding: ${({ theme }) => theme.sizes.spacing.md};
     font-size: ${({ theme }) => theme.sizes.fonts.md};
     outline: none;
-    border: 1px solid ${({theme}) => theme.colors.light};
+    border: 1px solid ${({ theme }) => theme.colors.light};
     cursor: pointer;
 
     & i {

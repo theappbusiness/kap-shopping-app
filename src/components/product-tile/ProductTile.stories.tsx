@@ -1,6 +1,6 @@
-import ProductTile from "./ProductTile";
+import ProductTile from './ProductTile';
 
 export default {
-  title: "ProductTile",
+  title: 'ProductTile',
   component: ProductTile,
 };

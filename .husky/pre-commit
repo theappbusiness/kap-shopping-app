@@ -3,4 +3,4 @@
 
 npm run format
 npm run typecheck
-npm test
+npm test -- --watchAll=false

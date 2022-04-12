@@ -1,6 +1,6 @@
-import * as React from "react";
-import { Product } from "../types/product";
-import { getProductsData } from "../services/product.service";
+import * as React from 'react';
+import { Product } from '../types/product';
+import { getProductsData } from '../services/product.service';
 
 type useProductsDataType = {
   products: Product[];
@@ -41,7 +41,7 @@ export const useProductsData = () => {
           setState((s) => ({
             ...s,
             loading: false,
-            error: new Error("Something went wrong"),
+            error: new Error('Something went wrong'),
           }));
         }
       }

@@ -1,11 +1,11 @@
 // TUTORIAL: https://lokalise.com/blog/how-to-internationalize-react-application-using-i18next/
 
-import i18n from "i18next";
-import { initReactI18next } from "react-i18next";
-import LanguageDetector from "i18next-browser-languagedetector";
+import i18n from 'i18next';
+import { initReactI18next } from 'react-i18next';
+import LanguageDetector from 'i18next-browser-languagedetector';
 
-import { TRANSLATIONS_EN } from "./locales/en";
-import { TRANSLATIONS_PT } from "./locales/pt";
+import { TRANSLATIONS_EN } from './locales/en';
+import { TRANSLATIONS_PT } from './locales/pt';
 
 i18n
   .use(LanguageDetector)
@@ -21,4 +21,4 @@ i18n
     },
   });
 
-i18n.changeLanguage("en");
+i18n.changeLanguage('en');

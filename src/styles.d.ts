@@ -1,6 +1,6 @@
 import 'styled-components';
 
-// See https://styled-components.com/docs/api#typescript 
+// See https://styled-components.com/docs/api#typescript
 // for info on extending the DefaultTheme type
 
 export interface ContextualColors {
@@ -40,9 +40,9 @@ export interface Theme {
   colors: Colors;
   palette: Record<keyof ContextualColors, Swatch>;
   sizes: {
-    spacing: Sizes,
-    fonts: Sizes
-  }
+    spacing: Sizes;
+    fonts: Sizes;
+  };
 }
 
 declare module 'styled-components' {
