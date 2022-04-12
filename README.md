@@ -1,6 +1,6 @@
 # KAP Shopping App
 
-Deployed to https://kap-bucket.s3.us-west-1.amazonaws.com/
+Deployed to http://kap-bucket.s3-website-us-west-1.amazonaws.com/
 
 ## Available Scripts
 
