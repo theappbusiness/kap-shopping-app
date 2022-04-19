@@ -12,4 +12,19 @@ describe('Header', () => {
     const hamburgerIcon = screen.getByTestId('hamburger-icon');
     expect(hamburgerIcon).toBeInTheDocument();
   });
+  it('Renders Search Icon', () => {
+    render(<Header />);
+    const searchIcon = screen.getByTestId('search-icon');
+    expect(searchIcon).toBeInTheDocument();
+  });
+  it('Renders Basket Icon', () => {
+    render(<Header />);
+    const basketIcon = screen.getByTestId('basket-icon');
+    expect(basketIcon).toBeInTheDocument();
+  });
+  it('Renders Shop Title', () => {
+    render(<Header />);
+    const shopTitle = screen.getByText('Shoply');
+    expect(shopTitle).toBeInTheDocument();
+  });
 });
