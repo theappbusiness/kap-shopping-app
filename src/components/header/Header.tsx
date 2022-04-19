@@ -14,6 +14,11 @@ const HeaderContainer = styled.div`
     left: 2%;
     cursor: pointer;
   }
+  .fa-bag-shopping:hover,
+  .fa-magnifying-glass:hover,
+  .fa-bars:hover {
+    filter: opacity(0.7);
+  }
   .fa-magnifying-glass {
     position: absolute;
     right: 2%;
@@ -23,11 +28,6 @@ const HeaderContainer = styled.div`
     position: absolute;
     right: 12%;
     cursor: pointer;
-  }
-  .fa-bag-shopping:hover,
-  .fa-magnifying-glass:hover,
-  .fa-bars:hover {
-    filter: opacity(0.7);
   }
 `;
 const Header = () => {
