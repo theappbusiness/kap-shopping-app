@@ -3,10 +3,10 @@ import ProductTiles from './components/product-tiles/ProductTiles';
 
 function App() {
   return (
-    <div>
+    <>
       <Header />
       <ProductTiles />
-    </div>
+    </>
   );
 }
 
