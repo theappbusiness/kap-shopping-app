@@ -7,31 +7,27 @@ const HeaderContainer = styled.div`
   padding: 10px;
   h1 {
     font-weight: lighter;
-    font-size: 25px;
+    font-size: ${({ theme }) => theme.sizes.fonts.xl};
   }
   .fa-bars {
     position: absolute;
     left: 2%;
     cursor: pointer;
   }
-  .fa-bars:hover {
-    color: #302f2f;
-  }
   .fa-magnifying-glass {
     position: absolute;
     right: 2%;
     cursor: pointer;
-  }
-  .fa-magnifying-glass:hover {
-    color: #302f2f;
   }
   .fa-bag-shopping {
     position: absolute;
     right: 12%;
     cursor: pointer;
   }
-  .fa-bag-shopping:hover {
-    color: #302f2f;
+  .fa-bag-shopping:hover,
+  .fa-magnifying-glass:hover,
+  .fa-bars:hover {
+    filter: opacity(0.7);
   }
 `;
 const Header = () => {
