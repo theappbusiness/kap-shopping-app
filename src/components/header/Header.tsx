@@ -19,7 +19,7 @@ const HeaderContainer = styled.div`
 `;
 const Header = () => {
   return (
-    <HeaderContainer>
+    <HeaderContainer data-testid="header">
       <h1>Shoply</h1>
       <i className="fa-solid fa-bars fa-2x" data-testid="hamburger-icon"></i>
     </HeaderContainer>
