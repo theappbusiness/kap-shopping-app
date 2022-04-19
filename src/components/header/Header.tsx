@@ -1,10 +1,10 @@
 import styled from 'styled-components';
 
 const HeaderContainer = styled.div`
-  background-color: #e4e4ee;
+  background-color: ${({ theme }) => theme.colors.light};
   display: flex;
   justify-content: center;
-  padding: 10px;
+  padding: ${({ theme }) => theme.sizes.spacing.lg};
   h1 {
     font-weight: lighter;
     font-size: ${({ theme }) => theme.sizes.fonts.xl};
