@@ -7,6 +7,7 @@ const FooterContainer = styled.footer`
   height: auto;
   background-color: ${({ theme }) => theme.colors.light};
   padding: ${({ theme }) => theme.sizes.spacing.sm};
+  margin-top: auto;
 
   & i {
     font-size: ${({ theme }) => theme.sizes.fonts.xl};
