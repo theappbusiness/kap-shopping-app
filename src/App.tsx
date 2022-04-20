@@ -3,11 +3,11 @@ import ProductTiles from './components/product-tiles/ProductTiles';
 import Footer from './components/footer/Footer';
 import styled from 'styled-components';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import HomePage from './components/home/HomePage';
-import ProductsPage from './components/productsPage/ProductsPage';
-import ProductDetailsPage from './components/productDetails/ProductDetailsPage';
-import CartPage from './components/cartPage/CartPage';
-import PaymentPage from './components/paymentPage/PaymentPage';
+import HomePage from './pages/home';
+import ProductsPage from './pages/products';
+import ProductDetailsPage from './pages/productDetails';
+import CartPage from './pages/cart';
+import PaymentPage from './pages/payment';
 
 const AppContainer = styled.div`
   min-height: 100vh;
