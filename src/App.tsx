@@ -9,7 +9,7 @@ import ProductDetailsPage from './components/productDetails/ProductDetailsPage';
 import CartPage from './components/cartPage/CartPage';
 import PaymentPage from './components/paymentPage/PaymentPage';
 
-const Container = styled.div`
+const AppContainer = styled.div`
   min-height: 100vh;
   display: flex;
   flex-direction: column;
@@ -18,7 +18,7 @@ const Container = styled.div`
 function App() {
   return (
     <BrowserRouter>
-      <Container>
+      <AppContainer>
         <Header />
         <Routes>
           <Route path="/" element={<HomePage />} />
@@ -29,7 +29,7 @@ function App() {
         </Routes>
         <ProductTiles />
         <Footer />
-      </Container>
+      </AppContainer>
     </BrowserRouter>
   );
 }
