@@ -18,6 +18,7 @@
 ## Developer Checklist
 
 I have
+
 - [ ] Made the minimum amount of change required to achieve my goal to a high standard
 - [ ] Added tests that describe the change
 - [ ] Created tickets for any tech debt incurred
