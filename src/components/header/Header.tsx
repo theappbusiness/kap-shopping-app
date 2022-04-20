@@ -19,7 +19,7 @@ const HeaderContainer = styled.div`
   }
   .fa-magnifying-glass {
     cursor: pointer;
-    margin-left: 5px;
+    margin-left: ${({ theme }) => theme.sizes.spacing.md};
   }
   .fa-bag-shopping {
     cursor: pointer;
