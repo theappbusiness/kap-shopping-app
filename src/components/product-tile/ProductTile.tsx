@@ -63,6 +63,10 @@ const ProductTileContainer = styled.li`
   }
 `;
 
+export const Thingy: React.FC = () => {
+  return <div>just testing</div>
+}
+
 const ProductTile = ({ product }: { product: Product }) => {
   // TODO: Add translations and currency formatting
 
