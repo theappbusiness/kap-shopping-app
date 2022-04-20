@@ -17,20 +17,18 @@ const AppContainer = styled.div`
 
 function App() {
   return (
-    <BrowserRouter>
-      <AppContainer>
-        <Header />
-        <Routes>
-          <Route path="/" element={<HomePage />} />
-          <Route path="/products" element={<ProductsPage />} />
-          <Route path="/products/:id" element={<ProductDetailsPage />} />
-          <Route path="/cart" element={<CartPage />} />
-          <Route path="/payment" element={<PaymentPage />} />
-        </Routes>
-        <ProductTiles />
-        <Footer />
-      </AppContainer>
-    </BrowserRouter>
+    <AppContainer>
+      <Header />
+      <Routes>
+        <Route path="/" element={<HomePage />} />
+        <Route path="/products" element={<ProductsPage />} />
+        <Route path="/products/:id" element={<ProductDetailsPage />} />
+        <Route path="/cart" element={<CartPage />} />
+        <Route path="/payment" element={<PaymentPage />} />
+      </Routes>
+      <ProductTiles />
+      <Footer />
+    </AppContainer>
   );
 }
 

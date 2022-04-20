@@ -7,17 +7,43 @@ import App from './App';
 
 describe('React Router', () => {
   it('Renders Home Page', () => {
-    render(<App />);
+    render(
+      <BrowserRouter>
+        <App />
+      </BrowserRouter>
+    );
     expect(screen.getByText('Home')).toBeInTheDocument();
   });
-  it.skip('Renders Product Page', () => {
-    const history = createMemoryHistory();
-    const route = '/products';
-    history.push(route);
+  it('Renders Products Page', () => {
     render(
       <MemoryRouter initialEntries={['/products']}>
         <App />
       </MemoryRouter>
     );
+    expect(screen.getByText('Products Page')).toBeInTheDocument();
+  });
+  it('Renders Product Details Page', () => {
+    render(
+      <MemoryRouter initialEntries={['/products/1']}>
+        <App />
+      </MemoryRouter>
+    );
+    expect(screen.getByText('Product Details Page')).toBeInTheDocument();
+  });
+  it('Renders Cart Page', () => {
+    render(
+      <MemoryRouter initialEntries={['/cart']}>
+        <App />
+      </MemoryRouter>
+    );
+    expect(screen.getByText('Cart Page')).toBeInTheDocument();
+  });
+  it('Renders Payment', () => {
+    render(
+      <MemoryRouter initialEntries={['/payment']}>
+        <App />
+      </MemoryRouter>
+    );
+    expect(screen.getByText('Payment Page')).toBeInTheDocument();
   });
 });
