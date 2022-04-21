@@ -4,7 +4,6 @@ import Footer from './components/footer/Footer';
 import styled from 'styled-components';
 import AppRoutes from './components/routes/AppRoutes';
 
-
 const AppContainer = styled.div`
   min-height: 100vh;
   display: flex;
