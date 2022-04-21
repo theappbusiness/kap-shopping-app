@@ -19,15 +19,15 @@ const ButtonContainer = styled.button<{ color: keyof ContextualColors }>`
 export const Button = ({
   color = 'primary',
   text,
+  handleClick,
 }: {
   color?: keyof ContextualColors;
   text: string;
+  handleClick: () => void;
 }) => {
-  // handleClick prop
-
   return (
-    <ButtonContainer color={color}>
-      {text} <i className="fa-solid fa-bag-shopping"></i>
+    <ButtonContainer onClick={handleClick} color={color}>
+      {text} <i className={'fa-solid fa-bag-shopping'}></i>
     </ButtonContainer>
   );
 };
