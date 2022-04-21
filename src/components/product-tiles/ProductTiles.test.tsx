@@ -14,3 +14,5 @@ test('renders a list with the corrent number of product tiles', async () => {
   const tiles = await screen.findAllByTestId('product-tile');
   expect(tiles).toHaveLength(2);
 });
+
+
