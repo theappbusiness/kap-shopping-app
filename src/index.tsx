@@ -13,9 +13,11 @@ const root = createRoot(container);
 root.render(
   <React.StrictMode>
     <GlobalStyle />
+    {/* <BrowserRouter> */}
     <ThemeProvider theme={theme}>
-        <App />
+      <App />
     </ThemeProvider>
+    {/* </BrowserRouter> */}
   </React.StrictMode>
 );
 
