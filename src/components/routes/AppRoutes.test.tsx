@@ -1,7 +1,14 @@
+import React from 'react';
 import { MemoryRouter } from 'react-router-dom';
 import { render, screen } from '../../test-utils';
 import AppRoutes from './AppRoutes';
 
+jest.mock('react-router-dom', () => ({
+  ...jest.requireActual('react-router-dom'),
+  BrowserRouter: ({ children }: { children: React.ReactNode }) => (
+    <>{children}</>
+  ),
+}));
 describe('React Router', () => {
   it('Renders Products Page', () => {
     render(
