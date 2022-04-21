@@ -3,7 +3,7 @@ import ProductTiles from './components/product-tiles/ProductTiles';
 import Footer from './components/footer/Footer';
 import styled from 'styled-components';
 import AppRoutes from './components/routes/AppRoutes';
-import { BrowserRouter } from 'react-router-dom';
+
 
 const AppContainer = styled.div`
   min-height: 100vh;
@@ -13,14 +13,12 @@ const AppContainer = styled.div`
 
 function App() {
   return (
-    <BrowserRouter>
       <AppContainer>
         <Header />
         <AppRoutes />
         <ProductTiles />
         <Footer />
       </AppContainer>
-    </BrowserRouter>
   );
 }
 
