@@ -9,6 +9,7 @@ jest.mock('react-router-dom', () => ({
     <>{children}</>
   ),
 }));
+
 describe('React Router', () => {
   it('Renders Products Page', () => {
     render(

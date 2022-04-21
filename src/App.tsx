@@ -4,7 +4,6 @@ import ProductTiles from './components/product-tiles/ProductTiles';
 import Footer from './components/footer/Footer';
 import AppRoutes from './components/routes/AppRoutes';
 
-
 const AppContainer = styled.div`
   min-height: 100vh;
   display: flex;
@@ -13,12 +12,12 @@ const AppContainer = styled.div`
 
 function App() {
   return (
-      <AppContainer>
-        <Header />
-        <AppRoutes />
-        <ProductTiles />
-        <Footer />
-      </AppContainer>
+    <AppContainer>
+      <Header />
+      <AppRoutes />
+      <ProductTiles />
+      <Footer />
+    </AppContainer>
   );
 }
 
