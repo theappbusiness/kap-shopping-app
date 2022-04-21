@@ -2,12 +2,8 @@ import Header from './components/header/Header';
 import ProductTiles from './components/product-tiles/ProductTiles';
 import Footer from './components/footer/Footer';
 import styled from 'styled-components';
-import HomePage from './pages/home';
-import ProductsPage from './pages/products';
-import ProductDetailsPage from './pages/productDetails';
-import CartPage from './pages/cart';
-import PaymentPage from './pages/payment';
 import AppRoutes from './components/routes/AppRoutes';
+import { BrowserRouter } from 'react-router-dom';
 
 const AppContainer = styled.div`
   min-height: 100vh;
@@ -17,12 +13,14 @@ const AppContainer = styled.div`
 
 function App() {
   return (
-    <AppContainer>
-      <Header />
-      <AppRoutes/>
-      <ProductTiles />
-      <Footer />
-    </AppContainer>
+    <BrowserRouter>
+      <AppContainer>
+        <Header />
+        <AppRoutes />
+        <ProductTiles />
+        <Footer />
+      </AppContainer>
+    </BrowserRouter>
   );
 }
 
