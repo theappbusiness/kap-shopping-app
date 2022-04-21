@@ -4,7 +4,6 @@ import { ThemeProvider } from 'styled-components';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 import { GlobalStyle, theme } from './styled';
-import { BrowserRouter } from 'react-router-dom';
 
 const container = document.getElementById('root') as HTMLElement;
 
@@ -13,11 +12,9 @@ const root = createRoot(container);
 root.render(
   <React.StrictMode>
     <GlobalStyle />
-    {/* <BrowserRouter> */}
     <ThemeProvider theme={theme}>
       <App />
     </ThemeProvider>
-    {/* </BrowserRouter> */}
   </React.StrictMode>
 );
 
