@@ -2,8 +2,10 @@ import styled from 'styled-components';
 import Header from './components/header/Header';
 import ProductTiles from './components/product-tiles/ProductTiles';
 import Footer from './components/footer/Footer';
+import AppRoutes from './components/routes/AppRoutes';
 
-const Container = styled.div`
+
+const AppContainer = styled.div`
   min-height: 100vh;
   display: flex;
   flex-direction: column;
@@ -11,11 +13,12 @@ const Container = styled.div`
 
 function App() {
   return (
-    <Container>
-      <Header />
-      <ProductTiles />
-      <Footer />
-    </Container>
+      <AppContainer>
+        <Header />
+        <AppRoutes />
+        <ProductTiles />
+        <Footer />
+      </AppContainer>
   );
 }
 

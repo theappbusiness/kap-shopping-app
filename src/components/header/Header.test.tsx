@@ -2,7 +2,7 @@ import { render, screen } from '../../test-utils';
 import Header from './Header';
 
 describe('Header', () => {
-  it('Renders header element', () => {
+  it('Renders Header element', () => {
     render(<Header />);
     const header = screen.getByTestId('header');
     expect(header).toBeInTheDocument();
