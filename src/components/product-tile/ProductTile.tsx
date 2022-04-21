@@ -67,7 +67,7 @@ const ProductTile = ({ product }: { product: Product }) => {
         <h3 className="product-tile-title">{product.name}</h3>
         <h4 className="product-tile-price">£{product.price}</h4>
       </div>
-      <Button text="Add to cart" />
+      <Button handleClick={handleClick} text="Add to cart" />
     </ProductTileContainer>
   );
 };
