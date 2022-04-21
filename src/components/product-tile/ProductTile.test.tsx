@@ -1,6 +1,6 @@
 import { render, screen } from '../../test-utils';
-import ProductTile from './ProductTile';
 import { Product } from '../../types/product';
+import ProductTile from './ProductTile';
 
 const productDataMock: Product = {
   id: '#1',
