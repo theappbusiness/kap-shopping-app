@@ -70,7 +70,7 @@ const ProductTile = ({ product }: { product: Product }) => {
       <Button
         handleClick={handleClick}
         text="Add to cart"
-        iconName="shopping-bag"
+        iconName="magnifying-glass"
       />
     </ProductTileContainer>
   );

@@ -5,6 +5,6 @@ import {
   faXmark,
 } from '@fortawesome/free-solid-svg-icons';
 
-export const registerIcons = () => {
+export const registerIcons = (): void => {
   library.add(faCheckSquare, faShoppingBag, faXmark);
 };
