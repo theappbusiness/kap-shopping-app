@@ -48,7 +48,11 @@ const ProductTileContainer = styled.li`
   }
 `;
 
-const ProductTile = ({ product }: { product: Product }) => {
+export const ProductTile = ({
+  product,
+}: {
+  product: Product;
+}): React.ReactElement => {
   // TODO: Add translations and currency formatting
 
   const handleClick = () => {
@@ -67,13 +71,9 @@ const ProductTile = ({ product }: { product: Product }) => {
         <h3 className="product-tile-title">{product.name}</h3>
         <h4 className="product-tile-price">£{product.price}</h4>
       </div>
-      <Button
-        handleClick={handleClick}
-        text="Add to cart"
-        iconName="magnifying-glass"
-      />
+      <Button handleClick={handleClick} iconName="shopping-bag">
+        Add to cart
+      </Button>
     </ProductTileContainer>
   );
 };
-
-export default ProductTile;

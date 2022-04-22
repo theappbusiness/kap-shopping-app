@@ -21,18 +21,18 @@ const StyledButton = styled.button<{ color: keyof ContextualColors }>`
 
 export const Button = ({
   color = 'primary',
-  text,
+  children,
   handleClick,
   iconName,
 }: {
   color?: keyof ContextualColors;
-  text: string;
+  children: React.ReactChild;
   handleClick: () => void;
   iconName?: IconProp;
 }): ReactElement => {
   return (
     <StyledButton onClick={handleClick} color={color}>
-      {text}
+      {children}
       {iconName && (
         <FontAwesomeIcon
           icon={iconName}
