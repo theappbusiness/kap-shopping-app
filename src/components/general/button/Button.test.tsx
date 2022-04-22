@@ -1,6 +1,7 @@
-import { render, screen, fireEvent } from '../../../test-utils';
-import { Button } from './index';
+import { render, screen } from '../../../test-utils';
 import { theme } from '../../../styled';
+import { Button } from './index';
+import userEvent from '@testing-library/user-event';
 
 describe('Button renders', () => {
   const myMockFunction = jest.fn();
@@ -37,12 +38,12 @@ describe('Button renders', () => {
     expect(button).toHaveStyle(`color: ${theme.palette.danger.contrast}`);
   });
 
-  test('Button handleClick function is called once upon button being clicked ', () => {
+  test('Button handleClick function is called once upon button being clicked ', async () => {
     render(
       <Button handleClick={myMockFunction} text="given text" color="danger" />
     );
     const button = screen.getByRole('button', { name: 'given text' });
-    fireEvent.click(button);
+    await userEvent.click(button);
     expect(myMockFunction).toHaveBeenCalledTimes(1);
   });
 });
