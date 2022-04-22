@@ -5,7 +5,7 @@ import PaymentPage from '../../pages/payment';
 import ProductDetailsPage from '../../pages/productDetails';
 import ProductsPage from '../../pages/products';
 
-const AppRoutes = () => {
+const AppRoutes: React.FC = () => {
   return (
     <BrowserRouter>
       <Routes>
