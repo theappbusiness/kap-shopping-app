@@ -1,5 +1,5 @@
-const HomePage = () => {
-  return <div>Home</div>;
-};
+import ProductTiles from '../../components/product-tiles/ProductTiles';
 
-export default HomePage;
+export const HomePage: React.FC = () => {
+  return <ProductTiles />;
+};

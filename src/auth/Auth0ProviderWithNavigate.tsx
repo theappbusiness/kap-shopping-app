@@ -1,14 +1,9 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
-import {
-  AppState,
-  Auth0Provider,
-  Auth0ProviderOptions,
-} from '@auth0/auth0-react';
+import { AppState, Auth0Provider } from '@auth0/auth0-react';
 
 interface Auth0ProviderWithNavigateProps {
   children: React.ReactNode;
-  opts: Auth0ProviderOptions;
 }
 
 export const Auth0ProviderWithNavigate: React.FC<

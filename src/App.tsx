@@ -1,24 +1,18 @@
-import styled from 'styled-components';
-import Header from './components/header/Header';
-import ProductTiles from './components/product-tiles/ProductTiles';
-import Footer from './components/footer/Footer';
-import AppRoutes from './components/routes/AppRoutes';
+import { BrowserRouter } from 'react-router-dom';
+import { ThemeProvider } from 'styled-components';
+import { Auth0ProviderWithNavigate } from './auth/Auth0ProviderWithNavigate';
+import { Routes } from './Routes';
+import { GlobalStyle, theme } from './styled';
 
-const AppContainer = styled.div`
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-`;
-
-function App() {
+export const App: React.FC = () => {
   return (
-    <AppContainer>
-      <Header />
-      <AppRoutes />
-      <ProductTiles />
-      <Footer />
-    </AppContainer>
+    <BrowserRouter>
+      <Auth0ProviderWithNavigate>
+        <GlobalStyle />
+        <ThemeProvider theme={theme}>
+          <Routes />
+        </ThemeProvider>
+      </Auth0ProviderWithNavigate>
+    </BrowserRouter>
   );
-}
-
-export default App;
+};
