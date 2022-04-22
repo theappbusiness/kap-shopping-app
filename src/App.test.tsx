@@ -1,5 +1,5 @@
 import { ReactNode } from 'react';
-import { render, screen, waitFor } from './test-utils';
+import { render, screen } from './test-utils';
 import { App } from './App';
 import { mockProductsResponse } from './mocks/mockProductResponse';
 jest.mock('./auth/Auth0ProviderWithNavigate', () => ({
