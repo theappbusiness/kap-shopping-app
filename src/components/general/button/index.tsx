@@ -1,3 +1,4 @@
+import React, { ReactElement } from 'react';
 import styled from 'styled-components';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { ContextualColors } from '../../../styles';
@@ -30,7 +31,7 @@ export const Button = ({
   text: string;
   handleClick: () => void;
   iconName?: Icon;
-}) => {
+}): ReactElement => {
   return (
     <ButtonContainer onClick={handleClick} color={color}>
       {text}
