@@ -1,7 +1,8 @@
+import userEvent from '@testing-library/user-event';
 import { render, screen } from '../../../test-utils';
 import { theme } from '../../../styled';
 import { Button } from './index';
-import userEvent from '@testing-library/user-event';
+import { registerIcons } from '../../../registerIcons';
 
 describe('Button renders', () => {
   const myMockFunction = jest.fn();
@@ -45,5 +46,25 @@ describe('Button renders', () => {
     const button = screen.getByRole('button', { name: 'given text' });
     await userEvent.click(button);
     expect(myMockFunction).toHaveBeenCalledTimes(1);
+  });
+
+  test('Button renders no icon when not given iconName as props', () => {
+    registerIcons();
+    render(<Button handleClick={myMockFunction} text="given text" />);
+    const buttonIcon = screen.queryByTestId('button-icon');
+    expect(buttonIcon).not.toBeInTheDocument();
+  });
+
+  test('Button renders correct icon when given iconName as props', () => {
+    registerIcons();
+    render(
+      <Button
+        handleClick={myMockFunction}
+        text="given text"
+        iconName="shopping-bag"
+      />
+    );
+    const buttonIcon = screen.getByTestId('button-icon');
+    expect(buttonIcon).toBeInTheDocument();
   });
 });
