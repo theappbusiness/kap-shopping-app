@@ -1,10 +1,13 @@
 import { Routes as ReactRouterRoutes, Route } from 'react-router-dom';
+import { useAuth0 } from '@auth0/auth0-react';
 import { DefaultLayout } from './layouts/Default';
 import CartPage from './pages/cart';
 import { HomePage } from './pages/home';
 import PaymentPage from './pages/payment';
 import ProductDetailsPage from './pages/productDetails';
 import ProductsPage from './pages/products';
+import Spinner from './components/general/Spinner';
+import { ProtectedPage } from './pages/protected';
 
 interface IRoute {
   path: string;
@@ -38,9 +41,20 @@ const routes: IRoute[] = [
     Component: PaymentPage,
     Layout: DefaultLayout,
   },
+  {
+    path: '/protected',
+    Component: ProtectedPage,
+    Layout: DefaultLayout,
+  },
 ];
 
 export const Routes: React.FC = () => {
+  const { isLoading } = useAuth0();
+
+  if (isLoading) {
+    return <Spinner />;
+  }
+
   return (
     <ReactRouterRoutes>
       {routes.map(({ path, Component, Layout = () => <></> }) => (

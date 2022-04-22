@@ -1,5 +1,5 @@
 import { render, screen } from '../../test-utils';
-import Footer from './Footer';
+import { Footer } from './Footer';
 
 test('Footer renders a footer element', () => {
   render(<Footer />);
