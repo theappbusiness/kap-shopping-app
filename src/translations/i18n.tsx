@@ -12,6 +12,10 @@ i18n
   .use(LanguageDetector)
   .use(initReactI18next)
   .init({
+    fallbackLng: 'en',
+    interpolation: {
+      escapeValue: false,
+    },
     resources: {
       en: {
         translation: TRANSLATIONS_EN,
