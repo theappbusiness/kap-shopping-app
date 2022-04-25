@@ -12,7 +12,7 @@ const Wrapper: React.FC = ({ children }) => (
 const customRender = (
   ui: ReactElement,
   options?: Omit<RenderOptions, 'wrapper'>
-) => {
+): void => {
   render(ui, { wrapper: Wrapper, ...options });
 };
 

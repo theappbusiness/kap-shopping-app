@@ -15,7 +15,7 @@ const FooterContainer = styled.footer`
   }
 `;
 
-const Footer = () => {
+export const Footer: React.FC = () => {
   return (
     <FooterContainer data-testid="footer">
       <i className="fa-brands fa-twitter" data-testid="social-media"></i>
@@ -24,5 +24,3 @@ const Footer = () => {
     </FooterContainer>
   );
 };
-
-export default Footer;

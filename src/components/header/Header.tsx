@@ -24,7 +24,7 @@ const HeaderContainer = styled.div`
     margin-left: ${({ theme }) => theme.sizes.spacing.md};
   }
 `;
-const Header = () => {
+export const Header: React.FC = () => {
   return (
     <HeaderContainer data-testid="header">
       <i className="fa-solid fa-bars fa-1x" data-testid="hamburger-icon"></i>
@@ -42,5 +42,3 @@ const Header = () => {
     </HeaderContainer>
   );
 };
-
-export default Header;

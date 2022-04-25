@@ -48,11 +48,7 @@ const ProductTileContainer = styled.li`
   }
 `;
 
-export const ProductTile = ({
-  product,
-}: {
-  product: Product;
-}): React.ReactElement => {
+export const ProductTile: React.FC<{ product: Product }> = ({ product }) => {
   // TODO: Add translations and currency formatting
 
   const handleClick = () => {

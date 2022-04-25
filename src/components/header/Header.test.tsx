@@ -1,5 +1,5 @@
 import { render, screen } from '../../test-utils';
-import Header from './Header';
+import { Header } from './Header';
 
 describe('Header', () => {
   it('Renders Header element', () => {
