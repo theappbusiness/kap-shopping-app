@@ -1,3 +1,3 @@
 export const TRANSLATIONS_PT = {
-  button: 'Adicionar ao carrinho',
+  addToCart: 'Adicionar ao carrinho',
 };

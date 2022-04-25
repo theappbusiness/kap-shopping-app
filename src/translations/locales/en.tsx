@@ -1,3 +1,3 @@
 export const TRANSLATIONS_EN = {
-  button: 'Add to cart',
+  addToCart: 'Add to cart',
 };
