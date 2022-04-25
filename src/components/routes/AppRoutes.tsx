@@ -1,4 +1,3 @@
-import { ReactElement } from 'react';
 import { Routes, Route, BrowserRouter } from 'react-router-dom';
 import { CartPage } from '../../pages/cart';
 import { HomePage } from '../../pages/home';
@@ -6,7 +5,7 @@ import { PaymentPage } from '../../pages/payment';
 import { ProductDetailsPage } from '../../pages/productDetails';
 import { ProductsPage } from '../../pages/products';
 
-export const AppRoutes = (): ReactElement => {
+export const AppRoutes: React.FC = () => {
   return (
     <BrowserRouter>
       <Routes>

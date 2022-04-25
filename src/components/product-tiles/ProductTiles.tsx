@@ -1,4 +1,4 @@
-import { Key, ReactElement } from 'react';
+import { Key } from 'react';
 import styled from 'styled-components';
 import { ProductTile } from '../product-tile/ProductTile';
 import { Spinner } from '../general/Spinner';
@@ -12,7 +12,7 @@ const ProductTilesContainer = styled.ul`
   padding: ${({ theme }) => theme.sizes.spacing.xxl};
 `;
 
-export const ProductTiles = (): ReactElement => {
+export const ProductTiles: React.FC = () => {
   const { products, error, loading } = useProductsData();
 
   if (loading) {
