@@ -53,10 +53,6 @@ const ProductTileContainer = styled.li`
 export const ProductTile: React.FC<{ product: Product }> = ({ product }) => {
   // TODO: Add translations and currency formatting
   const { t } = useTranslation();
-  const changeLanguage = (lang: string) => {
-    i18n.changeLanguage(lang);
-  };
-
   const handleClick = () => {
     // TODO: Add to cart
   };
@@ -70,24 +66,11 @@ export const ProductTile: React.FC<{ product: Product }> = ({ product }) => {
         alt={product.name as string}
       />
       <div>
-        <button
-          style={{ marginRight: '10px' }}
-          onClick={() => changeLanguage('en')}
-        >
-          EN
-        </button>
-        <button
-          style={{ marginRight: '10px' }}
-          onClick={() => changeLanguage('pt')}
-        >
-          PT
-        </button>
-        <button onClick={() => changeLanguage('fn')}>FN</button>
         <h3 className="product-tile-title">{product.name}</h3>
         <h4 className="product-tile-price">£{product.price}</h4>
       </div>
       <Button handleClick={handleClick} iconName="shopping-bag">
-        {t('button')}
+        {t('addToCart')}
       </Button>
     </ProductTileContainer>
   );
