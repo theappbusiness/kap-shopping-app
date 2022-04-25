@@ -1,6 +1,6 @@
 import i18next from 'i18next';
 import styled from 'styled-components';
-import {  SupportedLanguages } from '../../types/language';
+import { SupportedLanguages } from '../../types/language';
 import { Button } from '../general/button';
 
 const HeaderContainer = styled.div`
@@ -34,7 +34,6 @@ const HeaderContainer = styled.div`
   }
 `;
 export const Header: React.FC = () => {
-
   const changeLanguage = (lang: SupportedLanguages) => {
     if (lang === 'en') return i18next.changeLanguage('en');
     if (lang === 'pt') return i18next.changeLanguage('pt');
