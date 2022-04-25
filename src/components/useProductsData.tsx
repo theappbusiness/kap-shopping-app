@@ -8,7 +8,7 @@ type useProductsDataType = {
   loading: boolean;
 };
 
-export const useProductsData = () => {
+export const useProductsData = (): useProductsDataType => {
   const [state, setState] = React.useState<useProductsDataType>({
     products: [],
     loading: true,

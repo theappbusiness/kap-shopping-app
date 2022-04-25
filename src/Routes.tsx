@@ -1,10 +1,10 @@
 import { Routes as ReactRouterRoutes, Route } from 'react-router-dom';
 import { DefaultLayout } from './layouts/Default';
-import CartPage from './pages/cart';
+import { CartPage } from './pages/cart';
 import { HomePage } from './pages/home';
-import PaymentPage from './pages/payment';
-import ProductDetailsPage from './pages/productDetails';
-import ProductsPage from './pages/products';
+import { PaymentPage } from './pages/payment';
+import { ProductDetailsPage } from './pages/productDetails';
+import { ProductsPage } from './pages/products';
 import { ProtectedPage } from './pages/protected';
 
 interface IRoute {

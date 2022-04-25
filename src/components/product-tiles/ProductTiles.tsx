@@ -1,9 +1,9 @@
 import { Key } from 'react';
 import styled from 'styled-components';
-import ProductTile from '../product-tile/ProductTile';
-import Spinner from '../general/Spinner';
+import { ProductTile } from '../product-tile/ProductTile';
+import { Spinner } from '../general/Spinner';
 import { useProductsData } from '../useProductsData';
-import Alert from '../general/Alert';
+import { Alert } from '../general/Alert';
 
 const ProductTilesContainer = styled.ul`
   display: grid;
@@ -12,7 +12,7 @@ const ProductTilesContainer = styled.ul`
   padding: ${({ theme }) => theme.sizes.spacing.xxl};
 `;
 
-const ProductTiles = () => {
+export const ProductTiles: React.FC = () => {
   const { products, error, loading } = useProductsData();
 
   if (loading) {
@@ -29,5 +29,3 @@ const ProductTiles = () => {
     );
   }
 };
-
-export default ProductTiles;

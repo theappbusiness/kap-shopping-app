@@ -1,6 +1,7 @@
+import { registerIcons } from '../../registerIcons';
 import { render, screen } from '../../test-utils';
 import { Product } from '../../types/product';
-import ProductTile from './ProductTile';
+import { ProductTile } from './ProductTile';
 
 const productDataMock: Product = {
   id: '#1',
@@ -17,6 +18,7 @@ const productDataMock: Product = {
 };
 
 test('renders a product tile with an image, title, price and add to cart button', () => {
+  registerIcons();
   render(<ProductTile product={productDataMock} />);
   const productTile = screen.getByTestId('product-tile');
   const productImg = screen.getByAltText(productDataMock.name);

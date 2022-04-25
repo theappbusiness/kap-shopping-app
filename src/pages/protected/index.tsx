@@ -1,6 +1,6 @@
 import React from 'react';
 import { useAuth0, withAuthenticationRequired } from '@auth0/auth0-react';
-import Spinner from '../../components/general/Spinner';
+import { Spinner } from '../../components/general/Spinner';
 
 const Protected: React.FC = () => {
   const { user } = useAuth0();

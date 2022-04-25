@@ -1,5 +1,6 @@
 import { render, screen } from '../../test-utils';
-import ProductTiles from './ProductTiles';
+import { registerIcons } from '../../registerIcons';
+import { ProductTiles } from './ProductTiles';
 
 // TODO: Add tests
 // Does it render a list of tiles with the correct properties?
@@ -7,6 +8,7 @@ import ProductTiles from './ProductTiles';
 // Does it render a loading spinner while the list of products is being fetched?
 
 test('renders a list with the corrent number of product tiles', async () => {
+  registerIcons();
   render(<ProductTiles />);
   const productTiles = await screen.findByTestId('product-tiles-container');
   expect(productTiles).toBeInTheDocument();
