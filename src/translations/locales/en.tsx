@@ -1,3 +1,5 @@
 export const TRANSLATIONS_EN = {
-  hello: 'Hello world',
+  product: {
+    name: 'Product Name',
+  },
 };
