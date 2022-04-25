@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 import { Product } from '../../types/product';
+import { Button } from '../general/button';
 
 const ProductTileContainer = styled.li`
   margin: 0 auto 0 auto;
@@ -45,25 +46,13 @@ const ProductTileContainer = styled.li`
     font-weight: 300;
     margin-bottom: ${({ theme }) => theme.sizes.spacing.md};
   }
-
-  // TODO: Extract button to its own general components
-  & button {
-    width: 100%;
-    background-color: ${({ theme }) => theme.colors.dark};
-    color: ${({ theme }) => theme.colors.light};
-    padding: ${({ theme }) => theme.sizes.spacing.md};
-    font-size: ${({ theme }) => theme.sizes.fonts.md};
-    outline: none;
-    border: 1px solid ${({ theme }) => theme.colors.light};
-    cursor: pointer;
-
-    & i {
-      margin-left: 0.5rem;
-    }
-  }
 `;
 
-const ProductTile = ({ product }: { product: Product }) => {
+export const ProductTile = ({
+  product,
+}: {
+  product: Product;
+}): React.ReactElement => {
   // TODO: Add translations and currency formatting
 
   const handleClick = () => {
@@ -82,11 +71,9 @@ const ProductTile = ({ product }: { product: Product }) => {
         <h3 className="product-tile-title">{product.name}</h3>
         <h4 className="product-tile-price">£{product.price}</h4>
       </div>
-      <button onClick={handleClick}>
-        Add to cart <i className="fa-solid fa-bag-shopping"></i>
-      </button>
+      <Button handleClick={handleClick} iconName="shopping-bag">
+        Add to cart
+      </Button>
     </ProductTileContainer>
   );
 };
-
-export default ProductTile;
