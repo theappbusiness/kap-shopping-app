@@ -6,6 +6,7 @@ import LanguageDetector from 'i18next-browser-languagedetector';
 
 import { TRANSLATIONS_EN } from './locales/en';
 import { TRANSLATIONS_PT } from './locales/pt';
+import { TRANSLATIONS_FN } from './locales/fn';
 
 i18n
   .use(LanguageDetector)
@@ -17,6 +18,9 @@ i18n
       },
       pt: {
         translation: TRANSLATIONS_PT,
+      },
+      fn: {
+        translation: TRANSLATIONS_FN,
       },
     },
   });
