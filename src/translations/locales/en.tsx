@@ -1,5 +1,3 @@
 export const TRANSLATIONS_EN = {
-  product: {
-    name: 'Change Me!',
-  },
+  button: 'Add to cart',
 };
