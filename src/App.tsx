@@ -12,7 +12,7 @@ const AppContainer = styled.div`
   flex-direction: column;
 `;
 
-export function App(): JSX.Element {
+export const App: React.FC = () => {
   return (
     <AppContainer>
       <Header />
@@ -21,4 +21,4 @@ export function App(): JSX.Element {
       <Footer />
     </AppContainer>
   );
-}
+};
