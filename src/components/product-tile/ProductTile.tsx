@@ -84,6 +84,7 @@ export const ProductTile: React.FC<{ product: Product }> = ({ product }) => {
         </button>
         <button onClick={() => changeLanguage('fn')}>FN</button>
         <h3 className="product-tile-title">{t('product.name')}</h3>
+        <h3 className="product-tile-title">{product.name}</h3>
         <h4 className="product-tile-price">£{product.price}</h4>
       </div>
       <Button handleClick={handleClick} iconName="shopping-bag">

@@ -1,5 +1,5 @@
 export const TRANSLATIONS_FN = {
   product: {
-    name: 'Nom du produit',
+    name: 'Change moi!',
   },
 };
