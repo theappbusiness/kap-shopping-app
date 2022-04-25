@@ -16,9 +16,13 @@ export const ProductTiles: React.FC = () => {
   const { products, error, loading } = useProductsData();
 
   if (loading) {
-    return <Spinner />;
+    return <Spinner data-testid="product-tiles-spinner" />;
   } else if (error) {
-    return <Alert color="warning">{error.message}</Alert>;
+    return (
+      <Alert color="warning" data-testid="product-tiles-alert">
+        {error.message}
+      </Alert>
+    );
   } else {
     return (
       <ProductTilesContainer data-testid="product-tiles-container">
