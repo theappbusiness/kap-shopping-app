@@ -1,8 +1,8 @@
 import styled from 'styled-components';
-import Header from './components/header/Header';
-import ProductTiles from './components/product-tiles/ProductTiles';
-import Footer from './components/footer/Footer';
-import AppRoutes from './components/routes/AppRoutes';
+import { Header } from './components/header/Header';
+import { ProductTiles } from './components/product-tiles/ProductTiles';
+import { Footer } from './components/footer/Footer';
+import { AppRoutes } from './components/routes/AppRoutes';
 import { registerIcons } from './registerIcons';
 registerIcons();
 
@@ -12,7 +12,7 @@ const AppContainer = styled.div`
   flex-direction: column;
 `;
 
-function App() {
+export function App(): JSX.Element {
   return (
     <AppContainer>
       <Header />
@@ -22,5 +22,3 @@ function App() {
     </AppContainer>
   );
 }
-
-export default App;

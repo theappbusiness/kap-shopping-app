@@ -1,6 +1,6 @@
 import { render, screen } from '../../test-utils';
 import { registerIcons } from '../../registerIcons';
-import ProductTiles from './ProductTiles';
+import { ProductTiles } from './ProductTiles';
 
 // TODO: Add tests
 // Does it render a list of tiles with the correct properties?

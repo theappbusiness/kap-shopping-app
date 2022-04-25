@@ -1,11 +1,12 @@
+import { ReactElement } from 'react';
 import { Routes, Route, BrowserRouter } from 'react-router-dom';
-import CartPage from '../../pages/cart';
-import HomePage from '../../pages/home';
-import PaymentPage from '../../pages/payment';
-import ProductDetailsPage from '../../pages/productDetails';
-import ProductsPage from '../../pages/products';
+import { CartPage } from '../../pages/cart';
+import { HomePage } from '../../pages/home';
+import { PaymentPage } from '../../pages/payment';
+import { ProductDetailsPage } from '../../pages/productDetails';
+import { ProductsPage } from '../../pages/products';
 
-const AppRoutes = () => {
+export const AppRoutes = (): ReactElement => {
   return (
     <BrowserRouter>
       <Routes>
@@ -18,5 +19,3 @@ const AppRoutes = () => {
     </BrowserRouter>
   );
 };
-
-export default AppRoutes;

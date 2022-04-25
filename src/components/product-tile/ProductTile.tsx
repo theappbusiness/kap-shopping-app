@@ -1,3 +1,4 @@
+import { ReactElement } from 'react';
 import styled from 'styled-components';
 import { Product } from '../../types/product';
 import { Button } from '../general/button';
@@ -52,7 +53,7 @@ export const ProductTile = ({
   product,
 }: {
   product: Product;
-}): React.ReactElement => {
+}): ReactElement => {
   // TODO: Add translations and currency formatting
 
   const handleClick = () => {

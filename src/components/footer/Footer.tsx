@@ -1,3 +1,4 @@
+import { ReactElement } from 'react';
 import styled from 'styled-components';
 
 const FooterContainer = styled.footer`
@@ -15,7 +16,7 @@ const FooterContainer = styled.footer`
   }
 `;
 
-const Footer = () => {
+export const Footer = (): ReactElement => {
   return (
     <FooterContainer data-testid="footer">
       <i className="fa-brands fa-twitter" data-testid="social-media"></i>
@@ -24,5 +25,3 @@ const Footer = () => {
     </FooterContainer>
   );
 };
-
-export default Footer;
