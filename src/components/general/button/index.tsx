@@ -26,7 +26,7 @@ export const Button = ({
   iconName,
 }: {
   color?: keyof ContextualColors;
-  children: React.ReactChild;
+  children: React.ReactNode;
   handleClick: () => void;
   iconName?: IconProp;
 }): ReactElement => {
