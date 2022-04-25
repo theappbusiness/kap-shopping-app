@@ -1,4 +1,3 @@
-import { ReactElement } from 'react';
 import styled from 'styled-components';
 import { Product } from '../../types/product';
 import { Button } from '../general/button';
@@ -49,11 +48,7 @@ const ProductTileContainer = styled.li`
   }
 `;
 
-export const ProductTile = ({
-  product,
-}: {
-  product: Product;
-}): ReactElement => {
+export const ProductTile: React.FC<{ product: Product }> = ({ product }) => {
   // TODO: Add translations and currency formatting
 
   const handleClick = () => {
