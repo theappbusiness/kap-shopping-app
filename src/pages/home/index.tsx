@@ -1,5 +1,5 @@
-import { ReactElement } from 'react';
+import { ProductTiles } from '../../components/product-tiles/ProductTiles';
 
-export const HomePage = (): ReactElement => {
-  return <div>Home</div>;
+export const HomePage: React.FC = () => {
+  return <ProductTiles />;
 };

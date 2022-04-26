@@ -1,4 +1,4 @@
-import { render, RenderOptions } from '@testing-library/react';
+import { render, RenderOptions, RenderResult } from '@testing-library/react';
 import { ReactElement } from 'react';
 import { ThemeProvider } from 'styled-components';
 import { theme } from '../styled';
@@ -12,8 +12,8 @@ const Wrapper: React.FC = ({ children }) => (
 const customRender = (
   ui: ReactElement,
   options?: Omit<RenderOptions, 'wrapper'>
-): void => {
-  render(ui, { wrapper: Wrapper, ...options });
+): RenderResult => {
+  return render(ui, { wrapper: Wrapper, ...options });
 };
 
 export { customRender as render };
