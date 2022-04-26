@@ -26,27 +26,11 @@ const HeaderContainer = styled.div`
   .fa-magnifying-glass {
     margin-left: ${({ theme }) => theme.sizes.spacing.md};
   }
-  .lang-buttons {
-    position: absolute;
-    left: 7%;
-    top: 1%;
-    display: flex;
-  }
 `;
 export const Header: React.FC = () => {
-  const changeLanguage = (lang: SupportedLanguages) => {
-    if (lang === 'en') return i18next.changeLanguage('en');
-    if (lang === 'pt') return i18next.changeLanguage('pt');
-    if (lang === 'fn') return i18next.changeLanguage('fn');
-  };
   return (
     <HeaderContainer data-testid="header">
       <i className="fa-solid fa-bars fa-1x" data-testid="hamburger-icon"></i>
-      <div className="lang-buttons">
-        <Button handleClick={() => changeLanguage('en')}>En</Button>
-        <Button handleClick={() => changeLanguage('pt')}>Pt</Button>
-        <Button handleClick={() => changeLanguage('fn')}>Fn</Button>
-      </div>
       <h1>Shoply</h1>
       <div>
         <i
