@@ -1,3 +1,3 @@
 export const TRANSLATIONS_PT = {
-  hello: 'Olá mundo',
+  addToCart: 'Adicionar ao carrinho',
 };

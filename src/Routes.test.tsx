@@ -1,7 +1,7 @@
 import React from 'react';
 import { MemoryRouter } from 'react-router-dom';
-import { render, screen } from '../../test-utils';
-import { AppRoutes } from './AppRoutes';
+import { render, screen } from './test-utils';
+import { Routes } from './Routes';
 
 jest.mock('react-router-dom', () => ({
   ...jest.requireActual('react-router-dom'),
@@ -14,7 +14,7 @@ describe('React Router', () => {
   it('Renders Products Page', () => {
     render(
       <MemoryRouter initialEntries={['/products']}>
-        <AppRoutes />
+        <Routes />
       </MemoryRouter>
     );
     expect(screen.getByText('Products Page')).toBeInTheDocument();
@@ -23,7 +23,7 @@ describe('React Router', () => {
   it('Renders Product Details Page', () => {
     render(
       <MemoryRouter initialEntries={['/products/1']}>
-        <AppRoutes />
+        <Routes />
       </MemoryRouter>
     );
     expect(screen.getByText('Product Details Page')).toBeInTheDocument();
@@ -32,7 +32,7 @@ describe('React Router', () => {
   it('Renders Cart Page', () => {
     render(
       <MemoryRouter initialEntries={['/cart']}>
-        <AppRoutes />
+        <Routes />
       </MemoryRouter>
     );
     expect(screen.getByText('Cart Page')).toBeInTheDocument();
@@ -41,7 +41,7 @@ describe('React Router', () => {
   it('Renders Payment', () => {
     render(
       <MemoryRouter initialEntries={['/payment']}>
-        <AppRoutes />
+        <Routes />
       </MemoryRouter>
     );
     expect(screen.getByText('Payment Page')).toBeInTheDocument();
