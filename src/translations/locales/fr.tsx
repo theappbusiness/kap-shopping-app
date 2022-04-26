@@ -1,3 +1,3 @@
-export const TRANSLATIONS_FN = {
+export const TRANSLATIONS_FR = {
   addToCart: 'Ajouter au panier',
 };
