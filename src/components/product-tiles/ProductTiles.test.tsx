@@ -29,7 +29,7 @@ test('renders a list of tiles with correct properties', async () => {
   const secondTileName = await screen.findByText(
     `${mockProductsResponse.products[1]._source.name}`
   );
-  const tilePrices = await screen.findAllByText(/£/);
+  const tilePrices = await screen.findAllByText(/[£$€]/);
   const tileImages = await screen.findAllByRole('img');
   const tileButtons = await screen.findAllByRole('button', {
     name: /add to cart/i,
