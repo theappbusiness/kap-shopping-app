@@ -6,6 +6,7 @@ import LanguageDetector from 'i18next-browser-languagedetector';
 
 import { TRANSLATIONS_EN } from './locales/en';
 import { TRANSLATIONS_PT } from './locales/pt';
+import { TRANSLATIONS_FR } from './locales/fr';
 
 i18n
   .use(LanguageDetector)
@@ -18,7 +19,10 @@ i18n
       pt: {
         translation: TRANSLATIONS_PT,
       },
+      fr: {
+        translation: TRANSLATIONS_FR,
+      },
     },
   });
 
-i18n.changeLanguage('en');
+i18n.changeLanguage(navigator.language);

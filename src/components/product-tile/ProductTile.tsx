@@ -1,7 +1,8 @@
+import { useTranslation } from 'react-i18next';
 import styled from 'styled-components';
 import { Product } from '../../types/product';
+import '../../translations/i18n';
 import { Button } from '../general/button';
-
 const ProductTileContainer = styled.li`
   margin: 0 auto 0 auto;
   width: max(
@@ -50,7 +51,7 @@ const ProductTileContainer = styled.li`
 
 export const ProductTile: React.FC<{ product: Product }> = ({ product }) => {
   // TODO: Add translations and currency formatting
-
+  const { t } = useTranslation();
   const handleClick = () => {
     // TODO: Add to cart
   };
@@ -68,7 +69,7 @@ export const ProductTile: React.FC<{ product: Product }> = ({ product }) => {
         <h4 className="product-tile-price">£{product.price}</h4>
       </div>
       <Button handleClick={handleClick} iconName="shopping-bag">
-        Add to cart
+        {t('addToCart')}
       </Button>
     </ProductTileContainer>
   );

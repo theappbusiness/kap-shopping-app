@@ -2,6 +2,7 @@ import styled from 'styled-components';
 import { useAuth0 } from '@auth0/auth0-react';
 import { AuthenticationButton } from '../../auth/AuthenticationButton';
 
+
 const HeaderContainer = styled.div`
   background-color: ${({ theme }) => theme.colors.light};
   padding: ${({ theme }) => theme.sizes.spacing.lg};
