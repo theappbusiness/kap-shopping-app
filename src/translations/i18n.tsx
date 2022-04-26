@@ -6,16 +6,12 @@ import LanguageDetector from 'i18next-browser-languagedetector';
 
 import { TRANSLATIONS_EN } from './locales/en';
 import { TRANSLATIONS_PT } from './locales/pt';
-import { TRANSLATIONS_FN } from './locales/fn';
+import { TRANSLATIONS_FR } from './locales/fr';
 
 i18n
   .use(LanguageDetector)
   .use(initReactI18next)
   .init({
-    fallbackLng: 'en',
-    interpolation: {
-      escapeValue: false,
-    },
     resources: {
       en: {
         translation: TRANSLATIONS_EN,
@@ -23,8 +19,8 @@ i18n
       pt: {
         translation: TRANSLATIONS_PT,
       },
-      fn: {
-        translation: TRANSLATIONS_FN,
+      fr: {
+        translation: TRANSLATIONS_FR,
       },
     },
   });
