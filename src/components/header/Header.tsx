@@ -1,6 +1,4 @@
-import i18next from 'i18next';
 import styled from 'styled-components';
-import { SupportedLanguages } from '../../types/language';
 import { Button } from '../general/button';
 
 const HeaderContainer = styled.div`
