@@ -6,6 +6,7 @@ import { ContextualColors } from '../../../styles';
 
 const StyledButton = styled.button<{ color: keyof ContextualColors }>`
   width: 100%;
+  height: fit-content;
   background: ${({ theme, color }) => theme.palette[color].main};
   color: ${({ theme, color }) => theme.palette[color].contrast};
   padding: ${({ theme }) => theme.sizes.spacing.md};
