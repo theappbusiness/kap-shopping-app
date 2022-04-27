@@ -20,6 +20,18 @@ test('renders a list with the correct number of product tiles', async () => {
 test('renders a list of tiles with correct properties', async () => {
   registerIcons();
   const numberOfMockTiles = mockProductsResponse.products.length;
+  const firstMockPrice =
+    mockProductsResponse.products[0]._source.price.toLocaleString('en-US', {
+      style: 'currency',
+      currency: 'USD',
+      minimumFractionDigits: 2,
+    });
+  const secondMockPrice =
+    mockProductsResponse.products[1]._source.price.toLocaleString('en-US', {
+      style: 'currency',
+      currency: 'USD',
+      minimumFractionDigits: 2,
+    });
   render(<ProductTiles />);
 
   const productTiles = await screen.findAllByTestId('product-tile');
@@ -29,7 +41,8 @@ test('renders a list of tiles with correct properties', async () => {
   const secondTileName = await screen.findByText(
     `${mockProductsResponse.products[1]._source.name}`
   );
-  const tilePrices = await screen.findAllByText(/£/);
+  const firstTilePrice = await screen.findByText(firstMockPrice);
+  const secondTilePrice = await screen.findByText(secondMockPrice);
   const tileImages = await screen.findAllByRole('img');
   const tileButtons = await screen.findAllByRole('button', {
     name: /add to cart/i,
@@ -38,7 +51,8 @@ test('renders a list of tiles with correct properties', async () => {
   expect(productTiles).toHaveLength(numberOfMockTiles);
   expect(firstTileName).toBeInTheDocument();
   expect(secondTileName).toBeInTheDocument();
-  expect(tilePrices).toHaveLength(numberOfMockTiles);
+  expect(firstTilePrice).toBeInTheDocument();
+  expect(secondTilePrice).toBeInTheDocument();
   expect(tileImages).toHaveLength(numberOfMockTiles);
   expect(tileButtons).toHaveLength(numberOfMockTiles);
 });

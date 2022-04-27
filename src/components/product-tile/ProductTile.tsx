@@ -3,6 +3,9 @@ import styled from 'styled-components';
 import { Product } from '../../types/product';
 import '../../translations/i18n';
 import { Button } from '../general/button';
+import { userLocale } from '../../translations/userLocale';
+import { ProductPrice } from './product-price/ProductPrice';
+
 const ProductTileContainer = styled.li`
   margin: 0 auto 0 auto;
   width: max(
@@ -41,17 +44,12 @@ const ProductTileContainer = styled.li`
     font-weight: 300;
     margin-top: ${({ theme }) => theme.sizes.spacing.md};
   }
-
-  & .product-tile-price {
-    font-size: ${({ theme }) => theme.sizes.fonts.sm};
-    font-weight: 300;
-    margin-bottom: ${({ theme }) => theme.sizes.spacing.md};
-  }
 `;
 
 export const ProductTile: React.FC<{ product: Product }> = ({ product }) => {
-  // TODO: Add translations and currency formatting
+
   const { t } = useTranslation();
+
   const handleClick = () => {
     // TODO: Add to cart
   };
@@ -66,7 +64,7 @@ export const ProductTile: React.FC<{ product: Product }> = ({ product }) => {
       />
       <div>
         <h3 className="product-tile-title">{product.name}</h3>
-        <h4 className="product-tile-price">£{product.price}</h4>
+        <ProductPrice price={product.price} locale={userLocale}></ProductPrice>
       </div>
       <Button handleClick={handleClick} iconName="shopping-bag">
         {t('addToCart')}
