@@ -2,12 +2,12 @@ import styled from 'styled-components';
 import { useAuth0 } from '@auth0/auth0-react';
 import { AuthenticationButton } from '../../auth/AuthenticationButton';
 
-
 const HeaderContainer = styled.div`
   background-color: ${({ theme }) => theme.colors.light};
   padding: ${({ theme }) => theme.sizes.spacing.lg};
   display: flex;
   justify-content: space-between;
+  align-items: center;
   h1 {
     font-weight: lighter;
     font-size: ${({ theme }) => theme.sizes.fonts.xl};
@@ -23,6 +23,7 @@ const HeaderContainer = styled.div`
   .fa-magnifying-glass {
     cursor: pointer;
     font-size: ${({ theme }) => theme.sizes.fonts.xl};
+    vertical-align: middle;
   }
   .fa-bag-shopping:hover,
   .fa-magnifying-glass:hover,
