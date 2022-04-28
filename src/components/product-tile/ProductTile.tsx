@@ -47,7 +47,6 @@ const ProductTileContainer = styled.li`
 `;
 
 export const ProductTile: React.FC<{ product: Product }> = ({ product }) => {
-
   const { t } = useTranslation();
 
   const handleClick = () => {
