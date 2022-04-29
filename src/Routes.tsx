@@ -42,11 +42,12 @@ const routes: IRoute[] = [
     Component: PaymentPage,
     Layout: DefaultLayout,
   },
-  {
-    path: '/protected',
-    Component: ProtectedPage,
-    Layout: DefaultLayout,
-  },
+  // TODO: Add this after serving the website via https
+  // {
+  //   path: '/protected',
+  //   Component: ProtectedPage,
+  //   Layout: DefaultLayout,
+  // },
 ];
 
 export const Routes: React.FC = () => {
