@@ -1,12 +1,11 @@
-import { ReactNode } from 'react';
 import { render, screen } from './test-utils';
 import { App } from './App';
 import { mockProductsResponse } from './mocks/mockProductResponse';
-jest.mock('./auth/Auth0ProviderWithNavigate', () => ({
-  Auth0ProviderWithNavigate: ({ children }: { children: ReactNode }) => (
-    <>{children}</>
-  ),
-}));
+// jest.mock('./auth/Auth0ProviderWithNavigate', () => ({
+//   Auth0ProviderWithNavigate: ({ children }: { children: ReactNode }) => (
+//     <>{children}</>
+//   ),
+// }));
 
 describe('React Router', () => {
   it('App renders Home Page', async () => {
