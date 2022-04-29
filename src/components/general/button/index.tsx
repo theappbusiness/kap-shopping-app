@@ -2,7 +2,7 @@ import React, { ReactElement } from 'react';
 import styled from 'styled-components';
 import { IconProp } from '@fortawesome/fontawesome-svg-core';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { ContextualColors } from '../../../styles';
+import { ContextualColors } from '../../../styles.d';
 
 const StyledButton = styled.button<{ color: keyof ContextualColors }>`
   width: 100%;
