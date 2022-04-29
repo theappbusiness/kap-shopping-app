@@ -29,7 +29,7 @@ export const IconButton: React.FC<{
       <FontAwesomeIcon
         icon={iconName}
         className="button-icon"
-        data-testid="button-icon"
+        data-testid={iconName}
       />
     </StyledIconButton>
   );
