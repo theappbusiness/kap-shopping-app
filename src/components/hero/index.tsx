@@ -1,9 +1,9 @@
 import { Splide, SplideSlide } from '@splidejs/react-splide';
 import styled from 'styled-components';
 import { ReactElement } from 'react';
-import '@splidejs/react-splide/css/sea-green';
 import { useProductsData } from '../useProductsData';
 import { Spinner } from '../general/Spinner';
+import '@splidejs/splide/dist/css/themes/splide-default.min.css';
 
 const StyledHero = styled.div`
 
