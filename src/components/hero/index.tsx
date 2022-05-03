@@ -1,5 +1,6 @@
 import { Splide, SplideSlide } from '@splidejs/react-splide';
 import styled from 'styled-components';
+import { ReactElement } from 'react';
 import '@splidejs/react-splide/css/sea-green';
 import { useProductsData } from '../useProductsData';
 import { Spinner } from '../general/Spinner';
@@ -39,7 +40,7 @@ p{
   }
 `;
 
-export const Hero = () => {
+export const Hero = (): ReactElement => {
   const { products, loading } = useProductsData();
 
   if (loading) {
