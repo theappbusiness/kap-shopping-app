@@ -1,6 +1,8 @@
 import { render, screen } from './test-utils';
 import { App } from './App';
 import { mockProductsResponse } from './mocks/mockProductResponse';
+import { Header } from './components/header/Header';
+import { Footer } from './components/footer/Footer';
 // jest.mock('./auth/Auth0ProviderWithNavigate', () => ({
 //   Auth0ProviderWithNavigate: ({ children }: { children: ReactNode }) => (
 //     <>{children}</>
@@ -8,10 +10,10 @@ import { mockProductsResponse } from './mocks/mockProductResponse';
 // }));
 
 describe('React Router', () => {
-  it('App renders Home Page', async () => {
+  it('renders Header and Footer', async () => {
     Object.defineProperty(window, 'matchMedia', {
       writable: true,
-      value: jest.fn().mockImplementation(query => ({
+      value: jest.fn().mockImplementation((query) => ({
         matches: false,
         media: query,
         onchange: null,
@@ -22,10 +24,11 @@ describe('React Router', () => {
         dispatchEvent: jest.fn(),
       })),
     });
-    render(<App />);
-    for (const product of mockProductsResponse.products) {
-      const element = await screen.findByText(product._source.name);
-      expect(element).toBeInTheDocument();
-    }
+    render(<Header />);
+    const header = screen.getByTestId('header');
+    expect(header).toBeInTheDocument();
+    render(<Footer />);
+    const footer = screen.getByTestId('footer');
+    expect(footer).toBeInTheDocument();
   });
 });
