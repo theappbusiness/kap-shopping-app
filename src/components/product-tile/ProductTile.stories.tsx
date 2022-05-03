@@ -1,6 +1,6 @@
 import { ProductTile } from './ProductTile';
 
-export default {
+export const productTile = {
   title: 'ProductTile',
   component: ProductTile,
 };
