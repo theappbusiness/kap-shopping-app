@@ -1,13 +1,12 @@
 import { Splide, SplideSlide } from '@splidejs/react-splide';
 import styled from 'styled-components';
-import { ReactElement } from 'react';
+import { ReactElement, useEffect, useState } from 'react';
 import { useProductsData } from '../useProductsData';
 import { Spinner } from '../general/Spinner';
 import '@splidejs/splide/dist/css/themes/splide-default.min.css';
 
 const StyledHero = styled.div`
-
-.container{
+  .container {
     display: flex;
     justify-content: center;
     width: 100%;
@@ -15,33 +14,43 @@ const StyledHero = styled.div`
     position: relative;
     padding: 0;
     margin: auto;
-    max-width: 600px;
-}
-h3{
+  }
+  h3 {
     position: absolute;
     font-size: ${({ theme }) => theme.sizes.fonts.xl};
     font-weight: 300;
     margin: ${({ theme }) => theme.sizes.spacing.xl};
     color: ${({ theme }) => theme.colors.light};
-}
-p{
-  position: absolute;
-  color: ${({ theme }) => theme.colors.light};
-  font-size: ${({ theme }) => theme.sizes.fonts.md};
-  top: 10%;
-  margin: ${({ theme }) => theme.sizes.spacing.xl};
-
-}
-
-}
+  }
+  p {
+    position: absolute;
+    color: ${({ theme }) => theme.colors.light};
+    font-size: ${({ theme }) => theme.sizes.fonts.md};
+    top: 10%;
+    margin: ${({ theme }) => theme.sizes.spacing.xl};
+  }
   img {
     width: 100%;
-    object-fit: cover;
   }
 `;
 
 export const Hero = (): ReactElement => {
   const { products, loading } = useProductsData();
+  const [width, setWidth] = useState(0);
+  const [perPage, setperPage] = useState(3);
+
+  useEffect(() => {
+    setWidth(window.innerWidth);
+    if (width < 600) {
+      setperPage(1);
+    }
+    if (width >= 600 && width <= 900) {
+      setperPage(2);
+    }
+    if (width > 900) {
+      setperPage(3);
+    }
+  }, [width]);
 
   if (loading) {
     return <Spinner />;
@@ -51,10 +60,12 @@ export const Hero = (): ReactElement => {
         <Splide
           options={{
             rewind: true,
+            perPage: perPage,
+            perMove: 1,
             arrows: false,
             autoplay: true,
-            interval: 2000,
-            height: 290,
+            interval: 2500,
+            height: 390,
           }}
           className="container"
           aria-label="My Favorite Images"
