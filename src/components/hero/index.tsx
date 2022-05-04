@@ -1,6 +1,6 @@
 import { Splide, SplideSlide } from '@splidejs/react-splide';
 import styled from 'styled-components';
-import { ReactElement, useEffect, useState } from 'react';
+import { ReactElement } from 'react';
 import { useProductsData } from '../useProductsData';
 import { Spinner } from '../general/Spinner';
 import '@splidejs/splide/dist/css/themes/splide-default.min.css';
@@ -36,21 +36,6 @@ const StyledHero = styled.div`
 
 export const Hero = (): ReactElement => {
   const { products, loading } = useProductsData();
-  const [width, setWidth] = useState(0);
-  const [perPage, setperPage] = useState(3);
-
-  useEffect(() => {
-    setWidth(window.innerWidth);
-    if (width < 600) {
-      setperPage(1);
-    }
-    if (width >= 600 && width <= 900) {
-      setperPage(2);
-    }
-    if (width > 900) {
-      setperPage(3);
-    }
-  }, [width]);
 
   if (loading) {
     return <Spinner />;
@@ -60,7 +45,15 @@ export const Hero = (): ReactElement => {
         <Splide
           options={{
             rewind: true,
-            perPage: perPage,
+            perPage: 3,
+            breakpoints: {
+              600: {
+                perPage: 1,
+              },
+              900: {
+                perPage: 2,
+              },
+            },
             perMove: 1,
             arrows: false,
             autoplay: true,
