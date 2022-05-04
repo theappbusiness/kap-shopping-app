@@ -10,8 +10,11 @@ const StyledInput = styled.input`
   font-weight: 300;
 `;
 
-export const Input: React.FC<{
+interface InputProps extends React.ComponentPropsWithoutRef<'input'> {
   onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
-}> = ({ onChange }) => {
-  return <StyledInput type="text" onChange={onChange} />;
+}
+
+export const Input: React.FC<InputProps> = (props) => {
+  const { ...rest } = props;
+  return <StyledInput {...rest} />;
 };

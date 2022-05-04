@@ -7,6 +7,8 @@ export const HomePage: React.FC = () => {
         onChange={(e) => {
           console.log(e.target.value);
         }}
+        type="text"
+        placeholder="Search Shoply"
       />
       <ProductTiles />
     </>
