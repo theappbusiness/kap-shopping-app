@@ -15,11 +15,9 @@ const StyledHero = styled.div`
     padding: 0;
     margin: auto;
   }
-  h3 {
-    position: absolute;
+  p > h3 {
     font-size: ${({ theme }) => theme.sizes.fonts.xl};
-    font-weight: 300;
-    margin: ${({ theme }) => theme.sizes.spacing.xl};
+    font-weight: lighter;
     color: ${({ theme }) => theme.colors.light};
   }
   p {
@@ -27,7 +25,10 @@ const StyledHero = styled.div`
     color: ${({ theme }) => theme.colors.light};
     font-size: ${({ theme }) => theme.sizes.fonts.md};
     top: 10%;
-    margin: ${({ theme }) => theme.sizes.spacing.xl};
+    margin: ${({ theme }) => theme.sizes.spacing.xxl};
+    background-color: rgb(0, 0, 0, 0.5);
+    border-radius: 10px;
+    padding: 10px;
   }
   img {
     width: 100%;
@@ -66,8 +67,10 @@ export const Hero = (): ReactElement => {
           {products.map((product) => {
             return (
               <SplideSlide key={product.id}>
-                <h3>{product.name}</h3>
-                <p>{product.description.slice(0, 400)}</p>
+                <p>
+                  <h3>{product.name}</h3>
+                  {product.description.slice(0, 400)}....
+                </p>
                 <img
                   src={`https://picsum.photos/seed/${product.name}/270`}
                   alt="Image 1"
