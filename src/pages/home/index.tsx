@@ -13,14 +13,10 @@ export const HomePage: React.FC = () => {
         type="text"
         placeholder="Search Shoply"
       />
+      <List items={[]} />
+      <List items={['test string  1/1']} />
+      <List items={['test string 1/3', 'test string 2/3', 'test string 3/3']} />
       <Hero />
-      <div>
-        <List items={[]} />
-        <List items={['test string  1/1']} />
-        <List
-          items={['test string 1/3', 'test string 2/3', 'test string 3/3']}
-        />
-      </div>
 
       <ProductTiles />
     </>

@@ -19,12 +19,10 @@ type Items = string[];
 
 export const List: React.FC<{ items: Items }> = ({ items }) => {
   return (
-    <div>
-      <ul>
-        {items.map((item) => (
-          <StyledListItem key={item}>{item}</StyledListItem>
-        ))}
-      </ul>
-    </div>
+    <ul>
+      {items.map((item) => (
+        <StyledListItem key={item}>{item}</StyledListItem>
+      ))}
+    </ul>
   );
 };
