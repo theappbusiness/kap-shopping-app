@@ -14,6 +14,7 @@ const StyledHero = styled.div`
     position: relative;
     padding: 0;
     margin: auto;
+    overflow: hidden;
   }
   p > h3 {
     font-size: ${({ theme }) => theme.sizes.fonts.xl};
@@ -25,7 +26,7 @@ const StyledHero = styled.div`
     color: ${({ theme }) => theme.colors.light};
     font-size: ${({ theme }) => theme.sizes.fonts.md};
     top: 10%;
-    margin: ${({ theme }) => theme.sizes.spacing.xxl};
+    margin: ${({ theme }) => theme.sizes.spacing.md};
     background-color: rgb(0, 0, 0, 0.5);
     border-radius: 10px;
     padding: 10px;
