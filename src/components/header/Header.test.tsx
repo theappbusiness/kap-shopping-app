@@ -1,5 +1,7 @@
+import { registerIcons } from '../../registerIcons';
 import { render, screen } from '../../test-utils';
 import { Header } from './Header';
+registerIcons();
 
 describe('Header', () => {
   it('Renders Header element', () => {
@@ -16,7 +18,7 @@ describe('Header', () => {
 
   it('Renders Search Icon', () => {
     render(<Header />);
-    const searchIcon = screen.getByTestId('search-icon');
+    const searchIcon = screen.getByTestId('magnifying-glass');
     expect(searchIcon).toBeInTheDocument();
   });
 

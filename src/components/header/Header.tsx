@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { IconButton } from '../general/icon-button/IconButton';
 // import { useAuth0 } from '@auth0/auth0-react';
 // import { AuthenticationButton } from '../../auth/AuthenticationButton';
 
@@ -19,19 +20,14 @@ const HeaderContainer = styled.div`
     font-weight: normal;
   }
   .fa-bars,
-  .fa-bag-shopping,
-  .fa-magnifying-glass {
+  .fa-bag-shopping {
     cursor: pointer;
     font-size: ${({ theme }) => theme.sizes.fonts.xl};
     vertical-align: middle;
   }
   .fa-bag-shopping:hover,
-  .fa-magnifying-glass:hover,
   .fa-bars:hover {
     filter: opacity(0.7);
-  }
-  .fa-magnifying-glass {
-    margin-left: ${({ theme }) => theme.sizes.spacing.md};
   }
 `;
 export const Header: React.FC = () => {
@@ -49,10 +45,12 @@ export const Header: React.FC = () => {
           className="fa-solid fa-bag-shopping fa-1x"
           data-testid="basket-icon"
         ></i>
-        <i
-          className="fa-solid fa-magnifying-glass fa-1x"
-          data-testid="search-icon"
-        ></i>
+        <IconButton
+          onClick={() => {
+            console.log('Icon clicked');
+          }}
+          iconName="magnifying-glass"
+        />
       </div>
     </HeaderContainer>
   );

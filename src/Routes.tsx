@@ -5,7 +5,6 @@ import { HomePage } from './pages/home';
 import { PaymentPage } from './pages/payment';
 import { ProductDetailsPage } from './pages/productDetails';
 import { ProductsPage } from './pages/products';
-import { ProtectedPage } from './pages/protected';
 import { registerIcons } from './registerIcons';
 
 registerIcons();
