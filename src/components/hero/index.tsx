@@ -76,7 +76,7 @@ export const Hero = (): ReactElement => {
                 <p>{product.description.slice(0, 300)}....</p>
                 <img
                   src={`https://picsum.photos/seed/${product.name}/270`}
-                  alt="Image 1"
+                  alt={product.name}
                 />
               </SplideSlide>
             );
