@@ -1,5 +1,7 @@
 import { ProductTiles } from '../../components/product-tiles/ProductTiles';
 import { Input } from '../../components/general/input';
+import { Hero } from '../../components/hero/index';
+
 export const HomePage: React.FC = () => {
   return (
     <>
@@ -10,6 +12,7 @@ export const HomePage: React.FC = () => {
         type="text"
         placeholder="Search Shoply"
       />
+      <Hero />
       <ProductTiles />
     </>
   );
