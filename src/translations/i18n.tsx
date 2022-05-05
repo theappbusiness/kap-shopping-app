@@ -11,6 +11,7 @@ import { TRANSLATIONS_FR } from './locales/fr';
 use(LanguageDetector)
   .use(initReactI18next)
   .init({
+    fallbackLng: 'en',
     resources: {
       en: {
         translation: TRANSLATIONS_EN,
