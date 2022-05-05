@@ -1,6 +1,7 @@
-import { useState } from 'react';
+import { ReactNode, useState } from 'react';
 import styled from 'styled-components';
 import { getSearchResults } from '../../services/product.service';
+import { Alert } from '../general/Alert';
 import { Button } from '../general/button';
 import { Input } from '../general/input';
 
@@ -10,8 +11,15 @@ const StyledButton = styled.div`
 
 export const SearchInput: React.FC = () => {
   const [searchTerm, setSearchTerm] = useState('');
-  const handleClick = () => {
-    getSearchResults(searchTerm).then((data) => console.log(data));
+  const handleClick = async () => {
+    try {
+      const searchData = await getSearchResults(searchTerm);
+      console.log(searchData);
+    } catch (err: unknown) {
+      if (err instanceof Error) {
+        return <Alert color="warning">{err.message}</Alert>;
+      }
+    }
   };
 
   return (
