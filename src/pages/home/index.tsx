@@ -1,8 +1,8 @@
 import { ProductTiles } from '../../components/product-tiles/ProductTiles';
 import { Input } from '../../components/general/input';
 import { Hero } from '../../components/hero/index';
-
 import { List } from '../../components/general/list';
+
 export const HomePage: React.FC = () => {
   return (
     <>
