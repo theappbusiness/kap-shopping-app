@@ -22,7 +22,7 @@ export const getProductsData = async (): Promise<Product[]> => {
 
 export const getSearchResults = async (
   searchTerm: string
-): Promise<Product[] | Product> => {
+): Promise<Product[]> => {
   const { data } = await axios.get(API_SEARCH_PRODUCT(searchTerm));
   return data;
 };
