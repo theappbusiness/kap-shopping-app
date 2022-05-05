@@ -11,12 +11,12 @@ const Price: React.FC<{ price: number }> = ({ price }) => {
   const intl = useIntl();
   let currencyType;
 
-  if (intl.locale === 'en' || intl.locale === 'en-GB') {
-    currencyType = 'GBP';
+  if (intl.locale.slice(0, 2) === 'pt' || intl.locale.slice(0, 2) === 'fr') {
+    currencyType = 'EUR';
   } else if (intl.locale === 'en-US') {
     currencyType = 'USD';
   } else {
-    currencyType = 'EUR';
+    currencyType = 'GBP';
   }
   return (
     <>
