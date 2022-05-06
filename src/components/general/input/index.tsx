@@ -8,6 +8,7 @@ const StyledInput = styled.input`
     ${({ theme }) => theme.sizes.spacing.lg};
   font-size: ${({ theme }) => theme.sizes.fonts.lg};
   font-weight: 300;
+  flex: 1;
 `;
 
 type InputProps = React.ComponentPropsWithoutRef<'input'>;
