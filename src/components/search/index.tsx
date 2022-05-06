@@ -1,8 +1,7 @@
 import debounce from 'lodash.debounce';
-import { useMemo, useEffect } from 'react';
+import { useMemo, useEffect, useState } from 'react';
 import styled from 'styled-components';
 import * as React from 'react';
-import { useState } from 'react';
 import { getSearchResults } from '../../services/product.service';
 import { Alert } from '../general/Alert';
 import { Input } from '../general/input';
@@ -50,7 +49,7 @@ export const SearchInput: React.FC = () => {
         />
       </StyledSearchInput>
       {products?.map((product) => (
-        <List key={product.id} items={[product.name]} />
+        <List key={product.id} item={product.name} />
       ))}
     </>
   );
