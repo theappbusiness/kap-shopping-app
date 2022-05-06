@@ -11,19 +11,21 @@ const StyledSearchInput = styled.div`
   display: flex;
 `;
 
+const formatSearch = (searchTerm: string): string => {
+  return searchTerm.split(/\s+/).join('&');
+};
+
 export const SearchInput: React.FC = () => {
   const handleChange = async (e: React.ChangeEvent<HTMLInputElement>) => {
-    console.log('Search term: ', e.target.value);
+    const searchTerm = e.target.value;
+    console.log('Search term: ', searchTerm);
     try {
-      const searchData = await getSearchResults(e.target.value);
+      const search = formatSearch(searchTerm);
+      const searchData = await getSearchResults(search);
       console.log(searchData);
     } catch (err: unknown) {
       if (err instanceof Error) {
-        return (
-          <Alert color="warning" data-testid="search-input-alert">
-            {err.message}
-          </Alert>
-        );
+        return <Alert color="warning">{err.message}</Alert>;
       }
     }
   };
