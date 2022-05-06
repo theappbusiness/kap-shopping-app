@@ -6,23 +6,14 @@ const StyledListItem = styled.li`
   border-bottom: 1px solid ${({ theme }) => theme.colors.dark};
   font-weight: 300;
 
-  :first-of-type {
-    border-top: none;
-  }
-
-  :last-of-type {
-    border-bottom: none;
-  }
 `;
 
-type Items = string[];
+type Item = string;
 
-export const List: React.FC<{ items: Items }> = ({ items }) => {
+export const List: React.FC<{ item: Item }> = ({ item }) => {
   return (
     <ul>
-      {items.map((item) => (
-        <StyledListItem key={item}>{item}</StyledListItem>
-      ))}
+      <StyledListItem key={item}>{item}</StyledListItem>
     </ul>
   );
 };
