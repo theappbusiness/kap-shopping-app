@@ -2,9 +2,12 @@ import debounce from 'lodash.debounce';
 import { useMemo, useEffect } from 'react';
 import styled from 'styled-components';
 import * as React from 'react';
+import { useState } from 'react';
 import { getSearchResults } from '../../services/product.service';
 import { Alert } from '../general/Alert';
 import { Input } from '../general/input';
+import { Product } from '../../types/product';
+import { List } from '../general/list';
 
 const StyledSearchInput = styled.div`
   background-color: ${({ theme }) => theme.colors.light};
@@ -16,13 +19,14 @@ const formatSearch = (searchTerm: string): string => {
 };
 
 export const SearchInput: React.FC = () => {
+  const [products, setProducts] = useState<Product[] | []>();
   const handleChange = async (e: React.ChangeEvent<HTMLInputElement>) => {
     const searchTerm = e.target.value;
-    console.log('Search term: ', searchTerm);
+
     try {
       const search = formatSearch(searchTerm);
       const searchData = await getSearchResults(search);
-      console.log(searchData);
+      setProducts(searchData);
     } catch (err: unknown) {
       if (err instanceof Error) {
         return <Alert color="warning">{err.message}</Alert>;
@@ -37,12 +41,17 @@ export const SearchInput: React.FC = () => {
   }, []);
 
   return (
-    <StyledSearchInput>
-      <Input
-        onChange={debouncedHandleChange}
-        type="text"
-        placeholder="Search Shoply"
-      />
-    </StyledSearchInput>
+    <>
+      <StyledSearchInput>
+        <Input
+          onChange={debouncedHandleChange}
+          type="text"
+          placeholder="Search Shoply"
+        />
+      </StyledSearchInput>
+      {products?.map((product) => (
+        <List key={product.id} items={[product.name]} />
+      ))}
+    </>
   );
 };
