@@ -1,37 +1,46 @@
-import { ReactNode, useState } from 'react';
+import debounce from 'lodash.debounce';
+import { useMemo, useEffect } from 'react';
 import styled from 'styled-components';
+import * as React from 'react';
 import { getSearchResults } from '../../services/product.service';
 import { Alert } from '../general/Alert';
-import { Button } from '../general/button';
 import { Input } from '../general/input';
 
-const StyledButton = styled.div`
-  width: 20%;
+const StyledSearchInput = styled.div`
+  background-color: ${({ theme }) => theme.colors.light};
+  display: flex;
 `;
 
 export const SearchInput: React.FC = () => {
-  const [searchTerm, setSearchTerm] = useState('');
-  const handleClick = async () => {
+  const handleChange = async (e: React.ChangeEvent<HTMLInputElement>) => {
+    console.log('Search term: ', e.target.value);
     try {
-      const searchData = await getSearchResults(searchTerm);
+      const searchData = await getSearchResults(e.target.value);
       console.log(searchData);
     } catch (err: unknown) {
       if (err instanceof Error) {
-        return <Alert color="warning">{err.message}</Alert>;
+        return (
+          <Alert color="warning" data-testid="search-input-alert">
+            {err.message}
+          </Alert>
+        );
       }
     }
   };
 
+  const debouncedHandleChange = useMemo(() => debounce(handleChange, 200), []);
+
+  useEffect(() => {
+    return debouncedHandleChange.cancel();
+  }, []);
+
   return (
-    <>
+    <StyledSearchInput>
       <Input
-        onChange={(e) => setSearchTerm(e.target.value)}
+        onChange={debouncedHandleChange}
         type="text"
         placeholder="Search Shoply"
       />
-      <StyledButton>
-        <Button handleClick={handleClick}>Search</Button>
-      </StyledButton>
-    </>
+    </StyledSearchInput>
   );
 };
