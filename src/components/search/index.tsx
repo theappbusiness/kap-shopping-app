@@ -5,9 +5,12 @@ import * as React from 'react';
 import { getSearchResults } from '../../services/product.service';
 import { Alert } from '../general/Alert';
 import { Input } from '../general/input';
-import { Product } from '../../types/product';
 import { List } from '../general/list';
 
+type ProductItem = {
+  name: string;
+  id: string;
+};
 const StyledSearchInput = styled.div`
   background-color: ${({ theme }) => theme.colors.light};
   display: flex;
@@ -18,20 +21,23 @@ const formatSearch = (searchTerm: string): string => {
 };
 
 export const SearchInput: React.FC = () => {
-  const [names, setNames] = useState<string[]>([]);
+  const [products, setProducts] = useState<ProductItem[]>([]);
   const handleChange = async (e: React.ChangeEvent<HTMLInputElement>) => {
     const searchTerm = e.target.value;
     try {
       const search = formatSearch(searchTerm);
       const searchData = await getSearchResults(search);
-      const productNames = searchData.map((product) => product.name);
-      setNames(productNames);
+      const products = searchData.map((product) => {
+        return { name: product.name, id: product.id };
+      });
+      setProducts(products);
     } catch (err: unknown) {
       if (err instanceof Error) {
         return <Alert color="warning">{err.message}</Alert>;
       }
     }
   };
+
   const debouncedHandleChange = useMemo(() => debounce(handleChange, 200), []);
 
   useEffect(() => {
@@ -47,7 +53,7 @@ export const SearchInput: React.FC = () => {
           placeholder="Search Shoply"
         />
       </StyledSearchInput>
-      <List items={names} />
+      <List items={products} />
     </>
   );
 };
