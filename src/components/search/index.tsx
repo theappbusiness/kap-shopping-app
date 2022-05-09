@@ -18,21 +18,21 @@ const formatSearch = (searchTerm: string): string => {
 };
 
 export const SearchInput: React.FC = () => {
-  const [products, setProducts] = useState<Product[] | []>();
+  const [names, setNames] = useState<string[] | []>([]);
   const handleChange = async (e: React.ChangeEvent<HTMLInputElement>) => {
     const searchTerm = e.target.value;
-
     try {
+      const productNames: string[] = [];
       const search = formatSearch(searchTerm);
       const searchData = await getSearchResults(search);
-      setProducts(searchData);
+      searchData.map((product) => productNames.push(product.name));
+      setNames(productNames);
     } catch (err: unknown) {
       if (err instanceof Error) {
         return <Alert color="warning">{err.message}</Alert>;
       }
     }
   };
-
   const debouncedHandleChange = useMemo(() => debounce(handleChange, 200), []);
 
   useEffect(() => {
@@ -48,9 +48,7 @@ export const SearchInput: React.FC = () => {
           placeholder="Search Shoply"
         />
       </StyledSearchInput>
-      {products?.map((product) => (
-        <List key={product.id} item={product.name} />
-      ))}
+      <List items={names} />
     </>
   );
 };
