@@ -7,10 +7,12 @@ const ProductPriceContainer = styled.h4`
   margin-bottom: ${({ theme }) => theme.sizes.spacing.md};
 `;
 
+type PriceLocale = 'en' | 'fr' | 'pt-PT';
+
 const Price: React.FC<{ price: number }> = ({ price }) => {
   const intl = useIntl();
   let currencyType;
-  let currencyLocale = 'en';
+  let currencyLocale: PriceLocale = 'en';
 
   if (intl.locale.slice(0, 2) === 'pt' || intl.locale.slice(0, 2) === 'fr') {
     currencyType = 'EUR';
