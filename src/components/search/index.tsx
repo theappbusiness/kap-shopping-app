@@ -22,10 +22,9 @@ export const SearchInput: React.FC = () => {
   const handleChange = async (e: React.ChangeEvent<HTMLInputElement>) => {
     const searchTerm = e.target.value;
     try {
-      const productNames: string[] = [];
       const search = formatSearch(searchTerm);
       const searchData = await getSearchResults(search);
-      searchData.map((product) => productNames.push(product.name));
+      const productNames = searchData.map((product) => product.name);
       setNames(productNames);
     } catch (err: unknown) {
       if (err instanceof Error) {
