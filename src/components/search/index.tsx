@@ -18,7 +18,7 @@ const formatSearch = (searchTerm: string): string => {
 };
 
 export const SearchInput: React.FC = () => {
-  const [names, setNames] = useState<string[] | []>([]);
+  const [names, setNames] = useState<string[]>([]);
   const handleChange = async (e: React.ChangeEvent<HTMLInputElement>) => {
     const searchTerm = e.target.value;
     try {

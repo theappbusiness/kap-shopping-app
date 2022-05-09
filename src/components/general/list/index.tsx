@@ -15,7 +15,7 @@ const StyledListItem = styled.li`
   }
 `;
 
-type Items = string[] | [];
+type Items = string[];
 
 export const List: React.FC<{ items: Items }> = ({ items }) => {
   return (
