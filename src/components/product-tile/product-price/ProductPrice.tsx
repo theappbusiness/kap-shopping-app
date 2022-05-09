@@ -10,17 +10,20 @@ const ProductPriceContainer = styled.h4`
 const Price: React.FC<{ price: number }> = ({ price }) => {
   const intl = useIntl();
   let currencyType;
+  let currencyLocale = 'en';
 
   if (intl.locale.slice(0, 2) === 'pt' || intl.locale.slice(0, 2) === 'fr') {
     currencyType = 'EUR';
+    currencyLocale = 'fr';
   } else if (intl.locale === 'en-US') {
     currencyType = 'USD';
   } else {
     currencyType = 'GBP';
   }
+
   return (
     <>
-      {intl.formatNumber(price, {
+      {price.toLocaleString(currencyLocale, {
         style: 'currency',
         currency: currencyType,
       })}
