@@ -7,7 +7,7 @@ const ProductPriceContainer = styled.h4`
   margin-bottom: ${({ theme }) => theme.sizes.spacing.md};
 `;
 
-type PriceLocale = 'en-GB' | 'fr-FR' | 'pt-PT';
+type PriceLocale = 'en-GB' | 'en-US' | 'fr-FR' | 'pt-PT';
 
 const Price: React.FC<{ price: number }> = ({ price }) => {
   const intl = useIntl();
@@ -19,6 +19,7 @@ const Price: React.FC<{ price: number }> = ({ price }) => {
     currencyLocale = intl.locale.slice(0, 2) === 'pt' ? 'pt-PT' : 'fr-FR';
   } else if (intl.locale === 'en-US') {
     currencyType = 'USD';
+    currencyLocale = 'en-US';
   } else {
     currencyType = 'GBP';
   }
