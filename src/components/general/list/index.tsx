@@ -15,13 +15,18 @@ const StyledListItem = styled.li`
   }
 `;
 
-type Items = string[];
+type ProductItem = {
+  name: string;
+  id: string;
+};
+
+type Items = ProductItem[];
 
 export const List: React.FC<{ items: Items }> = ({ items }) => {
   return (
     <ul>
       {items.map((item) => (
-        <StyledListItem key={item}>{item}</StyledListItem>
+        <StyledListItem key={item.id}>{item.name}</StyledListItem>
       ))}
     </ul>
   );
