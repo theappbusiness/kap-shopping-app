@@ -27,7 +27,7 @@ test('when locale set to British English, price is formatted to £', () => {
 });
 
 test('when locale set to Portuguese, price is formatted to €', () => {
-  const formattedPrice = productDataMock.price.toLocaleString('pt', {
+  const formattedPrice = productDataMock.price.toLocaleString('pt-PT', {
     style: 'currency',
     currency: 'EUR',
     minimumFractionDigits: 2,
