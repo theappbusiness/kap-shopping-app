@@ -5,6 +5,7 @@ import styled from 'styled-components';
 const StyledIconButton = styled.button`
   background-color: transparent;
   border: none;
+  border-radius: 50%;
   font-size: ${({ theme }) => theme.sizes.fonts.xl};
   margin: 0 ${({ theme }) => theme.sizes.spacing.md};
   vertical-align: middle;
@@ -13,6 +14,7 @@ const StyledIconButton = styled.button`
   .button-icon {
     display: flex;
     justify-content: center;
+    margin: ${({ theme }) => theme.sizes.spacing.sm};
   }
 
   &:hover {
@@ -23,9 +25,10 @@ const StyledIconButton = styled.button`
 export const IconButton: React.FC<{
   iconName: IconProp;
   onClick: () => void;
-}> = ({ iconName, onClick }) => {
+  className?: string;
+}> = ({ iconName, onClick, className }) => {
   return (
-    <StyledIconButton onClick={onClick}>
+    <StyledIconButton onClick={onClick} className={className}>
       <FontAwesomeIcon
         icon={iconName}
         className="button-icon"
