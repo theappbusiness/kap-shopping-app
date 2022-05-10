@@ -45,6 +45,10 @@ export interface Theme {
   };
 }
 
+export interface Active {
+  isActive: boolean;
+}
+
 declare module 'styled-components' {
   // eslint-disable-next-line @typescript-eslint/no-empty-interface
   interface DefaultTheme extends Theme {}
