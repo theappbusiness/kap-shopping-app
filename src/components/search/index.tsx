@@ -6,21 +6,27 @@ import { getSearchResults } from '../../services/product.service';
 import { Alert } from '../general/Alert';
 import { Input } from '../general/input';
 import { List } from '../general/list';
+import { Active } from '../../styles.d';
 
 type ProductItem = {
   name: string;
   id: string;
 };
-const StyledSearchInput = styled.div`
+
+const StyledSearchInput = styled.div<Active>`
   background-color: ${({ theme }) => theme.colors.light};
-  display: flex;
+  display: ${({ isActive }) => (isActive ? 'flex' : 'none')};
+  width: 100%;
 `;
 
 const formatSearch = (searchTerm: string): string => {
   return searchTerm.split(/\s+/).join('&');
 };
 let searchTerm = '';
-export const SearchInput: React.FC = () => {
+
+export const SearchInput: React.FC<{ searchIsActive: boolean }> = ({
+  searchIsActive,
+}) => {
   const [products, setProducts] = useState<ProductItem[]>([]);
   const handleChange = async (e: React.ChangeEvent<HTMLInputElement>) => {
     searchTerm = e.target.value;
@@ -46,7 +52,7 @@ export const SearchInput: React.FC = () => {
 
   return (
     <>
-      <StyledSearchInput>
+      <StyledSearchInput isActive={searchIsActive}>
         <Input
           onChange={debouncedHandleChange}
           type="text"
