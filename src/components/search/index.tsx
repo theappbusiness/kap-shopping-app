@@ -51,6 +51,7 @@ export const SearchInput: React.FC = () => {
           onChange={debouncedHandleChange}
           type="text"
           placeholder="Search Shoply"
+          data-testid='search-input'
         />
       </StyledSearchInput>
       <List items={products} />
