@@ -24,5 +24,5 @@ export const getSearchResults = async (
   searchTerm: string
 ): Promise<Product[]> => {
   const { data } = await axios.get(API_SEARCH_PRODUCT(searchTerm));
-  return data;
+  return data.products.map((product: ProductApiResponse) => product['_source']);
 };
