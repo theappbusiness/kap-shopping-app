@@ -19,11 +19,11 @@ const StyledSearchInput = styled.div`
 const formatSearch = (searchTerm: string): string => {
   return searchTerm.split(/\s+/).join('&');
 };
-
+let searchTerm = '';
 export const SearchInput: React.FC = () => {
   const [products, setProducts] = useState<ProductItem[]>([]);
   const handleChange = async (e: React.ChangeEvent<HTMLInputElement>) => {
-    const searchTerm = e.target.value;
+    searchTerm = e.target.value;
     try {
       const search = formatSearch(searchTerm);
       const searchData = await getSearchResults(search);
@@ -51,10 +51,10 @@ export const SearchInput: React.FC = () => {
           onChange={debouncedHandleChange}
           type="text"
           placeholder="Search Shoply"
-          data-testid='search-input'
+          data-testid="search-input"
         />
       </StyledSearchInput>
-      <List items={products} />
+      {searchTerm && <List items={products} />}
     </>
   );
 };
