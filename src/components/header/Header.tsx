@@ -2,7 +2,6 @@ import { useState } from 'react';
 import styled from 'styled-components';
 import { IconButton } from '../general/icon-button/IconButton';
 import { SearchInput } from '../search';
-import { Active } from '../../styles.d';
 
 // import { useAuth0 } from '@auth0/auth0-react';
 // import { AuthenticationButton } from '../../auth/AuthenticationButton';
@@ -40,13 +39,9 @@ const StyledHeader = styled.div`
   }
 `;
 
-const StyledSearchButton = styled(IconButton)<Active>`
-  background-color: ${({ theme, isActive }) =>
-    isActive ? theme.colors.dark : 'transparent'};
-  .button-icon {
-    color: ${({ theme, isActive }) =>
-      isActive ? theme.colors.light : theme.colors.dark};
-  }
+const StyledIconDiv = styled.div`
+  display: flex;
+  align-items: center;
 `;
 
 export const Header: React.FC = () => {
@@ -59,7 +54,7 @@ export const Header: React.FC = () => {
       <StyledHeader>
         <i className="fa-solid fa-bars fa-1x" data-testid="hamburger-icon"></i>
         <h1>Shoply</h1>
-        <div>
+        <StyledIconDiv>
           {/* // TODO: Add this after serving the website via https */}
           {/* {user && <h4 className="greeting">Hello {user.name}!</h4>}
         <AuthenticationButton /> */}
@@ -67,14 +62,14 @@ export const Header: React.FC = () => {
             className="fa-solid fa-bag-shopping fa-1x"
             data-testid="basket-icon"
           ></i>
-          <StyledSearchButton
+          <IconButton
             onClick={() => {
               setSearchIsActive((currSearchIsActive) => !currSearchIsActive);
             }}
             iconName="magnifying-glass"
             isActive={searchIsActive}
           />
-        </div>
+        </StyledIconDiv>
       </StyledHeader>
       {searchIsActive && <SearchInput />}
     </HeaderContainer>
