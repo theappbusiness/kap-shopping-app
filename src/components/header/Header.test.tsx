@@ -44,7 +44,7 @@ describe('Header', () => {
     const searchIcon = screen.getByTestId('magnifying-glass');
     userEvent.click(searchIcon);
     const searchInputDisplayed = await screen.findByRole('textbox');
-    expect(searchInputDisplayed).toBeInTheDocument();
+    expect(searchInputDisplayed).toBeVisible();
 
     userEvent.click(searchIcon);
     const searchInputNone = screen.queryByRole('textbox');
