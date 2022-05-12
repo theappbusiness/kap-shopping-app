@@ -6,16 +6,16 @@ import { getSearchResults } from '../../services/product.service';
 import { Alert } from '../general/Alert';
 import { Input } from '../general/input';
 import { List } from '../general/list';
-import { Active } from '../../styles.d';
 
 type ProductItem = {
   name: string;
   id: string;
 };
 
-const StyledSearchInput = styled.div<Active>`
+const StyledSearchInput = styled.div`
   background-color: ${({ theme }) => theme.colors.light};
-  display: ${({ isActive }) => (isActive ? 'flex' : 'none')};
+  display: flex;
+  flex-direction: column;
   width: 100%;
 `;
 
@@ -24,14 +24,15 @@ const formatSearch = (searchTerm: string): string => {
 };
 let searchTerm = '';
 
-export const SearchInput: React.FC<{ searchIsActive: boolean }> = ({
-  searchIsActive,
-}) => {
+export const SearchInput: React.FC = () => {
   const [products, setProducts] = useState<ProductItem[]>([]);
   const handleChange = async (e: React.ChangeEvent<HTMLInputElement>) => {
     searchTerm = e.target.value;
     try {
-      const search = formatSearch(searchTerm);
+      let search = formatSearch(searchTerm);
+      if (search.length > 200) {
+        search = search.slice(0, 200);
+      }
       const searchData = await getSearchResults(search);
       const products = searchData.map((product) => {
         return { name: product.name, id: product.id };
@@ -52,15 +53,15 @@ export const SearchInput: React.FC<{ searchIsActive: boolean }> = ({
 
   return (
     <>
-      <StyledSearchInput isActive={searchIsActive}>
+      <StyledSearchInput>
         <Input
           onChange={debouncedHandleChange}
           type="text"
           placeholder="Search Shoply"
           data-testid="search-input"
         />
+        {searchTerm && <List items={products} />}
       </StyledSearchInput>
-      {searchTerm && <List items={products} />}
     </>
   );
 };
