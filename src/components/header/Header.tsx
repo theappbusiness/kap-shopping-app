@@ -76,7 +76,7 @@ export const Header: React.FC = () => {
           />
         </div>
       </StyledHeader>
-      <SearchInput searchIsActive={searchIsActive} />
+      {searchIsActive && <SearchInput />}
     </HeaderContainer>
   );
 };
