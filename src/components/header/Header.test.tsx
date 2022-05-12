@@ -1,3 +1,4 @@
+import { userEvent } from '@storybook/testing-library';
 import { registerIcons } from '../../registerIcons';
 import { render, screen } from '../../test-utils';
 import { Header } from './Header';
@@ -32,5 +33,21 @@ describe('Header', () => {
     render(<Header />);
     const shopTitle = screen.getByText('Shoply');
     expect(shopTitle).toBeInTheDocument();
+  });
+
+  it('Displays the SearchInput component when the user clicks the search button, then removes it when clicked again ', async () => {
+    render(<Header />);
+
+    const searchInput = screen.queryByRole('textbox');
+    expect(searchInput).not.toBeInTheDocument();
+
+    const searchIcon = screen.getByTestId('magnifying-glass');
+    userEvent.click(searchIcon);
+    const searchInputDisplayed = await screen.findByRole('textbox');
+    expect(searchInputDisplayed).toBeVisible();
+
+    userEvent.click(searchIcon);
+    const searchInputNone = screen.queryByRole('textbox');
+    expect(searchInputNone).not.toBeInTheDocument();
   });
 });

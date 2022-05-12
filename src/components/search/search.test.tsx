@@ -25,7 +25,7 @@ describe('Search', () => {
       expect(screen.getByText('Football Everybody')).toBeInTheDocument();
       expect(screen.getByText('Football Shoes')).toBeInTheDocument();
     });
-    userEvent.clear(input);
+    await userEvent.clear(input);
     await waitFor(() => {
       expect(screen.queryByText('Football Gloves')).not.toBeInTheDocument();
       expect(screen.queryByText('Football Everybody')).not.toBeInTheDocument();

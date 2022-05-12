@@ -32,7 +32,7 @@ export const GlobalStyle = createGlobalStyle`
 const colors: Colors = {
   dark: '#18181a',
   light: '#e4e4ee',
-  white: '#f5f5ff',
+  white: '#fafaff',
   black: '#00000d',
   primary: '#18181a',
   secondary: '#e4e4ee',
