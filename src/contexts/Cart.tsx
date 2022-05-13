@@ -6,14 +6,9 @@ type CartState = {
   cart: Cart;
   setCart: React.Dispatch<React.SetStateAction<Cart>>;
 };
-type CartProviderProps = { children: React.ReactNode };
 
-const CartContext = React.createContext<CartState | undefined>(undefined);
-
-export const CartProvider: React.FC<CartProviderProps> = ({
-  children,
-}: CartProviderProps) => {
-  const startingBasket = [
+const startingCart = {
+  cart: [
     {
       id: '62617159f21bcb5fa89e67ab',
       name: 'Think Personal Front',
@@ -24,10 +19,25 @@ export const CartProvider: React.FC<CartProviderProps> = ({
       name: 'Ready',
       quantity: 1,
     },
-  ];
+  ],
+  setCart: () => undefined,
+};
 
-  const [cart, setCart] = useState<Cart>(startingBasket);
+const CartContext = React.createContext<CartState>(startingCart);
 
+export const CartProvider: React.FC = ({ children }) => {
+  const [cart, setCart] = useState<Cart>([
+    {
+      id: '62617159f21bcb5fa89e67ab',
+      name: 'Think Personal Front',
+      quantity: 3,
+    },
+    {
+      id: '62617159f21bcb5fa89e67ac',
+      name: 'Ready',
+      quantity: 1,
+    },
+  ]);
   return (
     <CartContext.Provider value={{ cart, setCart }}>
       {children}
