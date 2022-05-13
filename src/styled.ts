@@ -35,9 +35,9 @@ const colors: Colors = {
   white: '#fafaff',
   black: '#00000d',
   primary: '#18181a',
-  secondary: '#e4e4ee',
-  info: '#339b63',
-  success: '#5f5fc6',
+  secondary: '#fafaff',
+  info: '#5f5fc6',
+  success: '#339b63',
   warning: '#e6ab09',
   danger: '#e60927',
 };
