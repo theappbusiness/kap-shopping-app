@@ -11,7 +11,7 @@ export default {
 
 const Template: ComponentStory<typeof Badge> = (args) => (
   <ThemeProvider theme={theme}>
-    <Badge {...args} />;
+    <Badge {...args} />
   </ThemeProvider>
 );
 
