@@ -1,8 +1,8 @@
-import { Button } from '.';
 import { ComponentStory } from '@storybook/react';
 import { ThemeProvider } from 'styled-components';
 import { theme } from '../../../styled';
 import { registerIcons } from '../../../registerIcons';
+import { Button } from '.';
 // eslint-disable-next-line import/no-default-export
 export default {
   title: 'Components/Button',
