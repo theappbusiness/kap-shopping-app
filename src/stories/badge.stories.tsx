@@ -5,7 +5,7 @@ import { theme } from '../styled';
 
 // eslint-disable-next-line import/no-default-export
 export default {
-  title: 'Badge',
+  title: 'Components/Badge',
   component: Badge,
 };
 
