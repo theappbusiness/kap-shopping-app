@@ -72,14 +72,20 @@ export const CartItem: React.FC<CartItemProp> = ({
           <StyledQuantityButton
             iconName="minus"
             onClick={() => alterQuantity('decrease')}
+            className="decrease"
           />
           <p>{quantity}</p>
           <StyledQuantityButton
             iconName="plus"
             onClick={() => alterQuantity('increase')}
+            className="increase"
           />
         </div>
-        <StyledRemoveButton color="secondary" handleClick={() => removeItem()}>
+        <StyledRemoveButton
+          color="secondary"
+          handleClick={() => removeItem()}
+          className="remove"
+        >
           Remove from cart
         </StyledRemoveButton>
       </div>
