@@ -1,5 +1,7 @@
-import { useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import styled from 'styled-components';
+import { CartContext } from '../../contexts/Cart';
+import { Badge } from '../general/badge';
 import { IconButton } from '../general/icon-button/IconButton';
 import { SearchInput } from '../search';
 
@@ -42,13 +44,22 @@ const StyledHeader = styled.div`
 const StyledIconDiv = styled.div`
   display: flex;
   align-items: center;
+  .badge-icon {
+    top: 34px;
+    right: 40px;
+  }
 `;
 
 export const Header: React.FC = () => {
   // const { user } = useAuth0();
-
+  const { cart } = useContext(CartContext);
+  const [totalQuantity, setTotalQuantity] = useState(0);
   const [searchIsActive, setSearchIsActive] = useState<boolean>(false);
-
+  useEffect(() => {
+    let total = 0;
+    cart.map((items) => (total += items.quantity));
+    setTotalQuantity(total);
+  });
   return (
     <HeaderContainer data-testid="header">
       <StyledHeader>
@@ -69,6 +80,7 @@ export const Header: React.FC = () => {
             iconName="magnifying-glass"
             isActive={searchIsActive}
           />
+          <Badge className="badge-icon" label={totalQuantity} />
         </StyledIconDiv>
       </StyledHeader>
       {searchIsActive && <SearchInput />}
