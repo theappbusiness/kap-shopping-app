@@ -9,10 +9,9 @@ registerIcons();
 export default {
   title: 'Components/Cart Item',
   component: CartItem,
-  parameters: {
-    actions: {
-      handles: ['click .decrease', 'click .increase', 'click .remove'],
-    },
+  argTypes: {
+    alterQuantity: { action: 'alterQuantity' },
+    removeItem: { action: 'removeItem' },
   },
 };
 
@@ -27,6 +26,4 @@ Standard.args = {
   imgSrc: `https://picsum.photos/seed/test/270`,
   name: 'test-name',
   quantity: 1000000,
-  alterQuantity: (alter) => console.log(`${alter} quantity button clicked`),
-  removeItem: () => console.log('remove item button clicked'),
 };
