@@ -80,7 +80,11 @@ export const Header: React.FC = () => {
             iconName="magnifying-glass"
             isActive={searchIsActive}
           />
-          <Badge className="badge-icon" label={totalQuantity} />
+          {totalQuantity > 0 ? (
+            <Badge className="badge-icon" label={totalQuantity} />
+          ) : (
+            ''
+          )}
         </StyledIconDiv>
       </StyledHeader>
       {searchIsActive && <SearchInput />}
