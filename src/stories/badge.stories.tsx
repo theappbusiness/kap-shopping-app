@@ -17,5 +17,5 @@ const Template: ComponentStory<typeof Badge> = (args) => (
 
 export const Standard = Template.bind({});
 Standard.args = {
-  label: '3',
+  label: 3,
 };
