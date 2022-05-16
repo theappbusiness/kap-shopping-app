@@ -1,9 +1,10 @@
-import { useContext, useEffect, useState } from 'react';
+import { useMemo, useState } from 'react';
 import styled from 'styled-components';
 import { CartContext } from '../../contexts/Cart';
 import { Badge } from '../general/badge';
 import { IconButton } from '../general/icon-button/IconButton';
 import { SearchInput } from '../search';
+import { TotalCartQuantityBadge } from '../TotalCartQuantityBadge';
 
 // import { useAuth0 } from '@auth0/auth0-react';
 // import { AuthenticationButton } from '../../auth/AuthenticationButton';
@@ -52,14 +53,7 @@ const StyledIconDiv = styled.div`
 
 export const Header: React.FC = () => {
   // const { user } = useAuth0();
-  const { cart } = useContext(CartContext);
-  const [totalQuantity, setTotalQuantity] = useState(0);
   const [searchIsActive, setSearchIsActive] = useState<boolean>(false);
-  useEffect(() => {
-    let total = 0;
-    cart.map((items) => (total += items.quantity));
-    setTotalQuantity(total);
-  });
   return (
     <HeaderContainer data-testid="header">
       <StyledHeader>
@@ -79,12 +73,9 @@ export const Header: React.FC = () => {
             }}
             iconName="magnifying-glass"
             isActive={searchIsActive}
-          />
-          {totalQuantity > 0 ? (
-            <Badge className="badge-icon" label={totalQuantity} />
-          ) : (
-            ''
-          )}
+          >
+            <TotalCartQuantityBadge className="badge-icon" />
+          </IconButton>
         </StyledIconDiv>
       </StyledHeader>
       {searchIsActive && <SearchInput />}
