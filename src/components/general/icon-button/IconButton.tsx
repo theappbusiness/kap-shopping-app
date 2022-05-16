@@ -1,5 +1,6 @@
 import { IconProp } from '@fortawesome/fontawesome-svg-core';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import React from 'react';
 import styled from 'styled-components';
 import { ContextualColors } from '../../../styles.d';
 
@@ -35,8 +36,15 @@ export const IconButton: React.FC<{
   iconName: IconProp;
   onClick: () => void;
   isActive?: boolean;
+  children?: React.ReactNode;
   color?: keyof ContextualColors;
-}> = ({ iconName, onClick, isActive = false, color = 'secondary' }) => {
+}> = ({
+  iconName,
+  children,
+  onClick,
+  isActive = false,
+  color = 'secondary',
+}) => {
   return (
     <StyledIconButton onClick={onClick} isActive={isActive} color={color}>
       <FontAwesomeIcon
@@ -44,6 +52,7 @@ export const IconButton: React.FC<{
         className="button-icon"
         data-testid={iconName}
       />
+      {children}
     </StyledIconButton>
   );
 };
