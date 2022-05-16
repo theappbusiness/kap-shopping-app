@@ -1,7 +1,5 @@
-import { useMemo, useState } from 'react';
+import { useState } from 'react';
 import styled from 'styled-components';
-import { CartContext } from '../../contexts/Cart';
-import { Badge } from '../general/badge';
 import { IconButton } from '../general/icon-button/IconButton';
 import { SearchInput } from '../search';
 import { TotalCartQuantityBadge } from '../TotalCartQuantityBadge';
@@ -45,10 +43,6 @@ const StyledHeader = styled.div`
 const StyledIconDiv = styled.div`
   display: flex;
   align-items: center;
-  .badge-icon {
-    top: 34px;
-    right: 40px;
-  }
 `;
 
 export const Header: React.FC = () => {
@@ -63,19 +57,22 @@ export const Header: React.FC = () => {
           {/* // TODO: Add this after serving the website via https */}
           {/* {user && <h4 className="greeting">Hello {user.name}!</h4>}
         <AuthenticationButton /> */}
-          <i
-            className="fa-solid fa-bag-shopping fa-1x"
-            data-testid="basket-icon"
-          ></i>
+          <IconButton
+            onClick={() => {
+              setSearchIsActive((currSearchIsActive) => !currSearchIsActive);
+            }}
+            iconName="bag-shopping"
+            isActive={searchIsActive}
+          >
+            <TotalCartQuantityBadge />
+          </IconButton>
           <IconButton
             onClick={() => {
               setSearchIsActive((currSearchIsActive) => !currSearchIsActive);
             }}
             iconName="magnifying-glass"
             isActive={searchIsActive}
-          >
-            <TotalCartQuantityBadge className="badge-icon" />
-          </IconButton>
+          ></IconButton>
         </StyledIconDiv>
       </StyledHeader>
       {searchIsActive && <SearchInput />}
