@@ -9,6 +9,11 @@ registerIcons();
 export default {
   title: 'Components/Cart Item',
   component: CartItem,
+  parameters: {
+    actions: {
+      handles: ['click .decrease', 'click .increase', 'click .remove'],
+    },
+  },
 };
 
 const Template: ComponentStory<typeof CartItem> = (args) => (
