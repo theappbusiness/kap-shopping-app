@@ -20,9 +20,15 @@ const StyledBadge = styled.span<{ color: keyof ContextualColors }>`
 export const Badge = ({
   color = 'secondary',
   label,
+  className,
 }: {
   color?: keyof ContextualColors;
-  label: string;
+  label: number;
+  className?: string;
 }): ReactElement => {
-  return <StyledBadge color={color}>{label}</StyledBadge>;
+  return (
+    <StyledBadge className={className} color={color}>
+      {label}
+    </StyledBadge>
+  );
 };
