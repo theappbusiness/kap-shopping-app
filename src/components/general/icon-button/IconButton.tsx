@@ -17,6 +17,7 @@ const StyledIconButton = styled.button<{
   margin: 0 ${({ theme }) => theme.sizes.spacing.md};
   vertical-align: middle;
   cursor: pointer;
+  position: relative;
 
   .button-icon {
     color: ${({ theme, isActive, color }) =>
@@ -36,7 +37,6 @@ export const IconButton: React.FC<{
   iconName: IconProp;
   onClick: () => void;
   isActive?: boolean;
-  children?: React.ReactNode;
   color?: keyof ContextualColors;
 }> = ({
   iconName,
