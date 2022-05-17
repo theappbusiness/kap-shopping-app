@@ -2,14 +2,13 @@ import styled from 'styled-components';
 import { Button } from '../button';
 import { IconButton } from '../icon-button/IconButton';
 
-type alterAmount = 'increase' | 'decrease';
-
 type CartItemProp = {
   imgSrc: string;
   name: string;
   quantity: number;
-  alterQuantity: (alter: alterAmount) => void;
-  removeItem: () => void;
+  onDecreaseStepperClick: () => void;
+  onIncreaseStepperClick: () => void;
+  onRemoveClick: () => void;
 };
 
 const StyledCartItem = styled.div`
@@ -60,8 +59,9 @@ export const CartItem: React.FC<CartItemProp> = ({
   imgSrc,
   name,
   quantity,
-  alterQuantity,
-  removeItem,
+  onIncreaseStepperClick,
+  onDecreaseStepperClick,
+  onRemoveClick,
 }) => {
   return (
     <StyledCartItem>
@@ -71,15 +71,15 @@ export const CartItem: React.FC<CartItemProp> = ({
         <div className="cart-quantity-div">
           <StyledQuantityButton
             iconName="minus"
-            onClick={() => alterQuantity('decrease')}
+            onClick={onDecreaseStepperClick}
           />
           <p>{quantity}</p>
           <StyledQuantityButton
             iconName="plus"
-            onClick={() => alterQuantity('increase')}
+            onClick={onIncreaseStepperClick}
           />
         </div>
-        <StyledRemoveButton color="secondary" handleClick={() => removeItem()}>
+        <StyledRemoveButton color="secondary" handleClick={onRemoveClick}>
           Remove from cart
         </StyledRemoveButton>
       </div>

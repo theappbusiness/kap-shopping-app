@@ -1,17 +1,16 @@
 import { ThemeProvider } from 'styled-components';
 import { ComponentStory } from '@storybook/react';
 import { theme } from '../../../styled';
-import { registerIcons } from '../../../registerIcons';
 import { CartItem } from '.';
-registerIcons();
 
 // eslint-disable-next-line import/no-default-export
 export default {
   title: 'Components/Cart Item',
   component: CartItem,
   argTypes: {
-    alterQuantity: { action: 'alterQuantity' },
-    removeItem: { action: 'removeItem' },
+    onDecreaseStepperClick: { action: 'onDecreaseStepperClick' },
+    onIncreaseStepperClick: { action: 'onIncreaseStepperClick' },
+    onRemoveClick: { action: 'onRemoveClick' },
   },
 };
 
