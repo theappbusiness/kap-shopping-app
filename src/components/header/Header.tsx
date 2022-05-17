@@ -45,9 +45,18 @@ const StyledIconDiv = styled.div`
   align-items: center;
 `;
 
+type HeaderIcons = {
+  search: boolean;
+  cart: boolean;
+};
+
 export const Header: React.FC = () => {
   // const { user } = useAuth0();
-  const [searchIsActive, setSearchIsActive] = useState<boolean>(false);
+
+  const [activeIcons, setActiveIcons] = useState<HeaderIcons>({
+    search: false,
+    cart: true,
+  });
   return (
     <HeaderContainer data-testid="header">
       <StyledHeader>
@@ -59,22 +68,27 @@ export const Header: React.FC = () => {
         <AuthenticationButton /> */}
           <IconButton
             onClick={() => {
-              setSearchIsActive((currSearchIsActive) => !currSearchIsActive);
+              setActiveIcons((currActiveIcons) => {
+                return { ...currActiveIcons, cart: !currActiveIcons.cart };
+              });
             }}
             iconName="bag-shopping"
+            isActive={activeIcons.cart}
           >
             <TotalCartQuantityBadge />
           </IconButton>
           <IconButton
             onClick={() => {
-              setSearchIsActive((currSearchIsActive) => !currSearchIsActive);
+              setActiveIcons((currActiveIcons) => {
+                return { ...currActiveIcons, search: !currActiveIcons.search };
+              });
             }}
             iconName="magnifying-glass"
-            isActive={searchIsActive}
+            isActive={activeIcons.search}
           ></IconButton>
         </StyledIconDiv>
       </StyledHeader>
-      {searchIsActive && <SearchInput />}
+      {activeIcons.search && <SearchInput />}
     </HeaderContainer>
   );
 };
