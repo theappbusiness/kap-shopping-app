@@ -11,6 +11,7 @@ export const Auth0ProviderWithNavigate: React.FC<
 > = ({ children }: Auth0ProviderWithNavigateProps) => {
   const domain = process.env.REACT_APP_AUTH0_DOMAIN as string;
   const clientId = process.env.REACT_APP_AUTH0_CLIENT_ID as string;
+  const audience = process.env.REACT_APP_AUTH0_AUDIENCE;
 
   const navigate = useNavigate();
 
@@ -22,6 +23,7 @@ export const Auth0ProviderWithNavigate: React.FC<
     <Auth0Provider
       domain={domain}
       clientId={clientId}
+      audience={audience}
       redirectUri={window.location.origin}
       onRedirectCallback={onRedirectCallback}
     >

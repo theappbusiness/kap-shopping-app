@@ -45,9 +45,9 @@ const StyledIconDiv = styled.div`
 `;
 
 export const Header: React.FC = () => {
-  const { user } = useAuth0();
-  console.log(user);
   const [searchIsActive, setSearchIsActive] = useState<boolean>(false);
+  const { user } = useAuth0();
+
   return (
     <HeaderContainer data-testid="header">
       <StyledHeader>
