@@ -36,21 +36,9 @@ export const IconButton: React.FC<{
   onClick: () => void;
   isActive?: boolean;
   color?: keyof ContextualColors;
-  className?: string;
-}> = ({
-  iconName,
-  onClick,
-  isActive = false,
-  color = 'secondary',
-  className,
-}) => {
+}> = ({ iconName, onClick, isActive = false, color = 'secondary' }) => {
   return (
-    <StyledIconButton
-      onClick={onClick}
-      isActive={isActive}
-      color={color}
-      className={className}
-    >
+    <StyledIconButton onClick={onClick} isActive={isActive} color={color}>
       <FontAwesomeIcon
         icon={iconName}
         className="button-icon"

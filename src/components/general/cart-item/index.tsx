@@ -51,10 +51,6 @@ const StyledRemoveButton = styled(Button)`
   text-decoration: underline;
 `;
 
-const StyledQuantityButton = styled(IconButton)`
-  font-size: ${({ theme }) => theme.sizes.fonts.sm};
-`;
-
 export const CartItem: React.FC<CartItemProp> = ({
   imgSrc,
   name,
@@ -69,15 +65,9 @@ export const CartItem: React.FC<CartItemProp> = ({
       <div className="cart-info-div">
         <h3>{name}</h3>
         <div className="cart-quantity-div">
-          <StyledQuantityButton
-            iconName="minus"
-            onClick={onDecreaseStepperClick}
-          />
+          <IconButton iconName="minus" onClick={onDecreaseStepperClick} />
           <p>{quantity}</p>
-          <StyledQuantityButton
-            iconName="plus"
-            onClick={onIncreaseStepperClick}
-          />
+          <IconButton iconName="plus" onClick={onIncreaseStepperClick} />
         </div>
         <StyledRemoveButton color="secondary" handleClick={onRemoveClick}>
           Remove from cart
