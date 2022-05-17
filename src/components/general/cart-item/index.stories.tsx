@@ -1,6 +1,4 @@
-import { ThemeProvider } from 'styled-components';
 import { ComponentStory } from '@storybook/react';
-import { theme } from '../../../styled';
 import { CartItem } from '.';
 
 // eslint-disable-next-line import/no-default-export
@@ -15,9 +13,7 @@ export default {
 };
 
 const Template: ComponentStory<typeof CartItem> = (args) => (
-  <ThemeProvider theme={theme}>
-    <CartItem {...args} />
-  </ThemeProvider>
+  <CartItem {...args} />
 );
 
 export const Standard = Template.bind({});
