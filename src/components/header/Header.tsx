@@ -2,6 +2,7 @@ import { useState } from 'react';
 import styled from 'styled-components';
 import { IconButton } from '../general/icon-button/IconButton';
 import { SearchInput } from '../search';
+import { TotalCartQuantityBadge } from '../TotalCartQuantityBadge';
 
 // import { useAuth0 } from '@auth0/auth0-react';
 // import { AuthenticationButton } from '../../auth/AuthenticationButton';
@@ -46,9 +47,7 @@ const StyledIconDiv = styled.div`
 
 export const Header: React.FC = () => {
   // const { user } = useAuth0();
-
   const [searchIsActive, setSearchIsActive] = useState<boolean>(false);
-
   return (
     <HeaderContainer data-testid="header">
       <StyledHeader>
@@ -58,17 +57,21 @@ export const Header: React.FC = () => {
           {/* // TODO: Add this after serving the website via https */}
           {/* {user && <h4 className="greeting">Hello {user.name}!</h4>}
         <AuthenticationButton /> */}
-          <i
-            className="fa-solid fa-bag-shopping fa-1x"
-            data-testid="basket-icon"
-          ></i>
+          <IconButton
+            onClick={() => {
+              setSearchIsActive((currSearchIsActive) => !currSearchIsActive);
+            }}
+            iconName="bag-shopping"
+          >
+            <TotalCartQuantityBadge />
+          </IconButton>
           <IconButton
             onClick={() => {
               setSearchIsActive((currSearchIsActive) => !currSearchIsActive);
             }}
             iconName="magnifying-glass"
             isActive={searchIsActive}
-          />
+          ></IconButton>
         </StyledIconDiv>
       </StyledHeader>
       {searchIsActive && <SearchInput />}
