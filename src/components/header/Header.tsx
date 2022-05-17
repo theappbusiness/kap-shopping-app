@@ -62,7 +62,6 @@ export const Header: React.FC = () => {
               setSearchIsActive((currSearchIsActive) => !currSearchIsActive);
             }}
             iconName="bag-shopping"
-            isActive={searchIsActive}
           >
             <TotalCartQuantityBadge />
           </IconButton>
