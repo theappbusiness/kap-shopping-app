@@ -23,7 +23,7 @@ const startingCart = {
   setCart: () => undefined,
 };
 
-const CartContext = React.createContext<CartState>(startingCart);
+export const CartContext = React.createContext<CartState>(startingCart);
 
 export const CartProvider: React.FC = ({ children }) => {
   const [cart, setCart] = useState<Cart>(startingCart.cart);

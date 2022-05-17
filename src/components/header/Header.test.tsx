@@ -25,7 +25,7 @@ describe('Header', () => {
 
   it('Renders Basket Icon', () => {
     render(<Header />);
-    const basketIcon = screen.getByTestId('basket-icon');
+    const basketIcon = screen.getByTestId('bag-shopping');
     expect(basketIcon).toBeInTheDocument();
   });
 
