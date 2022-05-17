@@ -50,4 +50,27 @@ describe('Header', () => {
     const searchInputNone = screen.queryByRole('textbox');
     expect(searchInputNone).not.toBeInTheDocument();
   });
+
+  it('Displays a list of cart components when user clicks the bag icon, then hides it when clicked again', async () => {
+    render(<Header />);
+
+    const cartList = screen.queryByTestId('cart-list');
+    const cartItem = screen.queryAllByTestId('cart-item');
+    expect(cartList).not.toBeInTheDocument();
+    expect(cartItem).toEqual([]);
+
+    const cartIcon = screen.getByTestId('bag-shopping');
+
+    userEvent.click(cartIcon);
+    const cartListDisplayed = await screen.findByTestId('cart-list');
+    const cartItemsDisplayed = await screen.findAllByTestId('cart-item');
+    expect(cartListDisplayed).toBeVisible();
+    expect(cartItemsDisplayed).toHaveLength(2);
+
+    userEvent.click(cartIcon);
+    const cartListNone = screen.queryByTestId('cart-list');
+    const cartItemNone = screen.queryAllByTestId('cart-item');
+    expect(cartListNone).not.toBeInTheDocument();
+    expect(cartItemNone).toEqual([]);
+  });
 });
