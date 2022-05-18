@@ -1,6 +1,8 @@
 # KAP Shopping App
 
-Deployed to http://kap-bucket.s3-website-us-west-1.amazonaws.com/
+Client deployed to: https://d2o778y7xu132l.cloudfront.net/
+
+API deployed to: https://d1sq674fk5y5nl.cloudfront.net/api/v1/
 
 ## Available Scripts
 
