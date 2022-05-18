@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import { IconButton } from '../general/icon-button/IconButton';
 import { SearchInput } from '../search';
 import { TotalCartQuantityBadge } from '../TotalCartQuantityBadge';
+import { CartList } from '../cart-list';
 
 // import { useAuth0 } from '@auth0/auth0-react';
 // import { AuthenticationButton } from '../../auth/AuthenticationButton';
@@ -45,9 +46,19 @@ const StyledIconDiv = styled.div`
   align-items: center;
 `;
 
+type HeaderIcons = {
+  search: boolean;
+  cart: boolean;
+};
+
 export const Header: React.FC = () => {
   // const { user } = useAuth0();
-  const [searchIsActive, setSearchIsActive] = useState<boolean>(false);
+
+  const [activeIcons, setActiveIcons] = useState<HeaderIcons>({
+    search: false,
+    cart: false,
+  });
+
   return (
     <HeaderContainer data-testid="header">
       <StyledHeader>
@@ -59,22 +70,28 @@ export const Header: React.FC = () => {
         <AuthenticationButton /> */}
           <IconButton
             onClick={() => {
-              setSearchIsActive((currSearchIsActive) => !currSearchIsActive);
+              setActiveIcons((currActiveIcons) => {
+                return { ...currActiveIcons, cart: !currActiveIcons.cart };
+              });
             }}
             iconName="bag-shopping"
+            isActive={activeIcons.cart}
           >
             <TotalCartQuantityBadge />
           </IconButton>
           <IconButton
             onClick={() => {
-              setSearchIsActive((currSearchIsActive) => !currSearchIsActive);
+              setActiveIcons((currActiveIcons) => {
+                return { ...currActiveIcons, search: !currActiveIcons.search };
+              });
             }}
             iconName="magnifying-glass"
-            isActive={searchIsActive}
+            isActive={activeIcons.search}
           ></IconButton>
         </StyledIconDiv>
       </StyledHeader>
-      {searchIsActive && <SearchInput />}
+      {activeIcons.search && <SearchInput />}
+      {activeIcons.cart && <CartList />}
     </HeaderContainer>
   );
 };
