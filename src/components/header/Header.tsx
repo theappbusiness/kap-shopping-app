@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import { IconButton } from '../general/icon-button/IconButton';
 import { SearchInput } from '../search';
 import { TotalCartQuantityBadge } from '../TotalCartQuantityBadge';
+import { CartList } from '../cart-list';
 
 // import { useAuth0 } from '@auth0/auth0-react';
 // import { AuthenticationButton } from '../../auth/AuthenticationButton';
@@ -55,8 +56,9 @@ export const Header: React.FC = () => {
 
   const [activeIcons, setActiveIcons] = useState<HeaderIcons>({
     search: false,
-    cart: true,
+    cart: false,
   });
+
   return (
     <HeaderContainer data-testid="header">
       <StyledHeader>
@@ -89,6 +91,7 @@ export const Header: React.FC = () => {
         </StyledIconDiv>
       </StyledHeader>
       {activeIcons.search && <SearchInput />}
+      {activeIcons.cart && <CartList />}
     </HeaderContainer>
   );
 };
