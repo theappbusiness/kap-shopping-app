@@ -24,13 +24,8 @@ type ProductItem = {
 type Items = ProductItem[] | React.ReactElement[];
 
 export const List: React.FC<{ items: Items }> = ({ items }) => {
-  const isCartItemList =
-    items.length > 0 && Object.prototype.hasOwnProperty.call(items[0], 'props')
-      ? true
-      : false;
-
   return (
-    <ul data-testid={isCartItemList ? 'cart-list' : ''}>
+    <ul>
       {items.map((item) => {
         if ('props' in item) {
           return <StyledListItem key={item.key}>{item}</StyledListItem>;

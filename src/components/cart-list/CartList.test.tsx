@@ -8,7 +8,7 @@ describe('Cart list', () => {
   it('renders a list of cart items using the cart context defaultValue', () => {
     const cartDefaultLength = startingCart.cart.length;
     render(<CartList />);
-    const cartList = screen.getByTestId('cart-list');
+    const cartList = screen.getByRole('list');
     const cartItems = screen.getAllByTestId('cart-item');
     const cartItemImages = screen.getAllByRole('img');
     const cartItemNames = screen.getAllByTestId('cart-item-name');
