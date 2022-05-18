@@ -7,16 +7,18 @@ export const CartList: React.FC = () => {
   const { cart } = useContext(CartContext);
 
   const cartItems: React.ReactElement[] = cart.map((item) => {
-    const itemProps = {
-      imgSrc: `https://picsum.photos/seed/${item.name}/270`,
-      name: item.name,
-      quantity: item.quantity,
-      onDecreaseStepperClick: () => undefined,
-      onIncreaseStepperClick: () => undefined,
-      onRemoveClick: () => undefined,
-    };
-    return <CartItem key={item.id} {...itemProps} />;
+    return (
+      <CartItem
+        key={item.id}
+        imgSrc={`https://picsum.photos/seed/${item.name}/270`}
+        name={item.name}
+        quantity={item.quantity}
+        onDecreaseStepperClick={() => undefined}
+        onIncreaseStepperClick={() => undefined}
+        onRemoveClick={() => undefined}
+      />
+    );
   });
 
-  return <List items={cartItems}></List>;
+  return <List items={cartItems} />;
 };
