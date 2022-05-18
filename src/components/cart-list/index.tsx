@@ -29,7 +29,7 @@ export const CartList: React.FC = () => {
         name={item.name}
         quantity={item.quantity}
         onDecreaseStepperClick={() => changeQuantity(item.id, -1)}
-        onIncreaseStepperClick={() => changeQuantity(item.id, +1)}
+        onIncreaseStepperClick={() => changeQuantity(item.id, 1)}
         onRemoveClick={() => removeItem(item.id)}
       />
     );
