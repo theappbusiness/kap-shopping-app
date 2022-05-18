@@ -5,15 +5,13 @@ import { CartContext } from '../../contexts/Cart';
 
 export const CartList: React.FC = () => {
   const { cart, setCart } = useContext(CartContext);
-  const changeQuantity = (id: string, amount: number, sign: string) => {
+  const changeQuantity = (id: string, amount: number) => {
     setCart((currCart) => {
       return currCart.map((currItem) => {
         if (currItem.id === id) {
-          if (sign === '+') {
-            return { ...currItem, quantity: currItem.quantity + amount };
-          } else if (sign === '-' && currItem.quantity > 0) {
-            return { ...currItem, quantity: currItem.quantity - amount };
-          }
+          const newQty =
+            currItem.quantity + amount > 0 ? currItem.quantity + amount : 0;
+          return { ...currItem, quantity: newQty };
         }
         return { ...currItem };
       });
@@ -30,8 +28,8 @@ export const CartList: React.FC = () => {
         imgSrc={`https://picsum.photos/seed/${item.name}/270`}
         name={item.name}
         quantity={item.quantity}
-        onDecreaseStepperClick={() => changeQuantity(item.id, 1, '-')}
-        onIncreaseStepperClick={() => changeQuantity(item.id, 1, '+')}
+        onDecreaseStepperClick={() => changeQuantity(item.id, -1)}
+        onIncreaseStepperClick={() => changeQuantity(item.id, +1)}
         onRemoveClick={() => removeItem(item.id)}
       />
     );
