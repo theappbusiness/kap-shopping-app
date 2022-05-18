@@ -21,14 +21,17 @@ type ProductItem = {
   id: string;
 };
 
-type Items = ProductItem[];
+type Items = ProductItem[] | React.ReactElement[];
 
 export const List: React.FC<{ items: Items }> = ({ items }) => {
   return (
     <ul>
-      {items.map((item) => (
-        <StyledListItem key={item.id}>{item.name}</StyledListItem>
-      ))}
+      {items.map((item) => {
+        if ('props' in item) {
+          return <StyledListItem key={item.key}>{item}</StyledListItem>;
+        }
+        return <StyledListItem key={item.id}>{item.name}</StyledListItem>;
+      })}
     </ul>
   );
 };
