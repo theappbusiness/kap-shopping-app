@@ -4,22 +4,15 @@ import { CartContext } from '../../contexts/Cart';
 
 export const CartPage = (): ReactElement => {
   const { cart, setCart } = useContext(CartContext);
-
-  const increaseQuantity = (id: string) => {
+  type Amount = 'increment' | 'decrement';
+  const changeQuantity = (id: string, amount: Amount) => {
     setCart((currCart) => {
       return currCart.map((currItem) => {
         if (currItem.id === id) {
-          return { ...currItem, quantity: currItem.quantity + 1 };
-        }
-        return { ...currItem };
-      });
-    });
-  };
-  const decreaseQuantity = (id: string) => {
-    setCart((currCart) => {
-      return currCart.map((currItem) => {
-        if (currItem.id === id) {
-          return { ...currItem, quantity: currItem.quantity - 1 };
+          if (amount === 'increment')
+            return { ...currItem, quantity: currItem.quantity + 1 };
+          if (amount === 'decrement')
+            return { ...currItem, quantity: currItem.quantity - 1 };
         }
         return { ...currItem };
       });
@@ -30,7 +23,7 @@ export const CartPage = (): ReactElement => {
   };
   return (
     <>
-    <h3>Cart Page</h3>
+      <h3>Cart Page</h3>
       {cart.map((item) => {
         return (
           <CartItem
@@ -38,8 +31,8 @@ export const CartPage = (): ReactElement => {
             imgSrc="https://picsum.photos/seed/test/270"
             name={item.name}
             quantity={item.quantity}
-            onDecreaseStepperClick={() => decreaseQuantity(item.id)}
-            onIncreaseStepperClick={() => increaseQuantity(item.id)}
+            onDecreaseStepperClick={() => changeQuantity(item.id, 'decrement')}
+            onIncreaseStepperClick={() => changeQuantity(item.id, 'increment')}
             onRemoveClick={() => removeItem(item.id)}
           />
         );
