@@ -30,6 +30,7 @@ export const CartPage = (): ReactElement => {
   };
   return (
     <>
+    <h3>Cart Page</h3>
       {cart.map((item) => {
         return (
           <CartItem
