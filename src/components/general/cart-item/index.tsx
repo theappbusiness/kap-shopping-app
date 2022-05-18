@@ -63,10 +63,10 @@ export const CartItem: React.FC<CartItemProp> = ({
     <StyledCartItem data-testid="cart-item">
       <img src={imgSrc} alt={name} />
       <div className="cart-info-div">
-        <h3>{name}</h3>
+        <h3 data-testid="cart-item-name">{name}</h3>
         <div className="cart-quantity-div">
           <IconButton iconName="minus" onClick={onDecreaseStepperClick} />
-          <p>{quantity}</p>
+          <p data-testid="cart-item-quantity">{quantity}</p>
           <IconButton iconName="plus" onClick={onIncreaseStepperClick} />
         </div>
         <StyledRemoveButton color="secondary" handleClick={onRemoveClick}>
