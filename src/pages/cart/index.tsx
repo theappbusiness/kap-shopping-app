@@ -1,5 +1,9 @@
 import { ReactElement } from 'react';
 
 export const CartPage = (): ReactElement => {
-  return <div>Cart Page</div>;
+  return (
+    <>
+      <h3>Cart Page</h3>
+    </>
+  );
 };
