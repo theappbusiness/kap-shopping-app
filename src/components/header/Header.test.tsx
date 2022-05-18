@@ -1,6 +1,7 @@
 import { userEvent } from '@storybook/testing-library';
 import { registerIcons } from '../../registerIcons';
 import { render, screen } from '../../test-utils';
+import { startingCart } from '../../contexts/Cart';
 import { Header } from './Header';
 registerIcons();
 
@@ -51,7 +52,7 @@ describe('Header', () => {
     expect(searchInputNone).not.toBeInTheDocument();
   });
 
-  it('Displays a list of cart components when user clicks the bag icon, then hides it when clicked again', async () => {
+  it('Displays a list of cart item components when user clicks the bag icon, then hides it when clicked again', async () => {
     render(<Header />);
 
     const cartList = screen.queryByTestId('cart-list');
@@ -65,7 +66,7 @@ describe('Header', () => {
     const cartListDisplayed = await screen.findByTestId('cart-list');
     const cartItemsDisplayed = await screen.findAllByTestId('cart-item');
     expect(cartListDisplayed).toBeVisible();
-    expect(cartItemsDisplayed).toHaveLength(2);
+    expect(cartItemsDisplayed).toHaveLength(startingCart.cart.length);
 
     userEvent.click(cartIcon);
     const cartListNone = screen.queryByTestId('cart-list');
