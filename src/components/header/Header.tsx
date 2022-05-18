@@ -5,6 +5,7 @@ import { IconButton } from '../general/icon-button/IconButton';
 import { SearchInput } from '../search';
 import { TotalCartQuantityBadge } from '../TotalCartQuantityBadge';
 import { AuthenticationButton } from '../../auth/AuthenticationButton';
+import { CartList } from '../cart-list';
 
 const HeaderContainer = styled.div`
   display: flex;
@@ -44,9 +45,19 @@ const StyledIconDiv = styled.div`
   align-items: center;
 `;
 
+type HeaderIcons = {
+  search: boolean;
+  cart: boolean;
+};
+
 export const Header: React.FC = () => {
   const [searchIsActive, setSearchIsActive] = useState<boolean>(false);
   const { user } = useAuth0();
+
+  const [activeIcons, setActiveIcons] = useState<HeaderIcons>({
+    search: false,
+    cart: false,
+  });
 
   return (
     <HeaderContainer data-testid="header">
@@ -58,23 +69,29 @@ export const Header: React.FC = () => {
 
           <IconButton
             onClick={() => {
-              setSearchIsActive((currSearchIsActive) => !currSearchIsActive);
+              setActiveIcons((currActiveIcons) => {
+                return { ...currActiveIcons, cart: !currActiveIcons.cart };
+              });
             }}
             iconName="bag-shopping"
+            isActive={activeIcons.cart}
           >
             <TotalCartQuantityBadge />
           </IconButton>
           <IconButton
             onClick={() => {
-              setSearchIsActive((currSearchIsActive) => !currSearchIsActive);
+              setActiveIcons((currActiveIcons) => {
+                return { ...currActiveIcons, search: !currActiveIcons.search };
+              });
             }}
             iconName="magnifying-glass"
-            isActive={searchIsActive}
+            isActive={activeIcons.search}
           ></IconButton>
           <AuthenticationButton />
         </StyledIconDiv>
       </StyledHeader>
-      {searchIsActive && <SearchInput />}
+      {activeIcons.search && <SearchInput />}
+      {activeIcons.cart && <CartList />}
     </HeaderContainer>
   );
 };

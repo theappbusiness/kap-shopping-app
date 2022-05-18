@@ -7,7 +7,7 @@ type CartState = {
   setCart: React.Dispatch<React.SetStateAction<Cart>>;
 };
 
-const startingCart = {
+export const startingCart = {
   cart: [
     {
       id: '62617159f21bcb5fa89e67ab',
@@ -20,7 +20,8 @@ const startingCart = {
       quantity: 1,
     },
   ],
-  setCart: () => undefined,
+
+  setCart: (): void => undefined,
 };
 
 export const CartContext = React.createContext<CartState>(startingCart);
