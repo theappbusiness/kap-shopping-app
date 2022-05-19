@@ -1,9 +1,11 @@
 import { useTranslation } from 'react-i18next';
 import styled from 'styled-components';
+import { useContext } from 'react';
 import { Product } from '../../types/product';
 import '../../translations/i18n';
 import { Button } from '../general/button';
 import { userLocale } from '../../translations/userLocale';
+import { CartContext } from '../../contexts/Cart';
 import { ProductPrice } from './product-price/ProductPrice';
 
 const ProductTileContainer = styled.li`
@@ -48,9 +50,11 @@ const ProductTileContainer = styled.li`
 
 export const ProductTile: React.FC<{ product: Product }> = ({ product }) => {
   const { t } = useTranslation();
+  const { cart, addItem, changeQuantity } = useContext(CartContext);
 
   const handleClick = () => {
-    // TODO: Add to cart
+    const productInCart = cart.find((item) => item.id === product.id);
+    productInCart ? changeQuantity(product.id, 1) : addItem(product, 1);
   };
 
   return (
