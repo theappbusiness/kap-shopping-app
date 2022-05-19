@@ -5,7 +5,6 @@ import { Product } from '../../types/product';
 import '../../translations/i18n';
 import { Button } from '../general/button';
 import { userLocale } from '../../translations/userLocale';
-import { changeQuantity } from '../../utils/cartModifiers';
 import { CartContext } from '../../contexts/Cart';
 import { ProductPrice } from './product-price/ProductPrice';
 
@@ -51,20 +50,7 @@ const ProductTileContainer = styled.li`
 
 export const ProductTile: React.FC<{ product: Product }> = ({ product }) => {
   const { t } = useTranslation();
-  const { cart, setCart } = useContext(CartContext);
-
-  const handleClick = () => {
-    const productInCart = cart.find((item) => item.id === product.id);
-
-    if (productInCart) {
-      changeQuantity(product.id, 1, setCart);
-    } else {
-      setCart((currCart) => [
-        ...currCart,
-        { id: product.id, name: product.name, quantity: 1 },
-      ]);
-    }
-  };
+  const { addItem } = useContext(CartContext);
 
   return (
     <ProductTileContainer data-testid="product-tile">
@@ -78,7 +64,12 @@ export const ProductTile: React.FC<{ product: Product }> = ({ product }) => {
         <h3 className="product-tile-title">{product.name}</h3>
         <ProductPrice price={product.price} locale={userLocale}></ProductPrice>
       </div>
-      <Button handleClick={handleClick} iconName="shopping-bag">
+      <Button
+        handleClick={() => {
+          addItem(product);
+        }}
+        iconName="shopping-bag"
+      >
         {t('addToCart')}
       </Button>
     </ProductTileContainer>
