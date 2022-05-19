@@ -4,7 +4,22 @@ import { List } from '../general/list';
 import { CartContext } from '../../contexts/Cart';
 
 export const CartList: React.FC = () => {
-  const { cart } = useContext(CartContext);
+  const { cart, setCart } = useContext(CartContext);
+  const changeQuantity = (id: string, amount: number) => {
+    setCart((currCart) => {
+      return currCart.map((currItem) => {
+        if (currItem.id === id) {
+          const newQty =
+            currItem.quantity + amount > 0 ? currItem.quantity + amount : 0;
+          return { ...currItem, quantity: newQty };
+        }
+        return { ...currItem };
+      });
+    });
+  };
+  const removeItem = (id: string) => {
+    setCart((currCart) => currCart.filter((cartItem) => id !== cartItem.id));
+  };
 
   const cartItems: React.ReactElement[] = cart.map((item) => {
     return (
@@ -13,9 +28,9 @@ export const CartList: React.FC = () => {
         imgSrc={`https://picsum.photos/seed/${item.name}/270`}
         name={item.name}
         quantity={item.quantity}
-        onDecreaseStepperClick={() => undefined}
-        onIncreaseStepperClick={() => undefined}
-        onRemoveClick={() => undefined}
+        onDecreaseStepperClick={() => changeQuantity(item.id, -1)}
+        onIncreaseStepperClick={() => changeQuantity(item.id, 1)}
+        onRemoveClick={() => removeItem(item.id)}
       />
     );
   });
