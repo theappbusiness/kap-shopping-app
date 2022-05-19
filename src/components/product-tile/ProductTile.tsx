@@ -4,7 +4,10 @@ import { Product } from '../../types/product';
 import '../../translations/i18n';
 import { Button } from '../general/button';
 import { userLocale } from '../../translations/userLocale';
+import { changeQuantity } from '../../utils/cartModifiers';
 import { ProductPrice } from './product-price/ProductPrice';
+import { CartContext } from '../../contexts/Cart';
+import { useContext } from 'react';
 
 const ProductTileContainer = styled.li`
   margin: 0 auto 0 auto;
@@ -48,9 +51,19 @@ const ProductTileContainer = styled.li`
 
 export const ProductTile: React.FC<{ product: Product }> = ({ product }) => {
   const { t } = useTranslation();
+  const { cart, setCart } = useContext(CartContext);
 
   const handleClick = () => {
-    // TODO: Add to cart
+    const productInCart = cart.find((item) => item.id === product.id);
+
+    if (productInCart) {
+      changeQuantity(product.id, 1, setCart);
+    } else {
+      setCart((currCart) => [
+        ...currCart,
+        { id: product.id, name: product.name, quantity: 1 },
+      ]);
+    }
   };
 
   return (
