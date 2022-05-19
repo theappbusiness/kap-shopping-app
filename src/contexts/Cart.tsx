@@ -7,7 +7,7 @@ type CartState = {
   cart: Cart;
   removeItem: (id: string) => void;
   changeQuantity: (id: string, amount: number) => void;
-  addItem: (product: Product) => void;
+  addItem: (product: Product, amount: number) => void;
 };
 
 export const startingCart = {
@@ -51,13 +51,13 @@ export const changeQuantityFactory =
 
 export const addItemFactory =
   (cart: Cart, setCart: React.Dispatch<React.SetStateAction<Cart>>) =>
-  (product: Product): void => {
+  (product: Product, amount: number): void => {
     const productInCart = cart.find((item) => item.id === product.id);
     if (productInCart) {
       setCart((currCart) => {
         return currCart.map((currItem) => {
           if (currItem.id === product.id) {
-            return { ...currItem, quantity: currItem.quantity + 1 };
+            return { ...currItem, quantity: currItem.quantity + amount };
           }
           return { ...currItem };
         });
@@ -65,7 +65,7 @@ export const addItemFactory =
     } else {
       setCart((currCart) => [
         ...currCart,
-        { id: product.id, name: product.name, quantity: 1 },
+        { id: product.id, name: product.name, quantity: amount },
       ]);
     }
   };

@@ -53,7 +53,7 @@ export const ProductTile: React.FC<{ product: Product }> = ({ product }) => {
   const { addItem } = useContext(CartContext);
 
   const handleClick = () => {
-    addItem(product);
+    addItem(product, 1);
   };
 
   return (
