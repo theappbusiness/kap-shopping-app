@@ -1,13 +1,13 @@
 import { useTranslation } from 'react-i18next';
 import styled from 'styled-components';
+import { useContext } from 'react';
 import { Product } from '../../types/product';
 import '../../translations/i18n';
 import { Button } from '../general/button';
 import { userLocale } from '../../translations/userLocale';
 import { changeQuantity } from '../../utils/cartModifiers';
-import { ProductPrice } from './product-price/ProductPrice';
 import { CartContext } from '../../contexts/Cart';
-import { useContext } from 'react';
+import { ProductPrice } from './product-price/ProductPrice';
 
 const ProductTileContainer = styled.li`
   margin: 0 auto 0 auto;
