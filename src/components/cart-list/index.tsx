@@ -4,22 +4,7 @@ import { List } from '../general/list';
 import { CartContext } from '../../contexts/Cart';
 
 export const CartList: React.FC = () => {
-  const { cart, setCart } = useContext(CartContext);
-  const changeQuantity = (id: string, amount: number) => {
-    setCart((currCart) => {
-      return currCart.map((currItem) => {
-        if (currItem.id === id) {
-          const newQty =
-            currItem.quantity + amount > 0 ? currItem.quantity + amount : 0;
-          return { ...currItem, quantity: newQty };
-        }
-        return { ...currItem };
-      });
-    });
-  };
-  const removeItem = (id: string) => {
-    setCart((currCart) => currCart.filter((cartItem) => id !== cartItem.id));
-  };
+  const { cart, changeQuantity, removeItem } = useContext(CartContext);
 
   const cartItems: React.ReactElement[] = cart.map((item) => {
     return (
