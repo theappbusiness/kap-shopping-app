@@ -4,8 +4,8 @@ import { Product } from '../../types/product';
 import '../../translations/i18n';
 import { Button } from '../general/button';
 import { userLocale } from '../../translations/userLocale';
-import { ProductPrice } from './product-price/ProductPrice';
 import { postOrder } from '../../services/product.service';
+import { ProductPrice } from './product-price/ProductPrice';
 
 const ProductTileContainer = styled.li`
   margin: 0 auto 0 auto;
