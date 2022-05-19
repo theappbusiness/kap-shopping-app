@@ -5,6 +5,7 @@ import '../../translations/i18n';
 import { Button } from '../general/button';
 import { userLocale } from '../../translations/userLocale';
 import { ProductPrice } from './product-price/ProductPrice';
+import { postOrder } from '../../services/product.service';
 
 const ProductTileContainer = styled.li`
   margin: 0 auto 0 auto;
@@ -51,6 +52,8 @@ export const ProductTile: React.FC<{ product: Product }> = ({ product }) => {
 
   const handleClick = () => {
     // TODO: Add to cart
+    const productOrder = [{ product: product.id, quantity: 1 }];
+    postOrder(productOrder);
   };
 
   return (
