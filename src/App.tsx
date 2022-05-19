@@ -1,22 +1,21 @@
 import { BrowserRouter } from 'react-router-dom';
 import { ThemeProvider } from 'styled-components';
 import { CartProvider } from './contexts/Cart';
-// import { Auth0ProviderWithNavigate } from './auth/Auth0ProviderWithNavigate';
+import { Auth0ProviderWithNavigate } from './auth/Auth0ProviderWithNavigate';
 import { Routes } from './Routes';
 import { GlobalStyle, theme } from './styled';
 
 export const App: React.FC = () => {
   return (
     <BrowserRouter>
-      {/* {TODO: Add this after serving the website via https} */}
-      {/* <Auth0ProviderWithNavigate> */}
-      <GlobalStyle />
-      <ThemeProvider theme={theme}>
-        <CartProvider>
-          <Routes />
-        </CartProvider>
-      </ThemeProvider>
-      {/* </Auth0ProviderWithNavigate> */}
+      <Auth0ProviderWithNavigate>
+        <GlobalStyle />
+        <ThemeProvider theme={theme}>
+          <CartProvider>
+            <Routes />
+          </CartProvider>
+        </ThemeProvider>
+      </Auth0ProviderWithNavigate>
     </BrowserRouter>
   );
 };

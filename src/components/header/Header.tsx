@@ -1,12 +1,11 @@
 import { useState } from 'react';
 import styled from 'styled-components';
+import { useAuth0 } from '@auth0/auth0-react';
 import { IconButton } from '../general/icon-button/IconButton';
 import { SearchInput } from '../search';
 import { TotalCartQuantityBadge } from '../TotalCartQuantityBadge';
+import { AuthenticationButton } from '../../auth/AuthenticationButton';
 import { CartList } from '../cart-list';
-
-// import { useAuth0 } from '@auth0/auth0-react';
-// import { AuthenticationButton } from '../../auth/AuthenticationButton';
 
 const HeaderContainer = styled.div`
   display: flex;
@@ -52,7 +51,8 @@ type HeaderIcons = {
 };
 
 export const Header: React.FC = () => {
-  // const { user } = useAuth0();
+  const [searchIsActive, setSearchIsActive] = useState<boolean>(false);
+  const { user } = useAuth0();
 
   const [activeIcons, setActiveIcons] = useState<HeaderIcons>({
     search: false,
@@ -65,9 +65,8 @@ export const Header: React.FC = () => {
         <i className="fa-solid fa-bars fa-1x" data-testid="hamburger-icon"></i>
         <h1>Shoply</h1>
         <StyledIconDiv>
-          {/* // TODO: Add this after serving the website via https */}
-          {/* {user && <h4 className="greeting">Hello {user.name}!</h4>}
-        <AuthenticationButton /> */}
+          {user && <h4 className="greeting">Hello, {user.given_name}!</h4>}
+
           <IconButton
             onClick={() => {
               setActiveIcons((currActiveIcons) => {
@@ -88,6 +87,7 @@ export const Header: React.FC = () => {
             iconName="magnifying-glass"
             isActive={activeIcons.search}
           ></IconButton>
+          <AuthenticationButton />
         </StyledIconDiv>
       </StyledHeader>
       {activeIcons.search && <SearchInput />}

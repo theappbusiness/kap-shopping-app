@@ -5,6 +5,7 @@ import { HomePage } from './pages/home';
 import { PaymentPage } from './pages/payment';
 import { ProductDetailsPage } from './pages/productDetails';
 import { ProductsPage } from './pages/products';
+import { ProtectedPage } from './pages/protected';
 import { registerIcons } from './registerIcons';
 
 registerIcons();
@@ -41,12 +42,11 @@ const routes: IRoute[] = [
     Component: PaymentPage,
     Layout: DefaultLayout,
   },
-  // TODO: Add this after serving the website via https
-  // {
-  //   path: '/protected',
-  //   Component: ProtectedPage,
-  //   Layout: DefaultLayout,
-  // },
+  {
+    path: '/protected',
+    Component: ProtectedPage,
+    Layout: DefaultLayout,
+  },
 ];
 
 export const Routes: React.FC = () => {
