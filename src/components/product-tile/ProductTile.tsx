@@ -50,10 +50,11 @@ const ProductTileContainer = styled.li`
 
 export const ProductTile: React.FC<{ product: Product }> = ({ product }) => {
   const { t } = useTranslation();
-  const { addItem } = useContext(CartContext);
+  const { cart, addItem, changeQuantity } = useContext(CartContext);
 
   const handleClick = () => {
-    addItem(product, 1);
+    const productInCart = cart.find((item) => item.id === product.id);
+    productInCart ? changeQuantity(product.id, 1) : addItem(product, 1);
   };
 
   return (

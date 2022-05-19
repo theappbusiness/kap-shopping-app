@@ -28,46 +28,34 @@ export const startingCart = {
   addItem: (): void => undefined,
 };
 
-export const removeItemFactory =
+const removeItemFactory =
   (setCart: React.Dispatch<React.SetStateAction<Cart>>) =>
   (id: string): void => {
     setCart((currCart) => currCart.filter((cartItem) => id !== cartItem.id));
   };
 
-export const changeQuantityFactory =
+const changeQuantityFactory =
   (setCart: React.Dispatch<React.SetStateAction<Cart>>) =>
   (id: string, amount: number): void => {
     setCart((currCart) => {
-      return currCart.map((currItem) => {
-        if (currItem.id === id) {
-          const newQty =
-            currItem.quantity + amount > 0 ? currItem.quantity + amount : 0;
-          return { ...currItem, quantity: newQty };
-        }
-        return { ...currItem };
-      });
+      return currCart
+        .map((item) => {
+          if (item.id === id) {
+            return { ...item, quantity: item.quantity + amount };
+          }
+          return { ...item };
+        })
+        .filter((item) => item.quantity > 0);
     });
   };
 
-export const addItemFactory =
-  (cart: Cart, setCart: React.Dispatch<React.SetStateAction<Cart>>) =>
+const addItemFactory =
+  (setCart: React.Dispatch<React.SetStateAction<Cart>>) =>
   (product: Product, amount: number): void => {
-    const productInCart = cart.find((item) => item.id === product.id);
-    if (productInCart) {
-      setCart((currCart) => {
-        return currCart.map((currItem) => {
-          if (currItem.id === product.id) {
-            return { ...currItem, quantity: currItem.quantity + amount };
-          }
-          return { ...currItem };
-        });
-      });
-    } else {
-      setCart((currCart) => [
-        ...currCart,
-        { id: product.id, name: product.name, quantity: amount },
-      ]);
-    }
+    setCart((currCart) => [
+      ...currCart,
+      { id: product.id, name: product.name, quantity: amount },
+    ]);
   };
 
 export const CartContext = React.createContext<CartState>(startingCart);
@@ -76,7 +64,7 @@ export const CartProvider: React.FC = ({ children }) => {
   const [cart, setCart] = useState<Cart>([]);
   const removeItem = removeItemFactory(setCart);
   const changeQuantity = changeQuantityFactory(setCart);
-  const addItem = addItemFactory(cart, setCart);
+  const addItem = addItemFactory(setCart);
 
   return (
     <CartContext.Provider value={{ cart, removeItem, changeQuantity, addItem }}>
