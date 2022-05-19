@@ -52,6 +52,10 @@ export const ProductTile: React.FC<{ product: Product }> = ({ product }) => {
   const { t } = useTranslation();
   const { addItem } = useContext(CartContext);
 
+  const handleClick = () => {
+    addItem(product);
+  };
+
   return (
     <ProductTileContainer data-testid="product-tile">
       {/* TODO: Add src when source image is available */}
@@ -64,12 +68,7 @@ export const ProductTile: React.FC<{ product: Product }> = ({ product }) => {
         <h3 className="product-tile-title">{product.name}</h3>
         <ProductPrice price={product.price} locale={userLocale}></ProductPrice>
       </div>
-      <Button
-        handleClick={() => {
-          addItem(product);
-        }}
-        iconName="shopping-bag"
-      >
+      <Button handleClick={handleClick} iconName="shopping-bag">
         {t('addToCart')}
       </Button>
     </ProductTileContainer>
