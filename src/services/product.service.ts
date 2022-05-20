@@ -3,11 +3,17 @@ import { Product } from '../types/product';
 import {
   API_GET_PRODUCT,
   API_GET_PRODUCTS,
+  API_POST_ORDER,
   API_SEARCH_PRODUCT,
 } from '../constants/api';
 
 type ProductApiResponse = {
   ['_source']: Product;
+};
+
+type PostProductOrder = {
+  product: string;
+  quantity: number;
 };
 
 export const getProductData = async (id: string): Promise<Product> => {
@@ -25,4 +31,12 @@ export const getSearchResults = async (
 ): Promise<Product[]> => {
   const { data } = await axios.get(API_SEARCH_PRODUCT(searchTerm));
   return data.products.map((product: ProductApiResponse) => product['_source']);
+};
+
+export const postOrder = async (
+  products: PostProductOrder[]
+): Promise<Product[]> => {
+  const { data } = await axios.post(API_POST_ORDER, { products });
+  console.log(data);
+  return data;
 };
