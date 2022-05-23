@@ -66,7 +66,6 @@ const addToCartFactory =
   (
     addItem: (product: Product, amount: number) => void,
     changeQuantity: (id: string, amount: number) => void,
-    postOrderCreateCookie: (product: Product) => void,
     cart: Cart
   ) =>
   (product: Product) => {
@@ -92,12 +91,7 @@ export const CartProvider: React.FC = ({ children }) => {
   const removeItem = removeItemFactory(setCart);
   const changeQuantity = changeQuantityFactory(setCart);
   const addItem = addItemFactory(setCart);
-  const addToCart = addToCartFactory(
-    addItem,
-    changeQuantity,
-    postOrderCreateCookie,
-    cart
-  );
+  const addToCart = addToCartFactory(addItem, changeQuantity, cart);
 
   return (
     <CartContext.Provider
