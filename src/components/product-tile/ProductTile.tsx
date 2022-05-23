@@ -54,7 +54,7 @@ const postOrderCreateCookie = async (product: Product) => {
   try {
     const productOrder = [{ product: product.id, quantity: 1 }];
     const order = await postOrder(productOrder);
-    createCartCookie(order._id);
+    createCartCookie(order.id);
   } catch (err) {
     console.log(err);
   }
