@@ -1,7 +1,6 @@
 export const createCartCookie = (cartId: string): void => {
-  document.cookie = `cartId=${cartId}; expires=${new Date(
-    2100,
-    4,
-    20
-  ).toUTCString()};`;
+  const date = new Date();
+  date.setTime(date.getTime() + 30 * 24 * 60 * 60 * 1000);
+
+  document.cookie = `cartId=${cartId}; expires=${date.toUTCString()};`;
 };
