@@ -6,8 +6,6 @@ import '../../translations/i18n';
 import { Button } from '../general/button';
 import { userLocale } from '../../translations/userLocale';
 import { CartContext } from '../../contexts/Cart';
-import { createCartCookie } from '../../utils/cookies';
-import { postOrder } from '../../services/product.service';
 import { ProductPrice } from './product-price/ProductPrice';
 
 const ProductTileContainer = styled.li`
@@ -50,26 +48,9 @@ const ProductTileContainer = styled.li`
   }
 `;
 
-const postOrderCreateCookie = async (product: Product) => {
-  try {
-    const productOrder = [{ product: product.id, quantity: 1 }];
-    const order = await postOrder(productOrder);
-    createCartCookie(order.id);
-  } catch (err) {
-    console.log(err);
-  }
-};
-
 export const ProductTile: React.FC<{ product: Product }> = ({ product }) => {
   const { t } = useTranslation();
-  const { cart, addItem, changeQuantity } = useContext(CartContext);
-
-  const handleClick = () => {
-    postOrderCreateCookie(product);
-
-    const productInCart = cart.find((item) => item.id === product.id);
-    productInCart ? changeQuantity(product.id, 1) : addItem(product, 1);
-  };
+  const { addToCart } = useContext(CartContext);
 
   return (
     <ProductTileContainer data-testid="product-tile">
@@ -83,7 +64,12 @@ export const ProductTile: React.FC<{ product: Product }> = ({ product }) => {
         <h3 className="product-tile-title">{product.name}</h3>
         <ProductPrice price={product.price} locale={userLocale}></ProductPrice>
       </div>
-      <Button handleClick={handleClick} iconName="shopping-bag">
+      <Button
+        handleClick={() => {
+          addToCart(product);
+        }}
+        iconName="shopping-bag"
+      >
         {t('addToCart')}
       </Button>
     </ProductTileContainer>
