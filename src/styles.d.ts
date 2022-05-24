@@ -56,10 +56,11 @@ export interface Swatch {
 }
 export interface SwatchV2 {
   hover: Color;
-  hoverColor: Color;
+  hoverShadow: Color;
   shadow: Color;
   borderColor: Color;
   borderRadius: string;
+  background: Color;
 }
 
 export interface Sizes {
