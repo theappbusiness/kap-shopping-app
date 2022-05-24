@@ -6,21 +6,6 @@ export const createCartCookie = (cartId: string): void => {
   document.cookie = `cartId=${cartId}; expires=${date.toUTCString()};`;
 };
 
-type Cookies = {
-  cartId?: string;
-};
-
 export const getCartCookie = (): string | undefined => {
-  const cookies: Cookies = document.cookie
-    .split(';')
-    .map((cookie) => cookie.split('='))
-    .reduce(
-      (prevObj, [key, value]) => ({
-        ...prevObj,
-        [key.trim()]: value,
-      }),
-      {}
-    );
-
-  return 'cartId' in cookies ? cookies.cartId : '';
+  return document.cookie.match(/cartId=([0-9a-f]+);/)?.[1];
 };
