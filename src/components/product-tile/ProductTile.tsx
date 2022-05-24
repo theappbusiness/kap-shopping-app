@@ -6,7 +6,6 @@ import '../../translations/i18n';
 import { Button } from '../general/button';
 import { userLocale } from '../../translations/userLocale';
 import { CartContext } from '../../contexts/Cart';
-import { postOrder } from '../../services/product.service';
 import { ProductPrice } from './product-price/ProductPrice';
 
 const ProductTileContainer = styled.li`
