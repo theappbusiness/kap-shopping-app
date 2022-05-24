@@ -2,16 +2,14 @@ import React, { ReactElement } from 'react';
 import styled from 'styled-components';
 import { IconProp } from '@fortawesome/fontawesome-svg-core';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { ContextualColors, Colors } from '../../../styles.d';
-import { colors } from '../../../styled';
+import { ContextualColors } from '../../../styles.d';
 
 const StyledButton = styled.button<{
-  colors: Colors;
   color: keyof ContextualColors;
 }>`
   width: 100%;
   height: fit-content;
-  background: ${({ theme, color }) => theme.palette[color].main};
+  background: ${({ theme, color }) => theme.paletteV2[color].background};
   color: ${({ theme, color }) => theme.palette[color].contrast};
   box-shadow: 3px 3px ${({ color, theme }) => theme.paletteV2[color].shadow};
   border: 1px solid ${({ color, theme }) => theme.paletteV2[color].borderColor};
@@ -24,8 +22,8 @@ const StyledButton = styled.button<{
   :hover {
     background: ${({ theme, color }) => theme.paletteV2[color].hover};
     box-shadow: 3px 3px
-      ${({ color, theme }) => theme.paletteV2[color].hoverColor};
-    color: ${({ colors }) => colors.primary};
+      ${({ color, theme }) => theme.paletteV2[color].hoverShadow};
+    color: ${({ theme }) => theme.palette.primary.main};
   }
   & .button-icon {
     margin-left: 0.5rem;
@@ -46,12 +44,7 @@ export const Button = ({
   className?: string;
 }): ReactElement => {
   return (
-    <StyledButton
-      className={className}
-      onClick={handleClick}
-      color={color}
-      colors={colors}
-    >
+    <StyledButton className={className} onClick={handleClick} color={color}>
       {children}
       {iconName && (
         <FontAwesomeIcon
