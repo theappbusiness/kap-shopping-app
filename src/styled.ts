@@ -29,7 +29,7 @@ export const GlobalStyle = createGlobalStyle`
   }
 `;
 
-const colors: Colors = {
+export const colors: Colors = {
   dark: '#18181a',
   light: '#e4e4ee',
   white: '#fafaff',
@@ -97,6 +97,50 @@ export const theme: Theme = {
     danger: {
       main: colors.danger,
       contrast: colors.light,
+    },
+  },
+  paletteV2: {
+    primary: {
+      hover: colors.Orange60,
+      hoverColor: colors.Grey70,
+      shadow: colors.Orange60,
+      borderColor: colors.Grey70,
+      borderRadius: '0px',
+    },
+    secondary: {
+      hover: colors.Grey20,
+      hoverColor: colors.Orange10,
+      shadow: colors.NeutralWhite,
+      borderColor: colors.Grey60,
+      borderRadius: '2px',
+    },
+    info: {
+      hover: colors.Info10,
+      hoverColor: colors.Info20,
+      shadow: colors.Info10,
+      borderColor: colors.Info20,
+      borderRadius: '0px',
+    },
+    success: {
+      hover: colors.Success10,
+      hoverColor: colors.Success20,
+      shadow: colors.Success10,
+      borderColor: colors.Success10,
+      borderRadius: '0px',
+    },
+    warning: {
+      hover: colors.Warning20,
+      hoverColor: colors.Warning10,
+      shadow: colors.Warning20,
+      borderColor: colors.Warning10,
+      borderRadius: '2px',
+    },
+    danger: {
+      hover: colors.Danger20,
+      hoverColor: colors.Danger10,
+      shadow: colors.Danger10,
+      borderColor: colors.Danger10,
+      borderRadius: '2px',
     },
   },
   sizes: {
