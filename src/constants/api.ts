@@ -1,4 +1,4 @@
-const HOST = 'https://d1sq674fk5y5nl.cloudfront.net';
+const HOST = 'http://ec2-54-153-84-234.us-west-1.compute.amazonaws.com';
 export const API = `${HOST}/api/v1`;
 export const API_GET_PRODUCTS = `${API}/products`;
 export const API_GET_PRODUCT = (id: string): string =>
