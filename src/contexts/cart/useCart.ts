@@ -1,36 +1,8 @@
-import React, { useState, useEffect } from 'react';
-import { getOrderData, postOrder } from '../services/order.service';
-import { createCartCookie, getCartCookie } from '../utils/cookies';
-import { Product } from '../types/product';
-
-type CartItems = { id: string; name: string; quantity: number };
-type Cart = CartItems[];
-type CartState = {
-  cart: Cart;
-  removeItem: (id: string) => void;
-  changeQuantity: (id: string, amount: number) => void;
-  addItem: (product: Product, amount: number) => void;
-  addToCart: (product: Product) => void;
-};
-
-export const startingCart = {
-  cart: [
-    {
-      id: '62617159f21bcb5fa89e67ab',
-      name: 'Think Personal Front',
-      quantity: 3,
-    },
-    {
-      id: '62617159f21bcb5fa89e67ac',
-      name: 'Ready',
-      quantity: 1,
-    },
-  ],
-  removeItem: (): void => undefined,
-  changeQuantity: (): void => undefined,
-  addItem: (): void => undefined,
-  addToCart: (): void => undefined,
-};
+import { useState, useEffect } from 'react';
+import { postOrder, getOrderData } from '../../services/order.service';
+import { Product } from '../../types/product';
+import { createCartCookie, getCartCookie } from '../../utils/cookies';
+import { Cart, CartState } from '.';
 
 const removeItemFactory =
   (setCart: React.Dispatch<React.SetStateAction<Cart>>) =>
@@ -84,9 +56,7 @@ const postOrderCreateCookie = async (product: Product) => {
   }
 };
 
-export const CartContext = React.createContext<CartState>(startingCart);
-
-export const CartProvider: React.FC = ({ children }) => {
+export const useCart = (): CartState => {
   const [cart, setCart] = useState<Cart>([]);
   const removeItem = removeItemFactory(setCart);
   const changeQuantity = changeQuantityFactory(setCart);
@@ -114,17 +84,11 @@ export const CartProvider: React.FC = ({ children }) => {
     }
   }, []);
 
-  return (
-    <CartContext.Provider
-      value={{
-        cart,
-        removeItem,
-        changeQuantity,
-        addItem,
-        addToCart,
-      }}
-    >
-      {children}
-    </CartContext.Provider>
-  );
+  return {
+    cart,
+    removeItem,
+    changeQuantity,
+    addItem,
+    addToCart,
+  };
 };

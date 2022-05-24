@@ -1,11 +1,11 @@
 import { useContext } from 'react';
 import { CartItem } from '../general/cart-item';
 import { List } from '../general/list';
-import { CartContext } from '../../contexts/Cart';
+import { CartContext } from '../../contexts/cart';
 
 export const CartList: React.FC = () => {
   const { cart, changeQuantity, removeItem } = useContext(CartContext);
-
+  console.log(cart);
   const cartItems: React.ReactElement[] = cart.map((item) => {
     return (
       <CartItem

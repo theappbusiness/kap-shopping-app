@@ -1,5 +1,5 @@
 import { useContext, useMemo } from 'react';
-import { CartContext } from '../../contexts/Cart';
+import { CartContext } from '../../contexts/cart';
 import { Badge } from '../general/badge';
 
 export const TotalCartQuantityBadge = () => {

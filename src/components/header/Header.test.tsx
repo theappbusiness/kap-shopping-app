@@ -1,9 +1,31 @@
 import { userEvent } from '@storybook/testing-library';
 import { registerIcons } from '../../registerIcons';
 import { render, screen } from '../../test-utils';
-import { startingCart } from '../../contexts/Cart';
 import { Header } from './Header';
 registerIcons();
+
+const startingCart = {
+  cart: [
+    {
+      id: '62617159f21bcb5fa89e67ab',
+      name: 'Think Personal Front',
+      quantity: 3,
+    },
+    {
+      id: '62617159f21bcb5fa89e67ac',
+      name: 'Ready',
+      quantity: 1,
+    },
+  ],
+  removeItem: (): void => undefined,
+  changeQuantity: (): void => undefined,
+  addItem: (): void => undefined,
+  addToCart: (): void => undefined,
+};
+
+jest.mock('../../contexts/cart/useCart', () => ({
+  useCart: () => ({ ...startingCart }),
+}));
 
 describe('Header', () => {
   it('Renders Header element', () => {

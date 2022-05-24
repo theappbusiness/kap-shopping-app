@@ -1,6 +1,6 @@
 import { registerIcons } from '../../registerIcons';
 import { render, screen } from '../../test-utils';
-import { startingCart } from '../../contexts/Cart';
+import { startingCart } from '../../contexts/cart';
 import { CartList } from '.';
 registerIcons();
 
