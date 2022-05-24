@@ -50,10 +50,7 @@ const ProductTileContainer = styled.li`
 
 export const ProductTile: React.FC<{ product: Product }> = ({ product }) => {
   const { t } = useTranslation();
-
   const { addToCart } = useContext(CartContext);
-
-
   return (
     <ProductTileContainer data-testid="product-tile">
       {/* TODO: Add src when source image is available */}
@@ -71,6 +68,7 @@ export const ProductTile: React.FC<{ product: Product }> = ({ product }) => {
           addToCart(product);
         }}
         iconName="shopping-bag"
+        color="primary"
       >
         {t('addToCart')}
       </Button>
