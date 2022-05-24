@@ -51,16 +51,9 @@ const ProductTileContainer = styled.li`
 
 export const ProductTile: React.FC<{ product: Product }> = ({ product }) => {
   const { t } = useTranslation();
-  const { cart, addItem, changeQuantity } = useContext(CartContext);
 
-  const handleClick = () => {
-    // TODO: Add to cart
-    const productOrder = [{ product: product.id, quantity: 1 }];
-    postOrder(productOrder);
+  const { addToCart } = useContext(CartContext);
 
-    const productInCart = cart.find((item) => item.id === product.id);
-    productInCart ? changeQuantity(product.id, 1) : addItem(product, 1);
-  };
 
   return (
     <ProductTileContainer data-testid="product-tile">
@@ -74,7 +67,12 @@ export const ProductTile: React.FC<{ product: Product }> = ({ product }) => {
         <h3 className="product-tile-title">{product.name}</h3>
         <ProductPrice price={product.price} locale={userLocale}></ProductPrice>
       </div>
-      <Button handleClick={handleClick} iconName="shopping-bag" color='primary'>
+      <Button
+        handleClick={() => {
+          addToCart(product);
+        }}
+        iconName="shopping-bag"
+      >
         {t('addToCart')}
       </Button>
     </ProductTileContainer>

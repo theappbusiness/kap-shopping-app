@@ -1,4 +1,6 @@
 import React, { useState } from 'react';
+import { postOrder } from '../services/order.service';
+import { createCartCookie } from '../utils/cookies';
 import { Product } from '../types/product';
 
 type CartItems = { id: string; name: string; quantity: number };
@@ -8,6 +10,7 @@ type CartState = {
   removeItem: (id: string) => void;
   changeQuantity: (id: string, amount: number) => void;
   addItem: (product: Product, amount: number) => void;
+  addToCart: (product: Product) => void;
 };
 
 export const startingCart = {
@@ -26,6 +29,7 @@ export const startingCart = {
   removeItem: (): void => undefined,
   changeQuantity: (): void => undefined,
   addItem: (): void => undefined,
+  addToCart: (): void => undefined,
 };
 
 const removeItemFactory =
@@ -58,6 +62,28 @@ const addItemFactory =
     ]);
   };
 
+const addToCartFactory =
+  (
+    addItem: (product: Product, amount: number) => void,
+    changeQuantity: (id: string, amount: number) => void,
+    cart: Cart
+  ) =>
+  (product: Product) => {
+    postOrderCreateCookie(product);
+    const productInCart = cart.find((item) => item.id === product.id);
+    productInCart ? changeQuantity(product.id, 1) : addItem(product, 1);
+  };
+
+const postOrderCreateCookie = async (product: Product) => {
+  try {
+    const productOrder = [{ product: product.id, quantity: 1 }];
+    const order = await postOrder(productOrder);
+    createCartCookie(order.id);
+  } catch (err) {
+    console.log(err);
+  }
+};
+
 export const CartContext = React.createContext<CartState>(startingCart);
 
 export const CartProvider: React.FC = ({ children }) => {
@@ -65,9 +91,18 @@ export const CartProvider: React.FC = ({ children }) => {
   const removeItem = removeItemFactory(setCart);
   const changeQuantity = changeQuantityFactory(setCart);
   const addItem = addItemFactory(setCart);
+  const addToCart = addToCartFactory(addItem, changeQuantity, cart);
 
   return (
-    <CartContext.Provider value={{ cart, removeItem, changeQuantity, addItem }}>
+    <CartContext.Provider
+      value={{
+        cart,
+        removeItem,
+        changeQuantity,
+        addItem,
+        addToCart,
+      }}
+    >
       {children}
     </CartContext.Provider>
   );
