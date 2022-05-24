@@ -2,19 +2,31 @@ import React, { ReactElement } from 'react';
 import styled from 'styled-components';
 import { IconProp } from '@fortawesome/fontawesome-svg-core';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { ContextualColors } from '../../../styles.d';
+import { ContextualColors, Colors } from '../../../styles.d';
+import { colors } from '../../../styled';
 
-const StyledButton = styled.button<{ color: keyof ContextualColors }>`
+const StyledButton = styled.button<{
+  colors: Colors;
+  color: keyof ContextualColors;
+}>`
   width: 100%;
   height: fit-content;
   background: ${({ theme, color }) => theme.palette[color].main};
   color: ${({ theme, color }) => theme.palette[color].contrast};
+  box-shadow: 3px 3px ${({ color, theme }) => theme.paletteV2[color].shadow};
+  border: 1px solid ${({ color, theme }) => theme.paletteV2[color].borderColor};
+  border-radius: ${({ color, theme }) => theme.paletteV2[color].borderRadius};
   padding: ${({ theme }) => theme.sizes.spacing.md};
   font-size: ${({ theme }) => theme.sizes.fonts.md};
   outline: none;
-  border: 1px solid ${({ theme, color }) => theme.palette[color].contrast};
   cursor: pointer;
 
+  :hover {
+    background: ${({ theme, color }) => theme.paletteV2[color].hover};
+    box-shadow: 3px 3px
+      ${({ color, theme }) => theme.paletteV2[color].hoverColor};
+    color: ${({ colors }) => colors.primary};
+  }
   & .button-icon {
     margin-left: 0.5rem;
   }
@@ -34,7 +46,12 @@ export const Button = ({
   className?: string;
 }): ReactElement => {
   return (
-    <StyledButton className={className} onClick={handleClick} color={color}>
+    <StyledButton
+      className={className}
+      onClick={handleClick}
+      color={color}
+      colors={colors}
+    >
       {children}
       {iconName && (
         <FontAwesomeIcon
