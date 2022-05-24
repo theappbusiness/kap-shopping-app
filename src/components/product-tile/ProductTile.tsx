@@ -6,8 +6,8 @@ import '../../translations/i18n';
 import { Button } from '../general/button';
 import { userLocale } from '../../translations/userLocale';
 import { CartContext } from '../../contexts/Cart';
-import { ProductPrice } from './product-price/ProductPrice';
 import { postOrder } from '../../services/product.service';
+import { ProductPrice } from './product-price/ProductPrice';
 
 const ProductTileContainer = styled.li`
   margin: 0 auto 0 auto;
@@ -57,7 +57,7 @@ export const ProductTile: React.FC<{ product: Product }> = ({ product }) => {
     // TODO: Add to cart
     const productOrder = [{ product: product.id, quantity: 1 }];
     postOrder(productOrder);
-    
+
     const productInCart = cart.find((item) => item.id === product.id);
     productInCart ? changeQuantity(product.id, 1) : addItem(product, 1);
   };
@@ -74,7 +74,7 @@ export const ProductTile: React.FC<{ product: Product }> = ({ product }) => {
         <h3 className="product-tile-title">{product.name}</h3>
         <ProductPrice price={product.price} locale={userLocale}></ProductPrice>
       </div>
-      <Button handleClick={handleClick} iconName="shopping-bag">
+      <Button handleClick={handleClick} iconName="shopping-bag" color='primary'>
         {t('addToCart')}
       </Button>
     </ProductTileContainer>
