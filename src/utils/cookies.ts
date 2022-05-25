@@ -5,3 +5,7 @@ export const createCartCookie = (cartId: string): void => {
 
   document.cookie = `cartId=${cartId}; expires=${date.toUTCString()};`;
 };
+
+export const getCartCookie = (): string | undefined => {
+  return document.cookie.match(/cartId=([0-9a-f]+)/)?.[1];
+};
