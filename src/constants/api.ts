@@ -6,3 +6,4 @@ export const API_GET_PRODUCT = (id: string): string =>
 export const API_SEARCH_PRODUCT = (searchTerm: string): string =>
   `${API_GET_PRODUCTS}?search=${searchTerm}&limit=5`;
 export const API_POST_ORDER = `${API}/orders`;
+export const API_GET_ORDER = (id: string): string => `${API}/orders/${id}`;

@@ -1,6 +1,6 @@
-import React, { useState } from 'react';
-import { postOrder } from '../services/order.service';
-import { createCartCookie } from '../utils/cookies';
+import React, { useState, useEffect } from 'react';
+import { getOrderData, postOrder } from '../services/order.service';
+import { createCartCookie, getCartCookie } from '../utils/cookies';
 import { Product } from '../types/product';
 
 type CartItems = { id: string; name: string; quantity: number };
@@ -92,6 +92,27 @@ export const CartProvider: React.FC = ({ children }) => {
   const changeQuantity = changeQuantityFactory(setCart);
   const addItem = addItemFactory(setCart);
   const addToCart = addToCartFactory(addItem, changeQuantity, cart);
+
+  useEffect(() => {
+    const cartId = getCartCookie();
+    const getOrder = async (cartId: string) => {
+      try {
+        const order = await getOrderData(cartId);
+        const productsInOrder = order.products.map((item) => ({
+          id: item.product.id,
+          name: item.product.name,
+          quantity: item.quantity,
+        }));
+        setCart(productsInOrder);
+      } catch (err) {
+        console.log(err);
+      }
+    };
+
+    if (cartId) {
+      getOrder(cartId);
+    }
+  }, []);
 
   return (
     <CartContext.Provider
