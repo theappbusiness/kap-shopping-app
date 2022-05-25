@@ -55,12 +55,13 @@ export interface Swatch {
   contrast: Color;
 }
 export interface SwatchV2 {
+  main: Color;
+  contrast: Color;
   hover: Color;
   hoverShadow: Color;
   shadow: Color;
   borderColor: Color;
   borderRadius: string;
-  background: Color;
 }
 
 export interface Sizes {
