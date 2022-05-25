@@ -19,7 +19,8 @@ const StyledButton = styled.button<{
   outline: none;
   cursor: pointer;
 
-  :hover {
+  :hover,
+  :focus-visible {
     background: ${({ theme, color }) => theme.paletteV2[color].hover};
     box-shadow: 3px 3px
       ${({ color, theme }) => theme.paletteV2[color].hoverShadow};
