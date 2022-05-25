@@ -54,6 +54,15 @@ export interface Swatch {
   main: Color;
   contrast: Color;
 }
+export interface SwatchV2 {
+  main: Color;
+  contrast: Color;
+  hover: Color;
+  hoverShadow: Color;
+  shadow: Color;
+  borderColor: Color;
+  borderRadius: string;
+}
 
 export interface Sizes {
   xxs: string;
@@ -68,6 +77,7 @@ export interface Sizes {
 export interface Theme {
   colors: Colors;
   palette: Record<keyof ContextualColors, Swatch>;
+  paletteV2: Record<keyof ContextualColors, SwatchV2>;
   sizes: {
     spacing: Sizes;
     fonts: Sizes;

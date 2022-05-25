@@ -16,13 +16,7 @@ describe('Button renders', () => {
   test('Button renders with primary color palette when passed no color props', () => {
     render(<Button handleClick={myMockFunction}>given text </Button>);
     const button = screen.getByRole('button', { name: 'given text' });
-    expect(button).toHaveStyle(
-      `background-color: ${theme.palette.primary.main}`
-    );
-    expect(button).toHaveStyle(
-      `border-color: ${theme.palette.primary.contrast}`
-    );
-    expect(button).toHaveStyle(`color: ${theme.palette.primary.contrast}`);
+    expect(button).toHaveStyle(`background: ${theme.palette.primary.main}`);
   });
 
   test('Button renders with danger color palette when passed color prop of "danger"', () => {
@@ -32,13 +26,7 @@ describe('Button renders', () => {
       </Button>
     );
     const button = screen.getByRole('button', { name: 'given text' });
-    expect(button).toHaveStyle(
-      `background-color: ${theme.palette.danger.main}`
-    );
-    expect(button).toHaveStyle(
-      `border-color: ${theme.palette.danger.contrast}`
-    );
-    expect(button).toHaveStyle(`color: ${theme.palette.danger.contrast}`);
+    expect(button).toHaveStyle(`background: ${theme.palette.danger.main}`);
   });
 
   test('Button handleClick function is called once upon button being clicked ', async () => {
