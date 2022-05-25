@@ -9,8 +9,8 @@ const StyledButton = styled.button<{
 }>`
   width: 100%;
   height: fit-content;
-  background: ${({ theme, color }) => theme.paletteV2[color].background};
-  color: ${({ theme, color }) => theme.palette[color].contrast};
+  background: ${({ theme, color }) => theme.paletteV2[color].main};
+  color: ${({ theme, color }) => theme.paletteV2[color].contrast};
   box-shadow: 3px 3px ${({ color, theme }) => theme.paletteV2[color].shadow};
   border: 1px solid ${({ color, theme }) => theme.paletteV2[color].borderColor};
   border-radius: ${({ color, theme }) => theme.paletteV2[color].borderRadius};
@@ -23,7 +23,7 @@ const StyledButton = styled.button<{
     background: ${({ theme, color }) => theme.paletteV2[color].hover};
     box-shadow: 3px 3px
       ${({ color, theme }) => theme.paletteV2[color].hoverShadow};
-    color: ${({ theme }) => theme.palette.primary.main};
+    color: ${({ theme, color }) => theme.paletteV2[color].main};
   }
   & .button-icon {
     margin-left: 0.5rem;
