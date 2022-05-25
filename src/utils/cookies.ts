@@ -7,5 +7,5 @@ export const createCartCookie = (cartId: string): void => {
 };
 
 export const getCartCookie = (): string | undefined => {
-  return document.cookie.match(/cartId=([0-9a-f]+);/)?.[1];
+  return document.cookie.match(/cartId=([0-9a-f]+)/)?.[1];
 };

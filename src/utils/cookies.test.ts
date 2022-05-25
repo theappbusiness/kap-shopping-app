@@ -11,12 +11,21 @@ describe('getCartCookie', () => {
   });
 
   it("returns cartId as a string when it's the only cookie", () => {
+    // with trailing semi colon
     Object.defineProperty(document, 'cookie', {
       writable: true,
       value: 'cartId=627a843ee88b85ea8e0bc181;',
     });
     const cartId = getCartCookie();
     expect(cartId).toBe('627a843ee88b85ea8e0bc181');
+
+    // without trailing semi colon
+    Object.defineProperty(document, 'cookie', {
+      writable: true,
+      value: 'cartId=627a843ee88b85ea8e0bc181',
+    });
+    const cartId2 = getCartCookie();
+    expect(cartId2).toBe('627a843ee88b85ea8e0bc181');
   });
 
   it('returns empty string when no cartId cookie exists', () => {
