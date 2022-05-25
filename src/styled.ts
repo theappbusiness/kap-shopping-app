@@ -106,7 +106,8 @@ export const theme: Theme = {
       shadow: colors.Orange60,
       borderColor: colors.Grey70,
       borderRadius: '0px',
-      background: colors.primary,
+      main: colors.primary,
+      contrast: colors.light,
     },
     secondary: {
       hover: colors.Grey20,
@@ -114,7 +115,8 @@ export const theme: Theme = {
       shadow: colors.NeutralWhite,
       borderColor: colors.Grey60,
       borderRadius: '2px',
-      background: colors.secondary,
+      main: colors.secondary,
+      contrast: colors.dark,
     },
     info: {
       hover: colors.Info10,
@@ -122,7 +124,8 @@ export const theme: Theme = {
       shadow: colors.Info10,
       borderColor: colors.Info20,
       borderRadius: '0px',
-      background: colors.info,
+      main: colors.info,
+      contrast: colors.light,
     },
     success: {
       hover: colors.Success10,
@@ -130,7 +133,8 @@ export const theme: Theme = {
       shadow: colors.Success10,
       borderColor: colors.Success10,
       borderRadius: '0px',
-      background: colors.success,
+      main: colors.success,
+      contrast: colors.light,
     },
     warning: {
       hover: colors.Warning20,
@@ -138,7 +142,8 @@ export const theme: Theme = {
       shadow: colors.Warning20,
       borderColor: colors.Warning10,
       borderRadius: '2px',
-      background: colors.warning,
+      main: colors.warning,
+      contrast: colors.dark,
     },
     danger: {
       hover: colors.Danger20,
@@ -146,7 +151,8 @@ export const theme: Theme = {
       shadow: colors.Danger10,
       borderColor: colors.Danger10,
       borderRadius: '2px',
-      background: colors.danger,
+      main: colors.danger,
+      contrast: colors.light,
     },
   },
   sizes: {
