@@ -60,30 +60,16 @@ export const Header: React.FC = () => {
   return (
     <HeaderContainer data-testid="header">
       <StyledHeader>
-        <IconButton
-          Icon={Menu}
-          iconWidth={48}
-          data-testid="menu-icon"
-          stroke={'false'}
-          buttonSize="medium"
-        />
+        <IconButton Icon={Menu} data-testid="menu-icon" stroke={'false'} />
 
         <h1>JUNO</h1>
         <StyledIconDiv>
           {user && <h4 className="greeting">Hello, {user.given_name}!</h4>}
-          <IconButton
-            Icon={Like}
-            iconWidth={48}
-            data-testid="like-icon"
-            stroke={'false'}
-            buttonSize="medium"
-          />
+          <IconButton Icon={Like} data-testid="like-icon" stroke={'false'} />
           <IconButton
             Icon={Cart}
-            iconWidth={48}
             data-testid="cart-icon"
             stroke={'false'}
-            buttonSize="medium"
             onClick={() => {
               setActiveIcons((currActiveIcons) => {
                 return { ...currActiveIcons, cart: !currActiveIcons.cart };

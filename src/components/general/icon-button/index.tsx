@@ -5,11 +5,11 @@ import React, { ReactElement } from 'react';
 import { SvgIcon } from '../icon';
 
 export const StyledSvgContainer = styled.button<{
-  stroke?: 'true' | 'false';
-  buttonSize: 'small' | 'medium';
+  stroke: 'true' | 'false';
+  buttonSize?: 'small' | 'medium';
 }>`
-  height: ${(props) => (props.buttonSize === 'small' ? `36px` : '48px')};
-  width: ${(props) => (props.buttonSize === 'small' ? `36px` : '48px')};
+  height: ${({ buttonSize }) => (buttonSize === 'small' ? `36px` : '48px')};
+  width: ${({ buttonSize }) => (buttonSize === 'small' ? `36px` : '48px')};
   background-color: transparent;
   display: inline-flex;
   align-items: center;
@@ -17,8 +17,8 @@ export const StyledSvgContainer = styled.button<{
   cursor: pointer;
   border-radius: 2px;
   border: 1px solid
-    ${(props) =>
-      props.stroke === 'true' ? props.theme.colors.Grey70 : 'transparent'};
+    ${({ stroke, theme }) =>
+      stroke === 'true' ? theme.colors.Grey70 : 'transparent'};
   position: relative;
 
   &:hover,
@@ -39,7 +39,7 @@ export const StyledSvgContainer = styled.button<{
 `;
 
 interface ButtonProps extends React.ComponentPropsWithoutRef<'button'> {
-  buttonSize: 'small' | 'medium';
+  buttonSize?: 'small' | 'medium';
   iconWidth?: 24 | 48;
   stroke: 'true' | 'false';
   Icon?: React.FunctionComponent<React.SVGProps<SVGSVGElement>>;

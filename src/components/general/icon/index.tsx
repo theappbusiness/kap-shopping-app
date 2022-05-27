@@ -10,8 +10,8 @@ export const SvgContainer = styled.div<{
   align-items: center;
   justify-content: center;
   & svg {
-    height: ${(props) => (props.height ? `${props.height}px` : 'auto')};
-    width: ${(props) => (props.width ? `${props.width}px` : 'auto')};
+    height: ${({ height }) => (height ? `${height}px` : 'auto')};
+    width: ${({ width }) => (width ? `${width}px` : 'auto')};
   }
 `;
 interface IconProps {
