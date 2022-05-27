@@ -1,7 +1,5 @@
-import { userEvent } from '@storybook/testing-library';
 import { registerIcons } from '../../registerIcons';
 import { render, screen } from '../../test-utils';
-import { startingCart } from '../../contexts/Cart';
 import { Header } from './Header';
 registerIcons();
 
@@ -12,66 +10,27 @@ describe('Header', () => {
     expect(header).toBeInTheDocument();
   });
 
-  it('Renders Hamburger Menu Icon', () => {
+  it('Renders Menu Icon', () => {
     render(<Header />);
-    const hamburgerIcon = screen.getByTestId('hamburger-icon');
+    const hamburgerIcon = screen.getByTestId('menu-icon');
     expect(hamburgerIcon).toBeInTheDocument();
   });
 
-  it('Renders Search Icon', () => {
+  it('Renders Like Icon', () => {
     render(<Header />);
-    const searchIcon = screen.getByTestId('magnifying-glass');
-    expect(searchIcon).toBeInTheDocument();
+    const likeIcon = screen.getByTestId('like-icon');
+    expect(likeIcon).toBeInTheDocument();
   });
 
-  it('Renders Basket Icon', () => {
+  it('Renders Cart Icon', () => {
     render(<Header />);
-    const basketIcon = screen.getByTestId('bag-shopping');
-    expect(basketIcon).toBeInTheDocument();
+    const cartIcon = screen.getByTestId('cart-icon');
+    expect(cartIcon).toBeInTheDocument();
   });
 
   it('Renders Shop Title', () => {
     render(<Header />);
-    const shopTitle = screen.getByText('Shoply');
+    const shopTitle = screen.getByText('JUNO');
     expect(shopTitle).toBeInTheDocument();
-  });
-
-  it('Displays the SearchInput component when the user clicks the search button, then removes it when clicked again ', async () => {
-    render(<Header />);
-
-    const searchInput = screen.queryByRole('textbox');
-    expect(searchInput).not.toBeInTheDocument();
-
-    const searchIcon = screen.getByTestId('magnifying-glass');
-    userEvent.click(searchIcon);
-    const searchInputDisplayed = await screen.findByRole('textbox');
-    expect(searchInputDisplayed).toBeVisible();
-
-    userEvent.click(searchIcon);
-    const searchInputNone = screen.queryByRole('textbox');
-    expect(searchInputNone).not.toBeInTheDocument();
-  });
-
-  it('Displays a list of cart item components when user clicks the bag icon, then hides it when clicked again', async () => {
-    render(<Header />);
-
-    const cartList = screen.queryByRole('list');
-    const cartItem = screen.queryAllByTestId('cart-item');
-    expect(cartList).not.toBeInTheDocument();
-    expect(cartItem).toEqual([]);
-
-    const cartIcon = screen.getByTestId('bag-shopping');
-
-    userEvent.click(cartIcon);
-    const cartListDisplayed = await screen.findByRole('list');
-    const cartItemsDisplayed = await screen.findAllByTestId('cart-item');
-    expect(cartListDisplayed).toBeVisible();
-    expect(cartItemsDisplayed).toHaveLength(startingCart.cart.length);
-
-    userEvent.click(cartIcon);
-    const cartListNone = screen.queryByRole('list');
-    const cartItemNone = screen.queryAllByTestId('cart-item');
-    expect(cartListNone).not.toBeInTheDocument();
-    expect(cartItemNone).toEqual([]);
   });
 });

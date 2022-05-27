@@ -12,6 +12,10 @@ export const GlobalStyle = createGlobalStyle`
   ul {
     list-style: none;
   }
+  h1 {
+    font-family: 'Koulen';
+    font-size: 38px;
+  }
 
   :root {
     --grid-factor: 2;
