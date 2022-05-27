@@ -19,8 +19,6 @@ const StyledHeader = styled.div`
   justify-content: space-between;
   align-items: center;
   h1 {
-    font-family: 'Koulen';
-    font-size: 38px;
     text-shadow: 1px 0px ${({ theme }) => theme.colors.Orange60};
     letter-spacing: 0.42px;
   }
