@@ -17,6 +17,7 @@ export const StyledSvgContainer = styled.button<{
   border: 1px solid
     ${(props) =>
       props.stroke === 'true' ? props.theme.colors.Grey70 : 'transparent'};
+  position: relative;
 
   &:hover,
   &:focus {
@@ -43,10 +44,11 @@ interface ButtonProps extends React.ComponentPropsWithoutRef<'button'> {
 }
 
 export const IconButton = (props: ButtonProps): ReactElement => {
-  const { Icon, iconWidth, ...rest } = props;
+  const { Icon, iconWidth, children, ...rest } = props;
   return (
     <StyledSvgContainer {...rest}>
       <SvgIcon Icon={Icon} width={iconWidth} />
+      {children}
     </StyledSvgContainer>
   );
 };

@@ -3,9 +3,11 @@ import styled from 'styled-components';
 import { useAuth0 } from '@auth0/auth0-react';
 import { SearchInput } from '../search';
 import { CartList } from '../cart-list';
-import { ReactComponent as Cart } from '../../assets/icons/Iconcart.svg';
-import { ReactComponent as Like } from '../../assets/icons/Iconsaved.svg';
-import { ReactComponent as Menu } from '../../assets/icons/Iconmenu.svg';
+import { ReactComponent as Cart } from '../../assets/icons/cart.svg';
+import { ReactComponent as Like } from '../../assets/icons/like.svg';
+import { ReactComponent as Menu } from '../../assets/icons/menu.svg';
+import { IconButton } from '../general/icon-button';
+import { TotalCartQuantityBadge } from '../TotalCartQuantityBadge';
 
 const HeaderContainer = styled.div`
   display: flex;
@@ -48,7 +50,6 @@ type HeaderIcons = {
 };
 
 export const Header: React.FC = () => {
-  const [searchIsActive, setSearchIsActive] = useState<boolean>(false);
   const { user } = useAuth0();
 
   const [activeIcons, setActiveIcons] = useState<HeaderIcons>({
@@ -59,12 +60,38 @@ export const Header: React.FC = () => {
   return (
     <HeaderContainer data-testid="header">
       <StyledHeader>
-        <Menu data-testid="menu-icon" className="icon-logo"></Menu>
+        <IconButton
+          Icon={Menu}
+          iconWidth={48}
+          data-testid="menu-icon"
+          stroke={'false'}
+          buttonSize="medium"
+        />
+
         <h1>JUNO</h1>
         <StyledIconDiv>
           {user && <h4 className="greeting">Hello, {user.given_name}!</h4>}
-          <Like data-testid="like-icon" className="icon-logo" />
-          <Cart data-testid="cart-icon" className="icon-logo" />
+          <IconButton
+            Icon={Like}
+            iconWidth={48}
+            data-testid="like-icon"
+            stroke={'false'}
+            buttonSize="medium"
+          />
+          <IconButton
+            Icon={Cart}
+            iconWidth={48}
+            data-testid="cart-icon"
+            stroke={'false'}
+            buttonSize="medium"
+            onClick={() => {
+              setActiveIcons((currActiveIcons) => {
+                return { ...currActiveIcons, cart: !currActiveIcons.cart };
+              });
+            }}
+          >
+            <TotalCartQuantityBadge />
+          </IconButton>
         </StyledIconDiv>
       </StyledHeader>
       {activeIcons.search && <SearchInput />}
