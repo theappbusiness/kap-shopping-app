@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 import { Button } from '../button';
-import { IconButton } from '../icon-button/IconButton';
+import { IconButton } from '../icon-button/index';
 
 type CartItemProp = {
   imgSrc: string;
@@ -65,9 +65,19 @@ export const CartItem: React.FC<CartItemProp> = ({
       <div className="cart-info-div">
         <h3 data-testid="cart-item-name">{name}</h3>
         <div className="cart-quantity-div">
-          <IconButton iconName="minus" onClick={onDecreaseStepperClick} />
+          <IconButton
+            iconName="minus"
+            onClick={onDecreaseStepperClick}
+            buttonSize={'small'}
+            stroke={'false'}
+          />
           <p data-testid="cart-item-quantity">{quantity}</p>
-          <IconButton iconName="plus" onClick={onIncreaseStepperClick} />
+          <IconButton
+            iconName="plus"
+            onClick={onIncreaseStepperClick}
+            buttonSize={'small'}
+            stroke={'false'}
+          />
         </div>
         <StyledRemoveButton color="secondary" handleClick={onRemoveClick}>
           Remove from cart
