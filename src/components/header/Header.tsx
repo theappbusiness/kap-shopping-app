@@ -3,9 +3,9 @@ import styled from 'styled-components';
 import { useAuth0 } from '@auth0/auth0-react';
 import { SearchInput } from '../search';
 import { CartList } from '../cart-list';
-import { ReactComponent as Cart } from '../../assets/icons/Icon=cart.svg';
-import { ReactComponent as Like } from '../../assets/icons/Icon=saved.svg';
-import { ReactComponent as Menu } from '../../assets/icons/Icon=menu.svg';
+import { ReactComponent as Cart } from '../../assets/icons/Iconcart.svg';
+import { ReactComponent as Like } from '../../assets/icons/Iconsaved.svg';
+import { ReactComponent as Menu } from '../../assets/icons/Iconmenu.svg';
 
 const HeaderContainer = styled.div`
   display: flex;
@@ -61,12 +61,12 @@ export const Header: React.FC = () => {
   return (
     <HeaderContainer data-testid="header">
       <StyledHeader>
-        <Menu className="icon-logo"></Menu>
+        <Menu data-testid="menu-icon" className="icon-logo"></Menu>
         <h1>JUNO</h1>
         <StyledIconDiv>
           {user && <h4 className="greeting">Hello, {user.given_name}!</h4>}
-          <Like className="icon-logo" />
-          <Cart className="icon-logo" />
+          <Like data-testid="like-icon" className="icon-logo" />
+          <Cart data-testid="cart-icon" className="icon-logo" />
         </StyledIconDiv>
       </StyledHeader>
       {activeIcons.search && <SearchInput />}
