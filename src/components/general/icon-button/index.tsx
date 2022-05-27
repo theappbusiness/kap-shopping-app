@@ -1,3 +1,5 @@
+import { IconProp } from '@fortawesome/fontawesome-svg-core';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import styled from 'styled-components';
 import React, { ReactElement } from 'react';
 import { SvgIcon } from '../icon';
@@ -40,14 +42,16 @@ interface ButtonProps extends React.ComponentPropsWithoutRef<'button'> {
   buttonSize: 'small' | 'medium';
   iconWidth?: 24 | 48;
   stroke: 'true' | 'false';
-  Icon: React.FunctionComponent<React.SVGProps<SVGSVGElement>>;
+  Icon?: React.FunctionComponent<React.SVGProps<SVGSVGElement>>;
+  iconName?: IconProp;
 }
 
 export const IconButton = (props: ButtonProps): ReactElement => {
-  const { Icon, iconWidth, children, ...rest } = props;
+  const { Icon, iconWidth, iconName, children, ...rest } = props;
   return (
     <StyledSvgContainer {...rest}>
-      <SvgIcon Icon={Icon} width={iconWidth} />
+      {Icon && <SvgIcon Icon={Icon} width={iconWidth} />}
+      {iconName && <FontAwesomeIcon icon={iconName} data-testid={iconName} />}
       {children}
     </StyledSvgContainer>
   );
