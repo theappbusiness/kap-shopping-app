@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+// eslint-disable-next-line import/no-unresolved
 import { ContextualColors } from '../../../styles';
 
 type Without<T, U> = { [P in Exclude<keyof T, keyof U>]?: never };
