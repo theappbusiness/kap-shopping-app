@@ -1,6 +1,8 @@
 import { userEvent } from '@storybook/testing-library';
 import { render, screen } from '../../test-utils';
+import { registerIcons } from '../../registerIcons';
 import { Header } from './Header';
+registerIcons();
 
 describe('Header', () => {
   it('Renders Header element', () => {
