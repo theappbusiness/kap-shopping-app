@@ -8,8 +8,14 @@ import { Alert } from '../general/Alert';
 const ProductTilesContainer = styled.ul`
   display: grid;
   grid-template-columns: repeat(var(--grid-factor), 1fr);
-  gap: ${({ theme }) => theme.sizes.spacing.xl};
-  padding: ${({ theme }) => theme.sizes.spacing.xxl};
+  gap: calc(
+    (
+        ${({ theme }) => theme.sizes.spacing.md} +
+          ${({ theme }) => theme.sizes.spacing.lg}
+      ) / 2
+  );
+  padding: ${({ theme }) => theme.sizes.spacing.xxl} 0;
+  margin: 0 auto;
 `;
 
 export const ProductTiles: React.FC = () => {
