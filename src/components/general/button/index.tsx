@@ -16,16 +16,37 @@ const StyledButton = styled.button<{
   border-radius: ${({ color, theme }) => theme.paletteV2[color].borderRadius};
   padding: ${({ theme }) => theme.sizes.spacing.md};
   font-size: ${({ theme }) => theme.sizes.fonts.md};
+  font-weight: 400;
   outline: none;
   cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 
   :hover,
-  :focus-visible {
+  :focus {
     background: ${({ theme, color }) => theme.paletteV2[color].hover};
     box-shadow: 3px 3px
       ${({ color, theme }) => theme.paletteV2[color].hoverShadow};
     color: ${({ theme, color }) => theme.paletteV2[color].main};
   }
+
+  @supports selector(:focus-visible) {
+    &:focus {
+      background: ${({ theme, color }) => theme.paletteV2[color].main};
+      box-shadow: 3px 3px ${({ color, theme }) => theme.paletteV2[color].shadow};
+      color: ${({ theme, color }) => theme.paletteV2[color].contrast};
+    }
+
+    &:hover,
+    &:focus-visible {
+      background: ${({ theme, color }) => theme.paletteV2[color].hover};
+      box-shadow: 3px 3px
+        ${({ color, theme }) => theme.paletteV2[color].hoverShadow};
+      color: ${({ theme, color }) => theme.paletteV2[color].main};
+    }
+  }
+
   & .button-icon {
     margin-left: 0.5rem;
   }
