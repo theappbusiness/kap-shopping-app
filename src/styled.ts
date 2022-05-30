@@ -6,14 +6,19 @@ export const GlobalStyle = createGlobalStyle`
     box-sizing: border-box;
     margin: 0;
     padding: 0;
-    font-family: "Open Sans", sans-serif;
+    font-family: "Work Sans", sans-serif;
   }
 
   ul {
     list-style: none;
   }
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Koulen', cursive;
+  text-transform: uppercase;
+}
+  
   h1 {
-    font-family: 'Koulen';
     font-size: 38px;
   }
 
