@@ -6,18 +6,30 @@ import '../../translations/i18n';
 import { Button } from '../general/button';
 import { userLocale } from '../../translations/userLocale';
 import { CartContext } from '../../contexts/Cart';
+import { ReactComponent as Like } from '../../assets/icons/like.svg';
+import { ReactComponent as Cart } from '../../assets/icons/cart.svg';
+import { IconButton } from '../general/icon-button';
 import { ProductPrice } from './product-price/ProductPrice';
 
 const ProductTileContainer = styled.li`
+  background-color: ${({ theme }) => theme.colors.Neutral10};
+  border: 1px solid ${({ theme }) => theme.colors.Grey70};
+  border-radius: 4px;
   margin: 0 auto 0 auto;
+  padding: calc(
+    (
+        ${({ theme }) => theme.sizes.spacing.md} +
+          ${({ theme }) => theme.sizes.spacing.lg}
+      ) / 2
+  );
   width: max(
     115px,
     calc(
       calc(100vw / var(--grid-factor)) -
         calc(
-          ${({ theme }) => theme.sizes.spacing.xxl} +
-            ${({ theme }) => theme.sizes.spacing.xxl} +
-            ${({ theme }) => theme.sizes.spacing.xl}
+          ${({ theme }) => theme.sizes.spacing.lg} +
+            ${({ theme }) => theme.sizes.spacing.lg} +
+            ${({ theme }) => theme.sizes.spacing.sm}
         )
     )
   );
@@ -28,9 +40,9 @@ const ProductTileContainer = styled.li`
       calc(
         calc(100vw / var(--grid-factor)) -
           calc(
-            ${({ theme }) => theme.sizes.spacing.xxl} +
-              ${({ theme }) => theme.sizes.spacing.xxl} +
-              ${({ theme }) => theme.sizes.spacing.xl}
+            ${({ theme }) => theme.sizes.spacing.lg} +
+              ${({ theme }) => theme.sizes.spacing.lg} +
+              ${({ theme }) => theme.sizes.spacing.lg}
           )
       )
     )
@@ -41,10 +53,63 @@ const ProductTileContainer = styled.li`
     height: auto;
   }
 
+  .product-tile-like-row {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    min-width: 0;
+  }
+
+  .product-tile-like-row div {
+    width: 36px;
+  }
+
+  .like-button path {
+    fill: none;
+  }
+
   & .product-tile-title {
-    font-size: ${({ theme }) => theme.sizes.fonts.lg};
+    font-size: ${({ theme }) => theme.sizes.fonts.xxl};
     font-weight: 300;
-    margin-top: ${({ theme }) => theme.sizes.spacing.md};
+    line-height: ${({ theme }) => theme.sizes.spacing.xl};
+  }
+
+  p {
+    color: ${({ theme }) => theme.colors.AccentGreen};
+    font-weight: 500;
+    font-size: ${({ theme }) => theme.sizes.fonts.xl};
+  }
+
+  button {
+    padding: ${({ theme }) => theme.sizes.spacing.xs};
+    font-size: ${({ theme }) => theme.sizes.fonts.lg};
+  }
+
+  svg {
+    width: 2rem;
+    height: 2rem;
+  }
+
+  // cart button
+  button path {
+    fill: ${({ theme }) => theme.colors.light};
+  }
+
+  button:hover path,
+  button:focus path {
+    fill: ${({ theme }) => theme.colors.dark};
+  }
+
+  @supports selector(:focus-visible) {
+    button:focus path {
+      fill: ${({ theme }) => theme.colors.light};
+    }
+
+    button:hover path,
+    button:focus-visible path {
+      fill: ${({ theme }) => theme.colors.dark};
+    }
   }
 `;
 
@@ -59,18 +124,26 @@ export const ProductTile: React.FC<{ product: Product }> = ({ product }) => {
         src={`https://picsum.photos/seed/${product.name}/270`}
         alt={product.name as string}
       />
-      <div>
+
+      <div className="product-tile-like-row">
         <h3 className="product-tile-title">{product.name}</h3>
-        <ProductPrice price={product.price} locale={userLocale}></ProductPrice>
+        <IconButton
+          Icon={Like}
+          stroke="false"
+          buttonSize="x-small"
+          className="like-button"
+        />
       </div>
+      <ProductPrice price={product.price} locale={userLocale}></ProductPrice>
+
       <Button
         handleClick={() => {
           addToCart(product);
         }}
-        iconName="shopping-bag"
         color="primary"
       >
         {t('addToCart')}
+        <Cart />
       </Button>
     </ProductTileContainer>
   );

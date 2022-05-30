@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import { useIntl, IntlProvider } from 'react-intl';
 
-const ProductPriceContainer = styled.h4`
+const ProductPriceContainer = styled.p`
   font-size: ${({ theme }) => theme.sizes.fonts.sm};
   font-weight: 300;
   margin-bottom: ${({ theme }) => theme.sizes.spacing.md};
