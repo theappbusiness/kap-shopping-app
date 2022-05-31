@@ -57,7 +57,7 @@ const ProductTileContainer = styled.li`
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
-    align-items: center;
+    align-items: start;
     min-width: 0;
   }
 
@@ -65,22 +65,28 @@ const ProductTileContainer = styled.li`
     width: 36px;
   }
 
-  .like-button path {
-    fill: none;
-  }
-
-  & .product-tile-title {
+  .product-tile-title {
     font-size: ${({ theme }) => theme.sizes.fonts.xxl};
     font-weight: 300;
     line-height: ${({ theme }) => theme.sizes.spacing.xl};
   }
 
-  p {
-    color: ${({ theme }) => theme.colors.AccentGreen};
-    font-weight: 500;
-    font-size: ${({ theme }) => theme.sizes.fonts.xl};
+  .like-button {
+    margin-top: -${({ theme }) => theme.sizes.spacing.sm};
+    margin-left: -${({ theme }) => theme.sizes.spacing.sm};
   }
 
+  .like-button path {
+    fill: none;
+  }
+
+  p {
+    color: ${({ theme }) => theme.colors.AccentGreen};
+    font-size: ${({ theme }) => theme.sizes.fonts.xl};
+    font-weight: 500;
+  }
+
+  // cart button
   button {
     padding: ${({ theme }) => theme.sizes.spacing.xs};
     font-size: ${({ theme }) => theme.sizes.fonts.lg};
@@ -91,7 +97,6 @@ const ProductTileContainer = styled.li`
     height: 2rem;
   }
 
-  // cart button
   button path {
     fill: ${({ theme }) => theme.colors.light};
   }
