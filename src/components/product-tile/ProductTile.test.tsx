@@ -1,4 +1,3 @@
-import { registerIcons } from '../../registerIcons';
 import { render, screen } from '../../test-utils';
 import { Product } from '../../types/product';
 import { ProductTile } from './ProductTile';
@@ -18,7 +17,6 @@ const productDataMock: Product = {
 };
 
 test('renders a product tile with an image, title, price and add to cart button', () => {
-  registerIcons();
   const formattedPrice = productDataMock.price.toLocaleString('en-US', {
     style: 'currency',
     currency: 'USD',
