@@ -3,7 +3,7 @@ import styled from 'styled-components';
 const FooterContainer = styled.footer`
   display: flex;
   justify-content: center;
-  width: 100vw;
+  width: 100%;
   height: auto;
   background-color: ${({ theme }) => theme.colors.light};
   padding: ${({ theme }) => theme.sizes.spacing.sm};

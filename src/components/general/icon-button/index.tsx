@@ -4,12 +4,24 @@ import styled from 'styled-components';
 import React, { ReactElement } from 'react';
 import { SvgIcon } from '../icon';
 
+type ButtonSize = 'x-small' | 'small' | 'medium';
+
 export const StyledSvgContainer = styled.button<{
   stroke: 'true' | 'false';
-  buttonSize?: 'small' | 'medium';
+  buttonSize?: ButtonSize;
 }>`
-  height: ${({ buttonSize }) => (buttonSize === 'small' ? `36px` : '48px')};
-  width: ${({ buttonSize }) => (buttonSize === 'small' ? `36px` : '48px')};
+  height: ${({ buttonSize }) =>
+    buttonSize === 'x-small'
+      ? '30px'
+      : buttonSize === 'small'
+      ? `36px`
+      : '48px'};
+  width: ${({ buttonSize }) =>
+    buttonSize === 'x-small'
+      ? '30px'
+      : buttonSize === 'small'
+      ? `36px`
+      : '48px'};
   background-color: transparent;
   display: inline-flex;
   align-items: center;
@@ -39,7 +51,7 @@ export const StyledSvgContainer = styled.button<{
 `;
 
 interface ButtonProps extends React.ComponentPropsWithoutRef<'button'> {
-  buttonSize?: 'small' | 'medium';
+  buttonSize?: ButtonSize;
   iconWidth?: 24 | 48;
   stroke: 'true' | 'false';
   Icon?: React.FunctionComponent<React.SVGProps<SVGSVGElement>>;
