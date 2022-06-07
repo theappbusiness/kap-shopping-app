@@ -86,7 +86,6 @@ const ProductTileContainer = styled.li`
     font-weight: 500;
   }
 
-  // cart button
   button {
     padding: ${({ theme }) => theme.sizes.spacing.xs};
     font-size: ${({ theme }) => theme.sizes.fonts.lg};
